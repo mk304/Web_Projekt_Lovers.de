@@ -5,17 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>test</h1>
 <form class="box" action="register.php" method="post">
-    <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben" required="required">
-    <input type="text" name="vorname" placeholder="Vorname" required="required">
-    <input type="text" name="nachname" placeholder="Nachname" required="required">
-    <input type="text" name="email" placeholder="E-Mail" required="required">
-    <input type="password" name="pw" placeholder="Passwort festlegen" required="required">
+    <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben" required="required" minlength="5" maxlength="5">
+    <input type="text" name="vorname" placeholder="Vorname" required="required" minlength="2" maxlength="20">
+    <input type="text" name="nachname" placeholder="Nachname" required="required" minlength="2" maxlength="20">
+    <input type="email" name="email" placeholder="E-Mail" required="required" minlength="2" maxlength="40">
+    <input type="password" name="pw" placeholder="Passwort festlegen" required="required" minlength="2" maxlength="20">
     <br><br>
     <br><br>
     <input type="submit" value="Registrieren">
 
 </form>
+
 </body>
 </html>

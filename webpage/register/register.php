@@ -37,6 +37,12 @@ $_SESSION ["email"]="$email";
 $_SESSION ["pw"]="$pw";
 
 
+// Überprüfung, ob Kürzel bereits in Datenbank vorhanden ist:
+
+//$check = NULL;
+//$check = "SELECT 'kuerzel' * FROM 'user' WHERE 'kuerzel'='cs252'";
+//echo $check;
+
 
 
 
