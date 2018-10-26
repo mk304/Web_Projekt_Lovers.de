@@ -63,6 +63,15 @@ package-lock.json
 userdata.php
 README.md
 
-# gitignore___jb_tmp___
-.xml
-.imi
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+![Bb]in/*.xml
+[Oo]bj/
