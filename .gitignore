@@ -62,6 +62,7 @@ typings/
 package-lock.json
 userdata.php
 README.md
+*.xml
 
 # Build results
 [Dd]ebug/
