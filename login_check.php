@@ -18,7 +18,7 @@
 <?php
 session_start();
 
-include_once 'datenbankzugang.php';
+include_once 'userdata.php';
 
 
 $kuerzel = $_POST["kuerzel"];
