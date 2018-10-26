@@ -17,8 +17,10 @@ session_start();
 <body>
 
 <nav class="navbar navbar-exband-md navbar-light bg-light sticky-top">
-    <div class="container-fluid"></div>
-
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="70" height="64,4"></a>
+    <ul class = "nav navbar-nav navbar-right"
+    </div>
 </nav>
 
 
