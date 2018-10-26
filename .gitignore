@@ -64,6 +64,10 @@ userdata.php
 README.md
 *.xml
 
+# NUNIT
+*.VisualState.xml
+TestResult.xml
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
