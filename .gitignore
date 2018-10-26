@@ -62,5 +62,7 @@ typings/
 package-lock.json
 userdata.php
 README.md
+
+# gitignore___jb_tmp___
 .xml
-.gitignore___jb_tmp___
+.imi
