@@ -121,13 +121,14 @@ html, body {
     grid-area: box1;
     background-color: #fff;
     opacity: 0.36;
-
+    height: 7000%;
+    width: 2000%;
 
 }
 .box2 {
     grid-area: box2;
-
     background-color: #cccccc;
+
 }
 
 
