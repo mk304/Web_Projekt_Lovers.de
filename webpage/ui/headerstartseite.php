@@ -16,13 +16,14 @@ session_start();
 
     <link href="../../../Downloads/Bootstrap%204%20Site%20Starter%20Files/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../home/Startseite.css"
+
 </head>
 <body>
 
 
 <nav class="navbar navbar-exband-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="70" height="64,4"></a>
+        <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="56" height="51,52"></a>
         <button type="button" class="btn btn-light">Anmelden</button>
     </div>
 </nav>

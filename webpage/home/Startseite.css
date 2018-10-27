@@ -94,56 +94,54 @@ input, select {
 }
 /* unser code beginnt hier */
 
-slider {
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: 1f1f1f;
-    overflow: hidden;
-    position: absolute;
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr ;
+    grid-template-areas:
+    "textstart login "
+    "textstart login";
+
+
+}
+.textstart {
+    grid-area: textstart;
+
+
+}
+.login{
+    grid-area: login;
 }
 
-slider >*{
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: 1f1f1f;
-    animation: slide 12s infinite;
-    overflow: hidden;
+.grid div:nth-child(1){
+    background-color: red;
+
 }
-slide:nth-child(1){
-    left: 0%;
-    animation-delay: -1s;
-    background-image: url(../bilder/hintergrundbild1.jpg);
-    background-size: cover;
-    background-position: center;
-}
-slide:nth-child(2){
-    animation-delay: 2s;
-    background-image: url(../bilder/hintergrundbild2.jpg);
-    background-size: cover;
-    background-position: center;
-}
-slide:nth-child(3){
-    animation-delay: 5s;
-    background-image: url(../bilder/hintergrundbild3.jpg);
-    background-size: cover;
-    background-position: center;
-}
-slide:nth-child(4){
-    left: 0%;
-    animation-delay: 8s;
-    background-image: url(../bilder/hintergrundbild4.jpg);
-    background-size: cover;
-    background-position: center;
+.grid div:nth-child(2){
+    background-color: blue;
+    height: 10%;
 }
 
-@keyframes slide {
-    0% {left: 100%; width: 100%;}
-    5%{ left: 0%;}
-    25%{ left: 0%;}
-    30%{ left: -100%; width: 100%;}
-    30.0001% { left: -100%; width: 0%;}
-    100%{ left: 100%; width: 0%;}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
+
+.fullBackground{
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+

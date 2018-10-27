@@ -2,14 +2,42 @@
 include_once '../ui/headerstartseite.php';
 ?>
 
-<slider>
-    <slide><p>Slide 1</p></slide>
-    <slide><p>Slide 2</p></slide>
-    <slide><p>Slide 3</p></slide>
-    <slide><p>Slide 4</p></slide>
 
 
-</slider>
+
+
+
+
+</selection>
+
+
+    <script src="src/jquery-3.3.1.min.js"></script>
+    <script src="src/fullclip.min.js"></script>
+
+    <script src="src/fullclip.js"></script>
+
+
+
+
+
+
+        <section class="container">
+            <div class="fullBackground"></div>
+
+        </section>
+        <script>
+        $('.fullBackground').fullClip({
+            images: ['../bilder/hintergrundbild1.jpg', '../bilder/hintergrundbild2.jpg', '../bilder/hintergrundbild3.jpg', '../bilder/hintergrundbild4.jpg','../bilder/hintergrundbild5.jpg','../bilder/hintergrundbild6.jpg'],
+            transitionTime: 2000,
+            wait: 5000
+        });
+    </script>
+
+
+
+    </script>
+
+
 
 
 <?php
