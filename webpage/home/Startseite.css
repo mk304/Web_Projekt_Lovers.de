@@ -95,41 +95,25 @@ input, select {
 /* unser code beginnt hier */
 
 
+
 .grid{
+    position: fixed;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr ;
-    grid-template-areas:
-    "textstart login "
-    "textstart login";
-
-
+    grid-template-columns: 50% 50%;
 }
+
 .textstart {
-    grid-area: textstart;
-
-
+    background-color: #fff;
+    padding: 1em;
 }
-.login{
-    grid-area: login;
-}
-
-.grid div:nth-child(1){
-    background-color: red;
-
-}
-.grid div:nth-child(2){
-    background-color: blue;
-    height: 10%;
+.login {
+    background-color: #cccccc;
+    padding: 1em;
+   left: auto;
 }
 
 
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-}
 
 .fullBackground{
     background-position: center center;

@@ -1,28 +1,17 @@
 <?php
 include_once '../ui/headerstartseite.php';
 ?>
-
-
-
-
-
-
-
 </selection>
-
-
     <script src="src/jquery-3.3.1.min.js"></script>
     <script src="src/fullclip.min.js"></script>
-
     <script src="src/fullclip.js"></script>
-
-
-
-
-
-
         <section class="container">
             <div class="fullBackground"></div>
+            <div class="grid">
+                <div class="login">hjlegöfk  iwuh äqwhu ifhiöufkh ökuhf efäöwekhf äewoifh äeuwfhr äofhewäoif wqoihräo qwHRq fhwoqöieHR äweoifhq äwIORHqwäo rhqäworhq1</div>
+                <div class="textstart"> äoihwqöfkhf-hasn äöIWFB FÖweufäsufgw FHqwärkh cäshfbslfjmgj 2</div>
+            </div>
+
 
         </section>
         <script>
@@ -31,11 +20,11 @@ include_once '../ui/headerstartseite.php';
             transitionTime: 2000,
             wait: 5000
         });
-    </script>
-
-
 
     </script>
+
+
+
 
 
 
