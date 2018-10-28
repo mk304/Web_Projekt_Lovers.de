@@ -5,20 +5,22 @@ include_once '../ui/header.php';
 <div class="grid">
 
     <div class="boxl">
-        <hi>Channels</hi>
+        <h1>Channels</h1>
         <ul class="channel">
-            <li class="channelbox">Auslandssemester</li>
-            <li class="channelbox">Praktikum</li>
-            <li class="channelbox">Wochnungssuche</li>
-            <li class="channelbox">Jobbörese</li>
-            <li class="channelbox">Was geht heute</li>
-            <li class="channelbox">Online-Medien-Management</li>
-            <li class="channelbox">Infomationsdesign</li>
-            <li class="channelbox">Wirtschfatsinformatik</li>
-            <li class="channelbox">Mobile Medien</li>
+
+            <li class="channelbox"><a href="#">Wochnungssuche</li>
+            <li class="channelbox"><a href="#">Jobbörese</li>
+            <li class="channelbox"><a href="#">Was geht heute</li>
+            <li class="channelbox"><a href="#">Online-Medien-Management</li>
+            <li class="channelbox"><a href="#">Infomationsdesign</li>
+            <li class="channelbox"><a href="#">Wirtschfatsinformatik</li>
+            <li class="channelbox"><a href="#">Mobile Medien</li>
 
         </ul>
     </div>
 
-    <div class="boxr"></div>
+    <div class="boxr">
+        <p>hallo</p>
+    </div>
+
 </div>

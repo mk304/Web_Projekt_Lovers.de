@@ -55,12 +55,17 @@ time, mark, audio, video {
 .channelbox{
 
     background: rgba(135,136,137,0.28);
-    list-style-position:none;
-    border: 1px solid black;
+    border-bottom: 1px solid rgba(100,100,100,03);
     text-align: center;
     height: 60px;
-}
-.channelbox h1{
-    font-family: Roboto;
+    padding: 15px 10px;
+    list-style: none;
 
+}
+.boxl h1{
+
+    font-family: Roboto;
+    font-size: 50px;
+    text-align: center;
+    margin: 20px;a
 }
