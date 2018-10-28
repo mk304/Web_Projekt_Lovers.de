@@ -1,5 +1,9 @@
 <?php
 include_once '../ui/headerstartseite.php';
+session_start();
+
+if ($_SESSION["log"]=="TRUE") {
+    header("Location: ../home/home.php");}
 ?>
 
 

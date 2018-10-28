@@ -1,15 +1,5 @@
 <?php
-
-
-if(!isset($_SESSION["log"])) {
-
-}
-    else {
-        header("Location: ../home/Startseite.php");
-    }
-
-
-
+session_start();
 
 if ($_SESSION["log"]=="TRUE") {
 
