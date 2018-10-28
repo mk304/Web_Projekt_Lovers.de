@@ -21,6 +21,7 @@ session_start();
 include_once '../../userdata.php';
 
 
+
 $kuerzel = $_POST["kuerzel"];
 $pw = $_POST["pw"];
 
@@ -28,25 +29,23 @@ $_SESSION["kuerzel"] = $kuerzel;
 $_SESSION["pw"] = $pw;
 
 
-
-
-
-
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql = "INSERT INTO user(kuerzel, pw) VALUES (?, ?)";
+$sql = "SELECT pw FROM user WHERE kuerzel=:kuerzel";
 
 $statement = $pdo->prepare($sql);
-$statement->execute(array("$kuerzel", "$pw"));
+$statement->execute(array(":kuerzel"=>"$kuerzel"));
 
 $row = $statement->fetchObject();
 
-$_SESSION["log"] = TRUE;
-header("Location: startseite.php");
+if ($pw == $row->pw) {
+    $_SESSION["log"] = TRUE;
+    header("Location: ../home/home.php");
+} else {
+    $_SESSION["log"]=FALSE;
+    header("Location: ../home/Startseite.php");
+}
 
 
-
-// Ist das nötig???
-//if (isset ($_SESSION["log"]) and $_SESSION["log"]==TRUE) {header("Location: blog.php");}
 
 
 ?>
