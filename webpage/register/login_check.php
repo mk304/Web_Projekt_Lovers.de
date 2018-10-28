@@ -27,7 +27,9 @@ $pw = $_POST["pw"];
 $_SESSION["kuerzel"] = $kuerzel;
 $_SESSION["pw"] = $pw;
 
+header("Location: ../home/home.php");
 
+?>
 
 
 

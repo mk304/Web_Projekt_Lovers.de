@@ -42,7 +42,7 @@ include_once '../ui/headerstartseite.php';
                                     <div class="row">
                                         <div class="col-lg-12">
 
-                                            <form id="register-form" action="../register/register.html"
+                                            <form id="register-form" action="../register/register.php"
                                                   method="post" role="form" style="display: block;">
                                                 <div class="form-group">
                                                     <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
@@ -127,7 +127,7 @@ include_once '../ui/headerstartseite.php';
 
 
         <script>
-            
+
             /*Bildergalerie*/
 
             $('.fullBackground').fullClip({

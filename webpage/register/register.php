@@ -56,12 +56,7 @@ $statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))
 $row = $statement->fetchObject();
 
 // $_SESSION["log"] = TRUE;
-// header("Location: startseite.html");
+ header("Location: ../home/home.php");
 
 ?>
 
-
-<div>Sie sind registriert</div>
-</body>
-
-</html>
