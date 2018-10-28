@@ -20,5 +20,16 @@ session_start();
 </head>
 <body>
 
+
+<nav class="navbar navbar-exband-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="56" height="51,52"></a>
+
+    </div>
+
+
+</nav>
+
+
 </body>
 </html>
