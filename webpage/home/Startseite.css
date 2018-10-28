@@ -205,7 +205,7 @@ input{
     height: 100%;
 }
 
-@media screen and (min-width:736px)  {
+@media screen and (min-width:736px) {
     .grid-box {
         display: grid;
         position: fixed;
@@ -213,7 +213,5 @@ input{
         height: 100%;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "box1 box2";
-    }
-
-}
+    }  }
 
