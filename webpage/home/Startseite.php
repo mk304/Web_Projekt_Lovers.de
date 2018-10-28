@@ -29,10 +29,10 @@ include_once '../ui/headerstartseite.php';
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <a href="#" class="active" id="register-form-link">Registrierung</a>
+                                            <button class="btn btn-light btn-lg btn-block btn-huge" class="active" id="register-form-link">Registrierung</button>
                                         </div>
                                         <div class="col-xs-6">
-                                            <a href="#"  id="login-form-link">Login</a>
+                                            <button class="btn btn-light btn-lg btn-block btn-huge" id="login-form-link">Login</button>
                                         </div>
 
                                     </div>
@@ -127,6 +127,7 @@ include_once '../ui/headerstartseite.php';
 
 
         <script>
+
             /*Bildergalerie*/
 
             $('.fullBackground').fullClip({
@@ -151,6 +152,8 @@ include_once '../ui/headerstartseite.php';
                     $('#register-form-link').removeClass('active');
                     $(this).addClass('active');
                     e.preventDefault();
+
+                    document.getElementById('focusmeplease').focus();
                 });
 
             });
