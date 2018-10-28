@@ -24,28 +24,67 @@ include_once '../ui/headerstartseite.php';
 
             <div class="login">
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
+                        <div class="col-md-11 col-md-offset-8">
                             <div class="panel panel-login">
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <button type="button" class="btn btn-light" id="login-form-link">Login
-                                            </button>
+                                            <a href="#" class="active" id="register-form-link">Registrierung</a>
                                         </div>
                                         <div class="col-xs-6">
-                                            <button type="button" class="btn btn-light" id="register-form-link">
-                                                Registrierung
-                                            </button>
+                                            <a href="#"  id="login-form-link">Login</a>
                                         </div>
+
                                     </div>
                                     <hr>
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <form id="login-form" action="https://phpoll.com/login/process"
+
+                                            <form id="register-form" action="../register/register.html"
+                                                  method="post" role="form" style="display: block;">
+                                                <div class="form-group">
+                                                    <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
+                                                           required="required"
+                                                           minlength="5" maxlength="5"><br>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" name="vorname" placeholder="Vorname"
+                                                           required="required" minlength="2"
+                                                           maxlength="20"><br>
+                                                </div>
+
+                                                    <div class="form-group">
+                                                        <input type="text" name="nachname" placeholder="Nachname"
+                                                               required="required" minlength="2"
+                                                               maxlength="20"><br>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" name="email" placeholder="E-Mail"
+                                                               required="required" minlength="2"
+                                                               maxlength="40"><br>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="password" name="pw"
+                                                               placeholder="Passwort festlegen" required="required"
+                                                               minlength="2"
+                                                               maxlength="20">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-sm-offset-3">
+                                                                <input type="submit" name="register-submit" id="register-submit"
+                                                                       tabindex="4" class="form-control btn btn-login"
+                                                                       value="Registrieren">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                            </form>
+                                            <form id="login-form" action="../register/login_check.php"
                                                   method="post"
-                                                  role="form" style="display: block;">
+                                                  role="form" style="display: none;">
                                                 <div class="form-group">
                                                     <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
                                                            required="required"
@@ -75,44 +114,6 @@ include_once '../ui/headerstartseite.php';
                                                     </div>
                                                 </div>
                                             </form>
-                                            <form id="register-form" action="https://phpoll.com/register/process"
-                                                  method="post" role="form" style="display: none;">
-                                                <div class="form-group">
-                                                    <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
-                                                           required="required"
-                                                           minlength="5" maxlength="5"><br>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="vorname" placeholder="Vorname"
-                                                           required="required" minlength="2"
-                                                           maxlength="20"><br>
-                                                    <div class="form-group">
-                                                        <input type="text" name="nachname" placeholder="Nachname"
-                                                               required="required" minlength="2"
-                                                               maxlength="20"><br>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="email" name="email" placeholder="E-Mail"
-                                                               required="required" minlength="2"
-                                                               maxlength="40"><br>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="password" name="pw"
-                                                               placeholder="Passwort festlegen" required="required"
-                                                               minlength="2"
-                                                               maxlength="20">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-sm-6 col-sm-offset-3">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        id="register-form-link">Registrieren
-                                                                </button>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -137,17 +138,17 @@ include_once '../ui/headerstartseite.php';
             /*Login Formular*/
             $(function () {
 
-                $('#login-form-link').click(function (e) {
-                    $("#login-form").delay(100).fadeIn(100);
-                    $("#register-form").fadeOut(100);
-                    $('#register-form-link').removeClass('active');
-                    $(this).addClass('active');
-                    e.preventDefault();
-                });
                 $('#register-form-link').click(function (e) {
                     $("#register-form").delay(100).fadeIn(100);
                     $("#login-form").fadeOut(100);
                     $('#login-form-link').removeClass('active');
+                    $(this).addClass('active');
+                    e.preventDefault();
+                });
+                $('#login-form-link').click(function (e) {
+                    $("#login-form").delay(100).fadeIn(100);
+                    $("#register-form").fadeOut(100);
+                    $('#register-form-link').removeClass('active');
                     $(this).addClass('active');
                     e.preventDefault();
                 });
