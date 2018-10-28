@@ -1,5 +1,9 @@
 <?php
 include_once '../ui/headerstartseite.php';
+session_start();
+
+if ($_SESSION["log"]=="TRUE") {
+    header("Location: ../home/home.php");}
 ?>
 
 
@@ -29,10 +33,10 @@ include_once '../ui/headerstartseite.php';
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <a href="#" class="active" id="register-form-link">Registrierung</a>
+                                            <button class="btn btn-light btn-lg btn-block btn-huge" class="active" id="register-form-link">Registrierung</button>
                                         </div>
                                         <div class="col-xs-6">
-                                            <a href="#"  id="login-form-link">Login</a>
+                                            <button class="btn btn-light btn-lg btn-block btn-huge" id="login-form-link">Login</button>
                                         </div>
 
                                     </div>
@@ -42,7 +46,7 @@ include_once '../ui/headerstartseite.php';
                                     <div class="row">
                                         <div class="col-lg-12">
 
-                                            <form id="register-form" action="../register/register.html"
+                                            <form id="register-form" action="../register/register.php"
                                                   method="post" role="form" style="display: block;">
                                                 <div class="form-group">
                                                     <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
@@ -91,7 +95,7 @@ include_once '../ui/headerstartseite.php';
                                                            minlength="5" maxlength="5"><br>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" name="pw" placeholder="Passwort festlegen"
+                                                    <input type="password" name="pw" placeholder="Passwort eingeben"
                                                            required="required" minlength="2"
                                                            maxlength="20"></div>
                                                 <div class="form-group">
@@ -127,6 +131,7 @@ include_once '../ui/headerstartseite.php';
 
 
         <script>
+
             /*Bildergalerie*/
 
             $('.fullBackground').fullClip({
@@ -151,6 +156,8 @@ include_once '../ui/headerstartseite.php';
                     $('#register-form-link').removeClass('active');
                     $(this).addClass('active');
                     e.preventDefault();
+
+                    document.getElementById('focusmeplease').focus();
                 });
 
             });

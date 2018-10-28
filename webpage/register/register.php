@@ -37,16 +37,32 @@ $_SESSION ["email"]="$email";
 $_SESSION ["pw"]="$pw";
 
 
-// Überprüfung, ob Kürzel bereits in Datenbank vorhanden ist:
+//Überprüfung, ob Kürzel in Datenbank bereits vergeben ist
+$pdo_check = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql_statement = "SELECT kuerzel FROM user WHERE kuerzel=:kuerzel";
 
-//$check = NULL;
-//$check = "SELECT 'kuerzel' * FROM 'user' WHERE 'kuerzel'='cs252'";
-//echo $check;
+$statement_check = $pdo_check->prepare($sql_statement);
+$statement_check->execute(array(":kuerzel"=>"$kuerzel"));
+
+$row = $statement_check->fetchObject();
+
+if ($kuerzel == $row->kuerzel) {
+    session_destroy();?>
+    <div class="alert alert-danger" role="alert">
+        Sie sind bereits registriert. Weiter zum <a href="../home/Startseite.php" class="alert-link">LOGIN</a>
+    </div>
+
+<?php
+    //header("Location: ../home/Startseite.php");
+
+} else {
+    $_SESSION["log"] = TRUE;
+    header("Location: ../home/home.php");
+}
 
 
 
-
-
+//Daten werden in Datenbank geschrieben
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?, ?, ?)";
 
@@ -55,13 +71,15 @@ $statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))
 
 $row = $statement->fetchObject();
 
-// $_SESSION["log"] = TRUE;
-// header("Location: startseite.html");
+$_SESSION["log"] = TRUE;
+//header("Location: ../home/home.php");
+
+
+
 
 ?>
 
 
-<div>Sie sind registriert</div>
 </body>
 
 </html>
