@@ -91,7 +91,7 @@ include_once '../ui/headerstartseite.php';
                                                            minlength="5" maxlength="5"><br>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" name="pw" placeholder="Passwort festlegen"
+                                                    <input type="password" name="pw" placeholder="Passwort eingeben"
                                                            required="required" minlength="2"
                                                            maxlength="20"></div>
                                                 <div class="form-group">
