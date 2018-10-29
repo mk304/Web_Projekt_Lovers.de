@@ -12,12 +12,16 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="../home/style.css"
+
 
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+
+
+</div>
+<div class="header">
+<nav class="navbar-expand-lg navbar-light bg-light ">
     <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="56" height="51,52"></a>
 
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +58,7 @@ session_start();
     </div>
 </nav>
 
-
+</div>
 
 </body>
 </html>
