@@ -1,6 +1,11 @@
 <?php
+
 include_once '../ui/header.php';
 include_once '../register/login_test.php';
+<<<<<<< HEAD
+
+=======
+>>>>>>> parent of 26404f4... fehler mit sidebar
 session_start();
 ?>
 
