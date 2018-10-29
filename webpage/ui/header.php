@@ -50,8 +50,8 @@ session_start();
                 <img src="../bilder/user.png" width="45" height="45" alt="">
             </a>
 
-            <a href="../home/Startseite.php">
-            <button type="button" class="btn btn-outline-secondary" onclick="<?php session_destroy();?>">Abmelden</button>
+            <a href="../register/logout.php">
+            <button type="button" class="btn btn-outline-secondary">Abmelden</button>
             </a>
 
         </nav>
