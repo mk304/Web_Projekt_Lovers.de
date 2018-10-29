@@ -42,7 +42,7 @@ if ($pw == $row->pw) {
     header("Location: ../home/home.php");
 } else {
     $_SESSION["log"]=FALSE;
-    header("Location: ../home/Startseite.php");
+   // header("Location: ../home/Startseite.php");
 }
 
 
