@@ -45,7 +45,10 @@ session_start();
             <a class="navbar-brand" href="#">
                 <img src="../bilder/user.png" width="45" height="45" alt="">
             </a>
-            <button type="button" class="btn btn-outline-secondary">Abmelden</button>
+            <a href="../home/Startseite.php">
+            <button type="button" class="btn btn-outline-secondary" onclick="<?php session_destroy();?>">Abmelden</button>
+            </a>
+
         </nav>
     </div>
 </nav>
