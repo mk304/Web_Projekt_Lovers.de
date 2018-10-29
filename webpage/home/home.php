@@ -1,8 +1,12 @@
 <?php
 
 include_once '../ui/header.php';
+<<<<<<< HEAD
 include_once '../register/login_test.php';
 include_once 'sidebar.php';
+=======
+//include_once '../register/login_test.php';
+>>>>>>> 1ac9d0abf824b8acc36b91a2d51935757a860d7b
 
 session_start();
 ?>
