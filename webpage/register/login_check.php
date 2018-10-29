@@ -38,12 +38,14 @@ $statement->execute(array(":kuerzel"=>"$kuerzel"));
 $row = $statement->fetchObject();
 
 if ($pw == $row->pw) {
-    $_SESSION["log"] = TRUE;
+    $_SESSION["log"] = "TRUE";
     header("Location: ../home/home.php");
+
+
 } else {
-    $_SESSION["log"]=FALSE;
-   // header("Location: ../home/Startseite.php");
-}
+    $_SESSION["log"]="FALSE";
+   //header("Location: ../home/Startseite.php");
+   }
 
 
 

@@ -56,7 +56,7 @@ if ($kuerzel == $row->kuerzel) {
     //header("Location: ../home/Startseite.php");
 
 } else {
-    $_SESSION["log"] = TRUE;
+    $_SESSION["log"] = "TRUE";
     header("Location: ../home/home.php");
 }
 
@@ -71,7 +71,7 @@ $statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))
 
 $row = $statement->fetchObject();
 
-$_SESSION["log"] = TRUE;
+//$_SESSION["log"] = "1";
 //header("Location: ../home/home.php");
 
 
