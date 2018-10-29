@@ -1,11 +1,16 @@
 <?php
 
+
 include_once '../ui/header.php';
 include_once '../register/login_test.php';
 include_once 'sidebar.html';
 include_once '../../userdata.php';
+
 session_start();
+include_once 'neuerheader.php';
+
 ?>
+
 
 
 <form action="../register/post_input.php" method="post">
@@ -42,3 +47,4 @@ while ($row = $query_3->fetchObject()) {
     echo "$row->post"."<br>";}
 
 ?>
+
