@@ -36,6 +36,14 @@ include_once '../../userdata.php';
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
 
+
+    <script>
+
+        $(document).ready(function () {
+            }
+
+    </script>
+
 </head>
 
 <body>
@@ -58,7 +66,6 @@ include_once '../../userdata.php';
                     </i>
                     Messages
                 </a>
-                <a href="#"></a>
 
                     <?php
                     //Channels für Dropdown Menü aus Datenbank ausgeben
@@ -67,7 +74,7 @@ include_once '../../userdata.php';
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a value=/" . $zeile["name"] . '">' . $zeile["name"]."</a>";
+                        echo "<a class='channel' value=" . $zeile["name"] . '">' . $zeile["name"]."</a>";
                     }
                     ?>
             </li>

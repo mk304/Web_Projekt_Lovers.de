@@ -25,9 +25,10 @@ include_once 'neuerheader.php';
 
 
                 <?php
+          
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-                $sql_3 = "SELECT post from posts WHERE channel='3'";
+                $sql_3 = "SELECT post from posts WHERE channel=channels.channel_id";
                 $query_3 = $pdo->prepare($sql_3);
                 $query_3->execute();
                 while ($row = $query_3->fetchObject()) {
@@ -68,27 +69,6 @@ include_once 'neuerheader.php';
     </div>
 </div>
 
-
-
-
-
-<div class="titel" >
-
-    <h1>Allgemein</h1>
-
-</div>
-<div class="posts">
-    <ul>
-        <li class =nposts> Ein neuer post</li>
-
-        <li class =nposts> Ein neuer post</li>
-        <li class =nposts> Ein neuer post</li>
-        <li class =nposts> eilurgk iequwrg wierukgwe iurgwe iutrgew uiewt weiugt wiutgwitugqwitugwer iuwegt t</li>
-        <li class =nposts> Ein neuer post</li>
-        <li class =nposts> Lorem</li>
-
-    </ul>
-</div>
 
 <?php
 session_start();
