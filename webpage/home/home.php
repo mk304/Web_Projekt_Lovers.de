@@ -1,19 +1,8 @@
 <?php
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
 
 
-include_once '../ui/header.php';
 include_once '../register/login_test.php';
-include_once 'sidebar.html';
-=======
-<<<<<<< HEAD
->>>>>>> c059c36864beee4b9a17edd72f371005bb3fcd72
-//include_once '../ui/header.php';
-//include_once '../register/login_test.php';
->>>>>>> 5b77c452430bd68de84bf2e1637b0637c9ffad0e
+
 include_once '../../userdata.php';
 
 session_start();
