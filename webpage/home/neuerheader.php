@@ -187,7 +187,7 @@
                                 <a class="nav-link" href="#"></a>
                             <li class="nav-item">
 
-                                <button type="button" class="btn btn-primary">Beitrag Erstellen</button>
+                                <button onclick="beitrag()" class="btn btn-primary">Beitrag Erstellen</button>
                                 <script>
 
                                     $(document).ready(function () {
