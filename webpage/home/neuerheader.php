@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="neuerheader.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -40,12 +41,33 @@
                         Messages
                     </a>
                 <a href="#"></a>
-                      <a href="#">Auslandssemester</a>
-                    <a href="#">Praktikumssemester</a>
+                      <a href="#">Allgemein</a>
+                    <a href="#">Was geht heute?</a>
+
                     <a href="#">Wohnungssuche</a>
                     <a href="#">Jobbörse</a>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Infomation und Kommunikation</a>
+                    <a href="#">Praktikumssemester</a>
+                </li><li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">HdM-abroad</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Auslandssemester</a>
+                        </li>
+                        <li>
+                            <a href="#">Auslandspraktikum</a>
+                        </li>
+                        <li>
+                            <a href="#">Erfahrungsberichte</a>
+                        </li>
+                        <li>
+                            <a href="#">HdM-Internationals</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Studiengänge</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="#">ONLINE-MEDIEN-MANAGEMENT</a>
                         </li>
@@ -57,14 +79,7 @@
                         </li>
                         <li>
                             <a href="#">INFORMATIONSDESIGN</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Electronic Media</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
+                        </li> <li>
                             <a href="#">AUDIOVISUELLE MEDIEN</a>
                         </li>
                         <li>
@@ -76,10 +91,39 @@
                         <li>
                             <a href="#">WERBUNG UND MARKTKOMMUNIKATION</a>
                         </li>
+                        <li>
+                            <a href="#">DRUCK UND MEDIENTECHNOLOGIE</a>
+                        </li>
+                        <li>
+                            <a href="#">VERPACKUNGSTECHNIK</a>
+                        </li>
+                        <li>
+                            <a href="#">DIGITAL PUBLISHING</a>
+                        </li>
+                        <li>
+                            <a href="#">INTEGRIERTES PRODUKTDESIGN</a>
+                        </li>
+                        <li>
+                            <a href="#">MEDIAPUBLISHING</a>
+                        </li>
+                        <li>
+                            <a href="#">MEDIENINFORMATIK</a>
+                        </li>
+                        <li>
+                            <a href="#">MOBILE MEDIEN</a>
+                        </li>
+                        <li>
+                            <a href="#">PRINT MEDIA TECHNOLOGIES</a>
+                        </li>
+
+                        <li>
+                            <a href="#">WIRTSCHAFTSINGENIEURWESEN MEDIEN</a>
+                        </li>
                     </ul>
                 </li>
+
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="#">FAQ</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>
@@ -135,36 +179,21 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"></a>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-primary">Beitrag Erstellen</button>
+                            </li>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"></a>
                             </li>
                             <li class="nav-item">
-                                <img src="../bilder/user.png" width="45" height="45" alt="">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                            <li class="nav-item">
+                                <img src="../bilder/user.png" width="39" height="39" alt="">
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            
-            </div>
-    </div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
-    </script>
-</body>
-
-</html>

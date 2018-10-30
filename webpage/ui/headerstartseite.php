@@ -23,7 +23,7 @@ session_start();
 
 <nav class="navbar navbar-exband-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="56" height="51,52"></a>
+        <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="50,4" height="46,01"></a>
 
     </div>
 
