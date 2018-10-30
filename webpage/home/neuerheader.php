@@ -196,9 +196,10 @@
                                             (async function getText () {
                                                 const {value: text} = await swal({
                                                     input: 'textarea',
-                                                    
+
                                                     inputPlaceholder: 'Einen neuen Beitrag erstellen',
                                                     showCancelButton: true
+
                                                 });
 
                                                 if (text) {
