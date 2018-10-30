@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 //include_once '../ui/header.php';
 //include_once '../register/login_test.php';
 include_once '../../userdata.php';
@@ -71,3 +72,11 @@ while ($row = $query_3->fetchObject()) {
 
 ?>
 
+=======
+
+include_once '../ui/header.php';
+//include_once '../register/login_test.php';
+include_once 'sidebar.html';
+
+?>
+>>>>>>> parent of 51a09c3... neuer header

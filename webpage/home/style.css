@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .titel{
 
     height: 80px;
@@ -30,4 +31,78 @@
     padding: 1.5em;
     -webkit-box-shadow: -1px 1px 30px -8px rgba(0,0,0,0.59);
     box-shadow: -1px 1px 30px -8px rgba(0,0,0,0.59);
+=======
+
+tml, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+.grid{
+    display: grid;
+    position: fixed;
+>>>>>>> parent of 26404f4... fehler mit sidebar
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "boxr boxr boxr boxr boxr";}
+
+@media screen and (min-width:736px) {
+    .grid {
+        display: grid;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "boxl boxr boxr boxr boxr";
+    }  }
+
+.boxl {
+    grid-area: boxl;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+
+}
+
+.boxr {
+    grid-area: boxr;
+    background-color: mediumvioletred;
+    width: 100%;
+    height: 100%;
+}
+
+.channelbox{
+
+    background: rgba(135,136,137,0.28);
+    border-bottom: 1px solid rgba(100,100,100,03);
+    text-align: center;
+    height: 60px;
+    padding: 15px 10px;
+    list-style: none;
+
+}
+.boxl h1{
+
+    font-family: Roboto;
+    font-size: 50px;
+    text-align: center;
+    margin: 20px;a
+>>>>>>> parent of 51a09c3... neuer header
 }

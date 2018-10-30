@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @ -1,30 +1,3 @@
+=======
+>>>>>>> parent of 51a09c3... neuer header
 tml, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -25,6 +28,10 @@ time, mark, audio, video {
 *::after {
     box-sizing: border-box; // 1
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 51a09c3... neuer header
 
 body {
     line-height:1;
