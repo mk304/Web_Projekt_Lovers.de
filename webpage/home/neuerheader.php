@@ -131,26 +131,18 @@ include_once '../../userdata.php';
                                 $(document).ready(function () {
                                     $('#new-btn').click(function () {
 
-                                        (async
-
-                                        function getText() {
-                                            const {value: text} = await
-                                            swal({
+                                        (async function getText () {
+                                            const {value: text} = await swal({
                                                 input: 'textarea',
-
-                                                inputPlaceholder: 'Einen neuen Beitrag erstellen',
+                                                inputPlaceholder: 'Type your message here...',
                                                 showCancelButton: true
-
                                             });
 
                                             if (text) {
                                                 swal(text)
                                             }
 
-                                        }
-
-                                    )
-                                        ()
+                                        })()
 
 
                                     });
