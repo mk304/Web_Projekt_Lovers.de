@@ -187,18 +187,19 @@
                                 <a class="nav-link" href="#"></a>
                             <li class="nav-item">
 
-                                <button type="button" class="btn btn-primary">Beitrag Erstellen</button>
+                                <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
                                 <script>
 
                                     $(document).ready(function () {
-                                        $('button').click(function () {
+                                        $('#new-btn').click(function () {
 
                                             (async function getText () {
                                                 const {value: text} = await swal({
                                                     input: 'textarea',
-                                                    
+
                                                     inputPlaceholder: 'Einen neuen Beitrag erstellen',
                                                     showCancelButton: true
+
                                                 });
 
                                                 if (text) {
