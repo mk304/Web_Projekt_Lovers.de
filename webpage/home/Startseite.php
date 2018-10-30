@@ -157,6 +157,7 @@ if ($_SESSION["log"]=="TRUE") {
                     $(this).addClass('active');
                     e.preventDefault();
 
+                    document.getElementById('focusmeplease').focus();
                 });
 
             });
