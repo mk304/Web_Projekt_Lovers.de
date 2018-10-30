@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Campus</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../ui/sweetalert/sweetalert2.min.js"> </script>
+    <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
 
     <!-- Bootstrap CSS CDN -->
@@ -182,12 +187,34 @@
                                 <a class="nav-link" href="#"></a>
                             <li class="nav-item">
 
-                                <?php
+                                <button type="button" class="btn btn-primary">Beitrag Erstellen</button>
+                                <script>
+
+                                    $(document).ready(function () {
+                                        $('button').click(function () {
+
+                                            (async function getText () {
+                                                const {value: text} = await swal({
+                                                    input: 'textarea',
+                                                    inputPlaceholder: 'Einen neuen Beitrag erstellen',
+                                                    showCancelButton: true
+                                                });
+
+                                                if (text) {
+                                                    swal(text)
+                                                }
+
+                                            })()
 
 
-                                include_once '../ui/sweetalert/sweetalert_eingabe.html'
 
-                                ?>
+                                        });
+
+                                    })
+
+
+
+                                </script>
 
                             </li>
                             </li>
