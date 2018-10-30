@@ -17,6 +17,7 @@ include_once 'neuerheader.php';
 <div class="posts">
     <ul>
         <li class =nposts> Ein neuer post</li>
+
         <li class =nposts> Ein neuer post</li>
         <li class =nposts> Ein neuer post</li>
         <li class =nposts> eilurgk iequwrg wierukgwe iurgwe iutrgew uiewt weiugt wiutgwitugqwitugwer iuwegt t</li>
@@ -25,6 +26,7 @@ include_once 'neuerheader.php';
 
     </ul>
 </div>
+
 <?php
 session_start();
 include_once 'footer.php';

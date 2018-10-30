@@ -8,6 +8,7 @@
 
     <title>Campus</title>
 
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
@@ -180,7 +181,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#"></a>
                             <li class="nav-item">
-                                <button type="button" class="btn btn-primary">Beitrag Erstellen</button>
+
+                                <?php
+
+
+                                include_once '../ui/sweetalert/sweetalert_eingabe.html'
+
+                                ?>
+
                             </li>
                             </li>
                             <li class="nav-item">
