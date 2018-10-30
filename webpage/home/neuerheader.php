@@ -187,7 +187,7 @@
                                 <a class="nav-link" href="#"></a>
                             <li class="nav-item">
 
-                                <button onclick="beitrag()" class="btn btn-primary">Beitrag Erstellen</button>
+                                <button type="button" class="btn btn-primary">Beitrag Erstellen</button>
                                 <script>
 
                                     $(document).ready(function () {
@@ -196,6 +196,7 @@
                                             (async function getText () {
                                                 const {value: text} = await swal({
                                                     input: 'textarea',
+                                                    
                                                     inputPlaceholder: 'Einen neuen Beitrag erstellen',
                                                     showCancelButton: true
                                                 });
