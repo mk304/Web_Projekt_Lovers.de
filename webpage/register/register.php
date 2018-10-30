@@ -30,6 +30,7 @@ $email = $_POST["email"];
 $pw = $_POST["pw"];
 
 
+
 $_SESSION ["kuerzel"]="$kuerzel";
 $_SESSION ["vorname"]="$vorname";
 $_SESSION ["nachname"]="$nachname";

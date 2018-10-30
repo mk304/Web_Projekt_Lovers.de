@@ -9,6 +9,69 @@ session_start();
 include_once 'neuerheader.php';
 
 ?>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="page-header">Comments</h2>
+            <section class="comment-list">
+                <!-- First Comment -->
+
+
+                <?php
+
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+                $sql_3 = "SELECT post from posts WHERE channel='3'";
+                $query_3 = $pdo->prepare($sql_3);
+                $query_3->execute();
+                while ($row = $query_3->fetchObject()) {
+
+                echo('<article class="row">
+                    <div class="col-md-2 col-sm-2 hidden-xs">
+                        <figure class="thumbnail">
+                            <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                            <figcaption class="text-center">username</figcaption>
+                        </figure>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                        <div class="panel panel-default arrow left">
+                            <div class="panel-body">
+                                <header class="text-left">
+                                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
+                                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+                                </header>
+                                <div class="comment-post">
+                                    <p>'.
+
+                                            $row->post.
+
+                                    '</p>
+                                </div>
+                                <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </article>');}
+                ?>
+
+
+
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <div class="titel" >
 
     <h1>Allgemein</h1>
