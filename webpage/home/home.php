@@ -28,7 +28,7 @@ include_once 'neuerheader.php';
           
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-                $sql_3 = "SELECT post from posts WHERE channel=channels.channel_id";
+                $sql_3 = "SELECT post from posts WHERE channel='3'";
                 $query_3 = $pdo->prepare($sql_3);
                 $query_3->execute();
                 while ($row = $query_3->fetchObject()) {
