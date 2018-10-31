@@ -25,25 +25,38 @@
 </head>
 <body>
 
-<button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
+<button type="button" id="new-btn" class="btn btn-primary" onclick="post();">Beitrag Erstellen</button>
 <p id ="antwort"></p>
+<p id ="antwort2"></p>
 <script>
-    $(document).ready(function () {
+
+        $(document).ready(function () {
+
         $('#new-btn').click(function () {
             (async function getText () {
                 const {value: text} = await swal({
                     input: 'textarea',
                     inputPlaceholder: 'Type your message here...',
                     showCancelButton: true
+
                 });
-                var y = text;
+
+                var $y = text;
+
                 if (text) {
                     swal(text);
                 }
-                document.getElementById("antwort").innerHTML = y ;
+                document.getElementById("antwort").innerHTML = $y ;
+                document.getElementById("antwort2").innerHTML = $y ;
+
+
             })()
         });
     })
+
+</script>
+<script>
+
 </script>
 
 
