@@ -64,3 +64,6 @@ userdata.php
 README.md
 *.xml
 .idea/
+*.jpg
+webpage/bilder/logoklein.png
+*.png
