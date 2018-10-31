@@ -28,10 +28,8 @@
 <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
 <p id ="antwort"></p>
 <script>
-
     $(document).ready(function () {
         $('#new-btn').click(function () {
-
             (async function getText () {
                 const {value: text} = await swal({
                     input: 'textarea',
@@ -41,20 +39,11 @@
                 var y = text;
                 if (text) {
                     swal(text);
-                    document.getElementById("antwort").innerHTML = y ;
-
                 }
-
+                document.getElementById("antwort").innerHTML = y ;
             })()
-
-
         });
-
     })
-
-
-
-
 </script>
 
 
