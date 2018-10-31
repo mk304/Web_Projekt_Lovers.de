@@ -16,6 +16,8 @@ include_once 'neuerheader.php';
 
 
 
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -25,6 +27,7 @@ include_once 'neuerheader.php';
 
 
                 <?php
+
           
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
