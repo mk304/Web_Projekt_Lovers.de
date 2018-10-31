@@ -16,21 +16,37 @@ include_once 'neuerheader.php';
 
 
 
+
+
+<!-- First Comment -->
+<script>
+    $(document).ready(function () {
+        $('.channel').click(function () {
+           $('.comment-list').css({
+                    'background-color'='red';
+                })
+            });
+        });
+
+    /*var data = sessionStorage.getItem('id');
+    <?php $channel_id ?> = var data;*/
+</script>
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h2 class="page-header">Comments</h2>
-            <section class="comment-list">
-                <!-- First Comment -->
-
+            <section class="comment-list" style="display: none;">
 
                 <?php
+echo $channel_id;
           
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-                $sql_3 = "SELECT post from posts WHERE channel=channels.channel_id";
+                $sql_3 = "SELECT post from posts WHERE channel='3'";
                 $query_3 = $pdo->prepare($sql_3);
-                $query_3->execute();
+                $query_3->execute(array(":channel_id"=>"3"));
                 while ($row = $query_3->fetchObject()) {
 
                 echo('<article class="row">

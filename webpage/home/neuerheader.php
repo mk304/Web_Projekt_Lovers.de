@@ -66,17 +66,21 @@ include_once '../../userdata.php';
                     </i>
                     Messages
                 </a>
-
+                    <li action="home.php" method="post">
                     <?php
                     //Channels für Dropdown Menü aus Datenbank ausgeben
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-                    $sql = "SELECT name from channels";
+                    $sql = "SELECT name, channel_id from channels";
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a class='channel' value=" . $zeile["name"] . '">' . $zeile["name"]."</a>";
+                        echo "<a class='channel' name='channel' onClick=\"sessionStorage.id=; " . $zeile["channel_id"] . ';">' . $zeile["name"]."</a>";
                     }
+                    //$_SESSION["channel"] = $zeile["channel_id"];
+
                     ?>
+                <button onclick="alert(sessionStorage.getItem('id'))">Check Session Value</button>
+                    </li>
             </li>
         </ul>
 
