@@ -1,7 +1,7 @@
 <?php
 
 
-include_once '../register/login_test.php';
+//include_once '../register/login_test.php';
 
 include_once '../../userdata.php';
 
@@ -20,16 +20,7 @@ include_once 'neuerheader.php';
 
 <!-- First Comment -->
 <script>
-    $(document).ready(function () {
-        $('.channel').click(function () {
-           $('.comment-list').css({
-                    'background-color'='red';
-                })
-            });
-        });
-
-    /*var data = sessionStorage.getItem('id');
-    <?php $channel_id ?> = var data;*/
+var  id = <?php $id ?>;
 </script>
 
 
@@ -37,19 +28,19 @@ include_once 'neuerheader.php';
     <div class="row">
         <div class="col-md-8">
             <h2 class="page-header">Comments</h2>
-            <section class="comment-list" style="display: none;">
+            <section class="comment-list">
+
+                <button onclick="alert(sessionStorage.getItem('id'))">Check Session Value</button>
 
                 <?php
-echo $channel_id;
-          
-
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-                $sql_3 = "SELECT post from posts WHERE channel='3'";
+                $sql_3 = "SELECT post from posts WHERE channel = '".$id."'";
                 $query_3 = $pdo->prepare($sql_3);
-                $query_3->execute(array(":channel_id"=>"3"));
-                while ($row = $query_3->fetchObject()) {
+                $query_3->execute();
 
-                echo('<article class="row">
+                echo"Wohnungssuche"."<br>";
+                while ($row = $query_3->fetchObject()) {
+                    echo('<article class="row">
                     <div class="col-md-2 col-sm-2 hidden-xs">
                         <figure class="thumbnail">
                             <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
