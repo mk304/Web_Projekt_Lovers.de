@@ -32,7 +32,7 @@
         $(document).ready(function () {
 
         $('#new-btn').click(function () {
-            var CustomerKey = 1234;//your customer key value.
+
             swal({
                 title: "Add Note",
                 input: "textarea",
@@ -42,37 +42,20 @@
                 cancelButtonText: "Cancel",
                 buttonsStyling: true
             }).then(function () {
-                    $.ajax({
-                        type: "POST",
-                        url: "ajax.php",
-                        data: { 'CustomerKey': CustomerKey},
-                        cache: false,
-                        success: function(response) {
-                            swal(
-                                "Sccess!",
-                                "Your note has been saved!",
-                                "success"
-                            )
-                        }
-                        failure: function (response) {
-                            swal(
-                                "Internal Error",
-                                "Oops, your note was not saved.", // had a missing comma
-                                "error"
-                            )
-                        }
-                    });
-                },
-                function (dismiss) {
-                    if (dismiss === "cancel") {
-                        swal(
-                            "Cancelled",
-                            "Canceled Note",
-                            "error"
-                        )
-                    }
-                })
-
+                swal(
+                    "Sccess!",
+                    "Your note has been saved!",
+                    "success"
+                )
+            }, function (dismiss) {
+                if (dismiss === "cancel") {
+                    swal(
+                        "Cancelled",
+                        "Canceled Note",
+                        "error"
+                    )
+                }
+            })
         });
     })
 
