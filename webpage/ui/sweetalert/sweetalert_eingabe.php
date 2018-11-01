@@ -44,7 +44,7 @@
             }).then(function () {
                     $.ajax({
                         type: "POST",
-                        url: "YourPhpFile.php",
+                        url: "ajax.php",
                         data: { 'CustomerKey': CustomerKey},
                         cache: false,
                         success: function(response) {
