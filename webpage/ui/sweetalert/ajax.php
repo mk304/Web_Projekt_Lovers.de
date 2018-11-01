@@ -1,2 +1,3 @@
 <?php
- echo $_POST['var_PHP_data']; ?>
+$test = $_POST['text'] ;
+echo "$test"; ?>

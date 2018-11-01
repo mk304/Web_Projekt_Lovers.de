@@ -26,31 +26,53 @@
 <body>
 
 <button type="button" id="new-btn" class="btn btn-primary" onclick="post();">Beitrag Erstellen</button>
-<p id ="antwort"></p>
-<p id ="antwort2"></p>
+
 <script>
 
         $(document).ready(function () {
 
         $('#new-btn').click(function () {
-            (async function getText () {
-                const {value: text} = await swal({
-                    input: 'textarea',
-                    inputPlaceholder: 'Type your message here...',
-                    showCancelButton: true
+            var CustomerKey = 1234;//your customer key value.
+            swal({
+                title: "Add Note",
+                input: "textarea",
+                showCancelButton: true,
+                confirmButtonColor: "#1FAB45",
+                confirmButtonText: "Save",
+                cancelButtonText: "Cancel",
+                buttonsStyling: true
+            }).then(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "YourPhpFile.php",
+                        data: { 'CustomerKey': CustomerKey},
+                        cache: false,
+                        success: function(response) {
+                            swal(
+                                "Sccess!",
+                                "Your note has been saved!",
+                                "success"
+                            )
+                        }
+                        failure: function (response) {
+                            swal(
+                                "Internal Error",
+                                "Oops, your note was not saved.", // had a missing comma
+                                "error"
+                            )
+                        }
+                    });
+                },
+                function (dismiss) {
+                    if (dismiss === "cancel") {
+                        swal(
+                            "Cancelled",
+                            "Canceled Note",
+                            "error"
+                        )
+                    }
+                })
 
-                });
-
-                var $y = text;
-
-                if (text) {
-                    swal(text);
-                }
-                document.getElementById("antwort").innerHTML = $y ;
-                document.getElementById("antwort2").innerHTML = $y ;
-
-
-            })()
         });
     })
 
