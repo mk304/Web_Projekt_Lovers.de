@@ -27,7 +27,7 @@ include_once 'neuerheader.php';
             // Channel "General" als Startseite definieren
             if(!isset($_GET["channel"])) {
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-                $sql_3 = "SELECT post from posts WHERE channel=1";
+                $sql_3 = "SELECT post from posts";
                 $query_3 = $pdo->prepare($sql_3);
                 $query_3->execute();
                 

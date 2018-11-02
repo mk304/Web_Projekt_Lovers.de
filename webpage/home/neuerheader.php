@@ -66,7 +66,7 @@ include_once '../../userdata.php';
                     </i>
                     Messages
                 </a>
-                    <form id="channel_id" method="post">
+                    <form id="channel_id" method="get">
                     <?php
                     //Channels für Navigation aus Datenbank ausgeben
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -76,8 +76,6 @@ include_once '../../userdata.php';
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                     }
-
-
 
                     ?>
 
