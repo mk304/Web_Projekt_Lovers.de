@@ -13,9 +13,12 @@
 <button type="button" id="new-btn" class="btn btn-primary" >Beitrag Erstellen</button>
 <div id="result"></div>
 <script>
+    var kuerzeltest = "mk304";
+    var channeltest = "3";
 
     $(document).ready(function () {
         $('#new-btn').click(function () {
+
             (async function getText () {
                 const {value: text} = await swal({
                     input: 'textarea',
@@ -23,7 +26,7 @@
                     showCancelButton: true
                 });
                 if (text) {
-                    $.ajax({ type: "POST",  url: "ajax.php", data: {"post":text},
+                    $.ajax({ type: "POST",  url: "../../register/post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
                         success: function(response) {
                             $('#result').html(response);
                         }

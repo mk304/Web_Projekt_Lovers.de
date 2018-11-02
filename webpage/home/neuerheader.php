@@ -138,9 +138,12 @@ include_once '../../userdata.php';
 
                             <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
                             <script>
+                                var kuerzeltest = "mk304";
+                                var channeltest = "3";
 
                                 $(document).ready(function () {
                                     $('#new-btn').click(function () {
+
                                         (async function getText () {
                                             const {value: text} = await swal({
                                                 input: 'textarea',
@@ -148,10 +151,8 @@ include_once '../../userdata.php';
                                                 showCancelButton: true
                                             });
                                             if (text) {
-                                                $.ajax({ type: "POST",  url: "ajax.php", data: {"post":text},
-                                                    success: function(response) {
-                                                        $('#result').html(response);
-                                                    }
+                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
+
                                                 });
                                                 swal(
                                                     "Sccess!",
@@ -163,7 +164,6 @@ include_once '../../userdata.php';
                                         })()
                                     });
                                 })
-
 
 
                             </script>
