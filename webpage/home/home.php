@@ -9,7 +9,7 @@ session_start();
 include_once 'neuerheader.php';
 
 ?>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 
@@ -59,27 +59,7 @@ include_once 'footer.php';
 
 ?>
 
-<form action="../register/post_input.php" method="post">
-    <div class="form-group">
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="Post verfassen..." name="post"></textarea>
 
-        <select size="1" name="Channel">
-        <?php
-        //Channels für Dropdown Menü aus Datenbank ausgeben
-        $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-        $sql = "SELECT name from channels";
-        $query = $pdo->prepare($sql);
-        $query->execute();
-        while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-        echo "<option value=/".$zeile["name"].'">'. $zeile["name"];}
-
-
-        ?>
-        </select>
-
-        <input type="submit" value="teilen">
-    </div>
-</form>
 
 
 

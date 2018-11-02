@@ -147,7 +147,7 @@ include_once '../../userdata.php';
                                         (async function getText () {
                                             const {value: text} = await swal({
                                                 input: 'textarea',
-                                                inputPlaceholder: 'Type your message here...',
+                                                inputPlaceholder: 'Schreibe deine Nachricht hier...',
                                                 showCancelButton: true
                                             });
                                             if (text) {
@@ -155,8 +155,8 @@ include_once '../../userdata.php';
 
                                                 });
                                                 swal(
-                                                    "Sccess!",
-                                                    "Your note has been saved!",
+                                                    "Super!",
+                                                    "Dein Beitrag wurde erfolgreich gespeichert!",
                                                     "success"
 
                                                 )
