@@ -80,7 +80,7 @@ if ($_SESSION["log"]=="TRUE") {
                                                             <div class="col-sm-6 col-sm-offset-3">
                                                                 <input type="submit" name="register-submit" id="register-submit"
                                                                        tabindex="4" class="form-control btn btn-login"
-                                                                       value="Registrieren">
+                                                                       value="Registrieren" onclick="sessionStorage.setItem('kuerzel');">
                                                             </div>
 
                                                         </div>
@@ -103,7 +103,7 @@ if ($_SESSION["log"]=="TRUE") {
                                                         <div class="col-sm-6 col-sm-offset-3">
                                                             <input type="submit" name="login-submit" id="login-submit"
                                                                    tabindex="4" class="form-control btn btn-login"
-                                                                   value="Log In">
+                                                                   value="Log In" onclick="sessionStorage.setItem('kuerzel');">
                                                         </div>
                                                     </div>
                                                 </div>

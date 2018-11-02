@@ -75,7 +75,7 @@ include_once '../../userdata.php';
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a class='channel' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
+                        echo "<a class='channel' onclick='sessionStorage.setItem(\"channel\")' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                     }
 
                     ?>
@@ -138,8 +138,8 @@ include_once '../../userdata.php';
 
                             <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
                             <script>
-                                var kuerzeltest = "mk304";
-                                var channeltest = "3";
+                                var kuerzeltest = sessionStorage.getItem('kuerzel');
+                                var channeltest = sessionStorage.getItem('channel');
 
                                 $(document).ready(function () {
                                     $('#new-btn').click(function () {
