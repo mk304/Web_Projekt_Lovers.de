@@ -1,7 +1,7 @@
 <?php
 
 
-//include_once '../register/login_test.php';
+include_once '../register/login_test.php';
 
 include_once '../../userdata.php';
 
@@ -38,6 +38,15 @@ var  id = <?php $id ?>;
 
             <?php
             // Channel "General" als Startseite definieren
+            if(!isset($_GET["channel"])) {
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+                $sql_3 = "SELECT post from posts WHERE channel=1";
+                $query_3 = $pdo->prepare($sql_3);
+                $query_3->execute();
+                
+                while ($row = $query_3->fetchObject()) {
+                    echo "$row->post"."<br>";}
+            }
 
 
             //Posts aus Channel ausgeben
