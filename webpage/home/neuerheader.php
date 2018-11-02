@@ -14,18 +14,17 @@ include_once '../../userdata.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Campus</title>
+
+    <!-- Sweetalert 2 -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../ui/sweetalert/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
+    <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
+    <!-- Unser CSS -->
     <link rel="stylesheet" href="neuerheader.css">
     <link rel="stylesheet" href="style.css">
 
