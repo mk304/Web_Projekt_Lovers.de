@@ -23,7 +23,7 @@
                     showCancelButton: true
                 });
                 if (text) {
-                    $.ajax({ type: "POST",  url: "ajax.php", data: {"text":text},
+                    $.ajax({ type: "POST",  url: "ajax.php", data: {"post":text},
                         success: function(response) {
                             $('#result').html(response);
                         }

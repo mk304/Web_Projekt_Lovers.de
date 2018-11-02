@@ -2,7 +2,7 @@
 
 
 <?php
-$data = $_POST['post'];
+$data = $_POST['text'];
 echo "du hast gerade ";
 echo $data;
 echo " geschrieben";

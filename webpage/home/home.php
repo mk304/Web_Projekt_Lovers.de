@@ -73,6 +73,8 @@ include_once 'footer.php';
         $query->execute();
         while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
         echo "<option value=/".$zeile["name"].'">'. $zeile["name"];}
+
+
         ?>
         </select>
 
