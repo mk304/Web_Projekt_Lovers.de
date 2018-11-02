@@ -23,6 +23,21 @@ include_once 'neuerheader.php';
 var  id = <?php $id ?>;
 </script>
 
+<?php
+//Daten aus Channel Wohnungssuche ausgeben
+$channel = $_GET["channel"];
+$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql_3 = "SELECT post from posts WHERE channel=:channel";
+$query_3 = $pdo->prepare($sql_3);
+$query_3->execute(array(":channel"=>"$channel"));
+
+
+
+while ($row = $query_3->fetchObject()) {
+    echo "$row->post"."<br>";}
+
+?>
+
 
 <div class="container">
     <div class="row">
@@ -105,17 +120,6 @@ include_once 'footer.php';
 
 
 
-<?php
-//Daten aus Channel Wohnungssuche ausgeben
-$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql_3 = "SELECT post from posts WHERE channel='3'";
-$query_3 = $pdo->prepare($sql_3);
-$query_3->execute();
 
-echo"Wohnungssuche"."<br>";
-while ($row = $query_3->fetchObject()) {
-    echo "$row->post"."<br>";}
-
-?>
 
 
