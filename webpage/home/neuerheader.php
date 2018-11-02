@@ -68,7 +68,7 @@ include_once '../../userdata.php';
                 </a>
                     <form id="channel_id" method="post">
                     <?php
-                    //Channels für Dropdown Menü aus Datenbank ausgeben
+                    //Channels für Navigation aus Datenbank ausgeben
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
                     $sql = "SELECT name, channel_id from channels";
                     $query = $pdo->prepare($sql);
@@ -77,7 +77,7 @@ include_once '../../userdata.php';
                         echo "<a class='channel' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                     }
 
-                    $_SESSION["channel"] = $zeile["channel_id"];
+
 
                     ?>
 
