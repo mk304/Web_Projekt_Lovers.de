@@ -18,7 +18,7 @@ include_once 'neuerheader.php';
         <div class="col-md-8">
             <h2 class="page-header">Comments</h2>
 
-            <button onclick="alert(sessionStorage.getItem('id'))">Check Session Value</button>
+            <button onclick="alert(sessionStorage.getItem('channel'))">Check Session Value</button>
             <br>
 
 

@@ -74,7 +74,7 @@ include_once '../../userdata.php';
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a class='channel' onclick='sessionStorage.setItem(\"channel\")' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
+                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                     }
 
                     ?>
