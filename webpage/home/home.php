@@ -29,13 +29,13 @@ include_once 'neuerheader.php';
             // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
             if($channel == "") {
                 $pdo = new PDO ($dsn, $dbuser, $dbpass);
-                $sql = "SELECT post FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
+                $sql = "SELECT post, kuerzel, date FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
                 $query = $pdo->prepare($sql);
                 $query->execute(array(":kuerzel"=>"$kuerzel"));
 
                 while ($zeile = $query->fetchObject()) {
-                    echo($zeile->post);
-                    echo "<br>";
+                    echo ($zeile->post)."<br>"." schrieb ".($zeile->kuerzel)." um ".($zeile->date);
+                    echo "<br><br>";
                 }
             }
 
@@ -43,14 +43,16 @@ include_once 'neuerheader.php';
 
             //Posts aus Channel ausgeben
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT post from posts WHERE channel=:channel ORDER BY posts.date DESC";
+            $sql_3 = "SELECT post, kuerzel, date from posts WHERE channel=:channel ORDER BY posts.date DESC";
             $query_3 = $pdo->prepare($sql_3);
             $query_3->execute(array(":channel"=>"$channel"));
 
 
 
             while ($row = $query_3->fetchObject()) {
-                echo "$row->post"."<br>";}
+                echo ($row->post)."<br>"." schrieb ".($row->kuerzel)." um ".($row->date);
+                echo "<br><br>";
+            }
 
             ?>
         </div>
