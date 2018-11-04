@@ -3,13 +3,22 @@
 
 include_once '../../userdata.php';
 include_once 'neuerheader.php';
-session_start();
+//session_start();
 
 
 
 $profilname = $_GET["profilname"];
 $kuerzel = $_SESSION["kuerzel"];
 $_SESSION["profilname"] = $profilname;
+
+
+// Wenn auf das eigene Profil geklickt wird, wird auf die profil.php umgeleitet
+if ($profilname == $kuerzel) {
+    header ("Location: profil.php");
+}
+
+
+
 
 echo "Das ist das Profil von ".$profilname."<br>";
 
@@ -22,6 +31,8 @@ $statement = $pdo->prepare($sql);
 $statement->execute(array(":kuerzel"=>"$kuerzel", ":profilname"=>"$profilname"));
 
 $row = $statement->fetchObject();
+
+
 
 if ($profilname == $row->folgt)
     {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
