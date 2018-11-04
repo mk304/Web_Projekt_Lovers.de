@@ -29,7 +29,7 @@ include_once 'neuerheader.php';
             // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
             if($channel == "" OR $channel == "1") {
                 $pdo = new PDO ($dsn, $dbuser, $dbpass);
-                $sql = "SELECT post FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel)";
+                $sql = "SELECT post FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
                 $query = $pdo->prepare($sql);
                 $query->execute(array(":kuerzel"=>"$kuerzel"));
 
@@ -43,7 +43,7 @@ include_once 'neuerheader.php';
 
             //Posts aus Channel ausgeben
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT post from posts WHERE channel=:channel";
+            $sql_3 = "SELECT post from posts WHERE channel=:channel ORDER BY posts.date DESC";
             $query_3 = $pdo->prepare($sql_3);
             $query_3->execute(array(":channel"=>"$channel"));
 
