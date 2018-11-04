@@ -27,7 +27,7 @@ include_once 'neuerheader.php';
 
             // Channel "General" als Startseite definieren
             // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
-            if($channel == "" OR $channel == "1") {
+            if($channel == "") {
                 $pdo = new PDO ($dsn, $dbuser, $dbpass);
                 $sql = "SELECT post FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
                 $query = $pdo->prepare($sql);
