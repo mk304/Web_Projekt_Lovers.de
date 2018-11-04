@@ -34,7 +34,7 @@ include_once 'neuerheader.php';
                 $query->execute(array(":kuerzel"=>"$kuerzel"));
 
                 while ($zeile = $query->fetchObject()) {
-                    echo ($zeile->post)."<br>"." schrieb ".($zeile->kuerzel)." um ".($zeile->date);
+                    echo ($zeile->post)."<br>"." schrieb <a href='profil_anderer.php?profilname=$zeile->kuerzel'>".($zeile->kuerzel)."</a> um ".($zeile->date);
                     echo "<br><br>";
                 }
             }
@@ -50,7 +50,7 @@ include_once 'neuerheader.php';
 
 
             while ($row = $query_3->fetchObject()) {
-                echo ($row->post)."<br>"." schrieb ".($row->kuerzel)." um ".($row->date);
+                echo ($row->post)."<br>"." schrieb <a href='profil_anderer.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
                 echo "<br><br>";
             }
 
