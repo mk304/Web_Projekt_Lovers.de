@@ -14,8 +14,7 @@ $_SESSION["profilname"] = $profilname;
 echo "Das ist das Profil von ".$profilname."<br>";
 
 
-
-
+// Überprüfung, ob man dieser Person folgt oder nicht
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "SELECT folgt FROM abonnenten WHERE (kuerzel=:kuerzel AND folgt=:profilname)";
 
@@ -24,10 +23,13 @@ $statement->execute(array(":kuerzel"=>"$kuerzel", ":profilname"=>"$profilname"))
 
 $row = $statement->fetchObject();
 
-if ($profilname == $row->folgt) {
+if ($profilname == $row->folgt)
+    {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
     echo '<button type="button" class="btn btn-outline-primary">Freunde</button>';
     }
-else{ ?>
+
+    else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
+        { ?>
 <button type="button" class="btn btn-outline-primary" onclick="location.href='../register/profil_anderer_folgen.php'">Folgen</button>
 <?php
 }
