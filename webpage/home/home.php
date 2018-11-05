@@ -19,6 +19,8 @@ include_once 'neuerheader.php';
             <h2 class="page-header">Comments</h2>
 
             <br>
+<ul>
+
 
 
             <?php
@@ -47,6 +49,7 @@ include_once 'neuerheader.php';
                 echo "$row->post"."<br>";}
 
             ?>
+</ul>
         </div>
     </div>
 </div>

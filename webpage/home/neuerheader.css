@@ -222,4 +222,7 @@ a.article, a.article:hover {
     }
 
 }
-
+.posts{
+    background-color: black;
+    height: 30px;
+}

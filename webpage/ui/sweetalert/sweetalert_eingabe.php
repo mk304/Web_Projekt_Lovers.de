@@ -19,26 +19,46 @@
     $(document).ready(function () {
         $('#new-btn').click(function () {
 
-            (async function getText () {
-                const {value: text} = await swal({
-                    input: 'textarea',
-                    inputPlaceholder: 'Type your message here...',
-                    showCancelButton: true
-                });
-                if (text) {
-                    $.ajax({ type: "POST",  url: "../../register/post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
-                        success: function(response) {
-                            $('#result').html(response);
-                        }
+            swal.mixin({
+                input: 'text',
+                confirmButtonText: 'Next &rarr;',
+                showCancelButton: true,
+                progressSteps: ['1', '2', '3']
+            }).queue([
+                {
+                    input: 'file',
+                    title: 'Profilbild hochladen',
+                    text: 'Empfohlen wird 1X1'
+                },
+                {
+                    input: 'file',
+                    title: 'Hintergrundbild hochladen',
+                    text: 'Empfohlen wird 16X9'
+                },
+                {
+
+                    title: 'Über mich',
+                    text: ''
+                },
+
+            ]).then((result) => {
+                if (result.value) {
+
+                    var bild = result[0];
+                    var bild2 = result[1];
+                    var post = result[2];
+
+                    $.ajax({ type: "POST",  url: "../../register/profil_update.php", data: {"post": post,"bild": bild,"bild2": bild2, "kuerzel": kuerzeltest, "channel": channeltest},
+
                     });
                     swal(
-                        "Sccess!",
-                        "Your note has been saved!",
+                        "Super!",
+                        "Dein Profil wurde erfolgreich aktualisiert ",
                         "success"
 
                     )
                 }
-            })()
+            })
         });
     })
 

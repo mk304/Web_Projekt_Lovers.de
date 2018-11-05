@@ -25,7 +25,7 @@ include_once '../../userdata.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Unser CSS -->
-    <link rel="stylesheet" href="neuerheader.css">
+    <link rel="stylesheet" href="profilbearbeiten.css">
 
 
     <!-- Font Awesome JS -->
@@ -40,7 +40,7 @@ include_once '../../userdata.php';
     <script>
 
         $(document).ready(function () {
-            }
+        }
 
     </script>
 
@@ -66,7 +66,7 @@ include_once '../../userdata.php';
                     </i>
                     Messages
                 </a>
-                    <form id="channel_id" method="get">
+                <form id="channel_id" method="get">
                     <?php
                     //Channels für Navigation aus Datenbank ausgeben
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -82,7 +82,7 @@ include_once '../../userdata.php';
 
                     ?>
 
-                    </form>
+                </form>
             </li>
         </ul>
 
@@ -117,66 +117,7 @@ include_once '../../userdata.php';
                     <ul class="nav navbar-nav ml-auto">
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-                        <li class="nav-item">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-
-                        <li class="nav-item">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        <li class="nav-item">
-
-                            <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
-                            <script>
-                                var kuerzeltest = sessionStorage.getItem('kuerzel');
-                                var channeltest = sessionStorage.getItem('channel');
-
-                                $(document).ready(function () {
-                                    $('#new-btn').click(function () {
-
-                                        (async function getText () {
-                                            const {value: text} = await swal({
-                                                input: 'textarea',
-                                                inputPlaceholder: 'Schreibe deine Nachricht hier...',
-                                                showCancelButton: true
-                                            });
-                                            if (text) {
-                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
-
-                                                });
-                                                swal(
-                                                    "Super!",
-                                                    "Dein Beitrag wurde erfolgreich gespeichert!",
-                                                    "success"
-
-                                                )
-                                            }
-                                        })()
-                                    });
-                                })
-
-
-                            </script>
-
-                        </li>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
                             <img src="../bilder/user.png" width="39" height="39" alt="">
@@ -186,3 +127,25 @@ include_once '../../userdata.php';
             </div>
         </nav>
 
+        <div class="titelbild">
+            <img src="../bilder/titelbild.jpg" width="100%" height="100%" alt="">
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+</script>
+</body>
+
+</html>
