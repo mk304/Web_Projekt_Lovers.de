@@ -70,6 +70,8 @@ session_start();
                 </a>
                     <form id="channel_id" method="get">
                     <?php
+
+
                     //Channels für Navigation aus Datenbank ausgeben
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
                     $sql = "SELECT name, channel_id from channels";
@@ -77,9 +79,11 @@ session_start();
                     $query->execute();
                     echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='home.php'>General</a>";
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
+                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                         $_SESSION ["channel"]="1";
                     }
+
+
                         ?>
                     </form>
             </li>
