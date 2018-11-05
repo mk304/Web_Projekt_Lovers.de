@@ -26,6 +26,8 @@ session_start();
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Unser CSS -->
     <link rel="stylesheet" href="neuerheader.css">
+    <link rel="stylesheet" href="profil.css">
+
 
 
     <!-- Font Awesome JS -->

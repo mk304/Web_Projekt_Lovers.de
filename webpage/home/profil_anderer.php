@@ -49,3 +49,8 @@ if ($profilname == $row->folgt)
 
 
 
+<?php
+session_start();
+include_once 'footer.php';
+
+?>
