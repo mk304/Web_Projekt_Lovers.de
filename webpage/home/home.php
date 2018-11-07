@@ -59,7 +59,7 @@ include_once 'neuerheader.php';
             $query_3->execute(array(":channel"=>"$channel"));
 
             while ($row = $query_3->fetchObject()) {
-                echo ($row->post)."<br>"." schrieb <a href='profil_anderer.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
+                echo ($row->post)."<br>"." schrieb <a href='profil_anderer.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date)." POST BEARBEITEN";
                 echo "<br><br>";
             }
 

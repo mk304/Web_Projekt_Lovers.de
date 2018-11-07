@@ -2,8 +2,8 @@
 
 
 include_once '../../userdata.php';
-include_once 'neuerheader.php';
-//session_start();
+//include_once 'neuerheader.php';
+session_start();
 
 
 
