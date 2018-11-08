@@ -13,5 +13,5 @@ if ($profilname == $kuerzel) {
     header("Location: profil.php");
 }
 else {
-    header("Location: profil_anderer.php");
+    header("Location: profil_anderer.php?profilname=$profilname");
 }
