@@ -11,16 +11,15 @@ $kuerzel = $_SESSION["kuerzel"];
 <div class="titelbild"><img src="../bilder/head.jpg"></div>
 <div class="profilbild"><img src="../bilder/testprofilbild.jpg"></div>
 
+<div class="grid-box">
 
+    <div class="box1">
 
+    </div>
 
+    <div class="box2">
 
-<?php
-
-echo "Hallo ".$kuerzel."<br>";
-echo "Das ist dein eigenes Profil";
-
-?>
+    </div>
 
 
 
