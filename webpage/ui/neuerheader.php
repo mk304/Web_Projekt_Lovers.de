@@ -25,8 +25,8 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Unser CSS -->
-    <link rel="stylesheet" href="neuerheader.css">
-    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="../ui/neuerheader.css">
+    <link rel="stylesheet" href="../profil/profil.css">
 
 
 
@@ -77,7 +77,7 @@ session_start();
                     $sql = "SELECT name, channel_id from channels";
                     $query = $pdo->prepare($sql);
                     $query->execute();
-                    echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='home.php'>General</a>";
+                    echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='../webpage/home.php'>General</a>";
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                         $_SESSION ["channel"]="1";

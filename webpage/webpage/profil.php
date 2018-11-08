@@ -1,7 +1,7 @@
 
 <?php
 include_once '../../userdata.php';
-include_once 'neuerheader.php';
+include_once '../ui/neuerheader.php';
 session_start();
 
 $kuerzel = $_SESSION["kuerzel"];
@@ -23,8 +23,8 @@ $kuerzel = $_SESSION["kuerzel"];
 
 
 
-<?php
-session_start();
-include_once 'footer.php';
+    <?php
+    session_start();
+    include_once '../ui/footer.php';
 
-?>
+    ?>

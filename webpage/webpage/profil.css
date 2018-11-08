@@ -81,10 +81,10 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-areas:
 
-        "box1 box2 box2 box2 "
-        "box1 box2 box2 box2 "
-        "box1 box2 box2 box2 "
-        "box1 box2 box2 box2 ";
+                "box1 box2 box2 box2 "
+                "box1 box2 box2 box2 "
+                "box1 box2 box2 box2 "
+                "box1 box2 box2 box2 ";
     }  }
 
 

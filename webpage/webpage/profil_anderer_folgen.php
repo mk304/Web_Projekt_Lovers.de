@@ -15,6 +15,6 @@ $statement = $pdo->prepare($sql);
 $statement->execute(array("$kuerzel", "$profilname"));
 
 $row = $statement->fetchObject();
-header("Location: ../home/profil_anderer.php?profilname=$profilname");
+header("Location: profil_anderer.php?profilname=$profilname");
 
 ?>

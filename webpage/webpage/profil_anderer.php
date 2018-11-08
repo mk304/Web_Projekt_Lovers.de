@@ -2,7 +2,7 @@
 
 
 include_once '../../userdata.php';
-//include_once 'neuerheader.php';
+include_once '../ui/neuerheader.php';
 session_start();
 
 
@@ -12,7 +12,7 @@ $kuerzel = $_SESSION["kuerzel"];
 $_SESSION["profilname"] = $profilname;
 
 
-// Wenn auf das eigene Profil geklickt wird, wird auf die profil.php umgeleitet
+// Wenn auf das eigene profil geklickt wird, wird auf die profil.php umgeleitet
 if ($profilname == $kuerzel) {
     header ("Location: profil.php");
 }
@@ -20,7 +20,7 @@ if ($profilname == $kuerzel) {
 
 
 
-echo "Das ist das Profil von ".$profilname."<br>";
+echo "Das ist das profil von ".$profilname."<br>";
 
 
 // Überprüfung, ob man dieser Person folgt oder nicht
@@ -41,7 +41,7 @@ if ($profilname == $row->folgt)
 
     else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
         { ?>
-<button type="button" class="btn btn-outline-primary" onclick="location.href='../register/profil_anderer_folgen.php'">Folgen</button>
+<button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
 <?php
 }
 
@@ -50,7 +50,7 @@ if ($profilname == $row->folgt)
 
 
 <?php
-session_start();
-include_once 'footer.php';
+
+include_once '../ui/footer.php';
 
 ?>
