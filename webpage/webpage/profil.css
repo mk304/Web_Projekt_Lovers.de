@@ -1,0 +1,28 @@
+.titelbild {
+    width: 100%;
+    height: 12%;
+    overflow: hidden;
+
+}
+.titelbild img{
+
+    object-fit: fill;
+    min-width: 100%;
+    min-height: 100%;
+    padding-bottom: 70%;
+    border-radius: 10px;
+    
+}
+.profilbild{
+    margin-top: 20px;
+
+}
+.profilbild img{
+
+    object-fit: cover;
+    border-color: black;
+    border: black;
+    max-height: 90px;
+    max-width: 90px;
+    border-radius: 10px;
+}

@@ -58,7 +58,7 @@ if ($kuerzel == $row->kuerzel) {
 
 } else {
     $_SESSION["log"] = "TRUE";
-    header("Location: ../home/home.php");
+    header("Location: ../webpage/home.php");
 }
 
 
