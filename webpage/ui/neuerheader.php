@@ -77,7 +77,7 @@ session_start();
                     $sql = "SELECT name, channel_id from channels";
                     $query = $pdo->prepare($sql);
                     $query->execute();
-                    echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='../home/home.php'>General</a>";
+                    echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='../webpage/home.php'>General</a>";
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                         $_SESSION ["channel"]="1";

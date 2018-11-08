@@ -1,3 +1,4 @@
+
 <?php
 include_once '../../userdata.php';
 include_once '../ui/neuerheader.php';
@@ -10,17 +11,20 @@ $kuerzel = $_SESSION["kuerzel"];
 <div class="titelbild"><img src="../bilder/head.jpg"></div>
 <div class="profilbild"><img src="../bilder/testprofilbild.jpg"></div>
 
+<div class="grid-box">
 
-<?php
+    <div class="box1">
 
-echo "Hallo " . $kuerzel . "<br>";
-echo "Das ist dein eigenes profil";
+    </div>
 
-?>
+    <div class="box2">
+
+    </div>
 
 
 
-<?php
-include_once '../ui/footer.php';
+    <?php
+    session_start();
+    include_once '../ui/footer.php';
 
-?>
+    ?>
