@@ -1,7 +1,7 @@
 <?php
 
 
-include_once '../register/login_test.php';
+include_once '../register/do_login_test.php';
 include_once '../ui/neuerheader.php';
 include_once '../../userdata.php';
 
@@ -45,7 +45,7 @@ session_start();
                 $query->execute(array(":kuerzel"=>"$kuerzel"));
 
                 while ($zeile = $query->fetchObject()) {
-                    echo ($zeile->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>".($zeile->kuerzel)."</a> um ".($zeile->date);
+                    echo ($zeile->post)."<br>"." schrieb <a href='../webpage/do_profil_check.php?profilname=$zeile->kuerzel'>".($zeile->kuerzel)."</a> um ".($zeile->date);
                     echo "<br><br>";
                 }
             }
@@ -59,7 +59,7 @@ session_start();
             $query_3->execute(array(":channel"=>"$channel"));
 
             while ($row = $query_3->fetchObject()) {
-                echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date)." POST BEARBEITEN";
+                echo ($row->post)."<br>"." schrieb <a href='../webpage/do_profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date)." POST BEARBEITEN";
                 echo "<br><br>";
             }
 

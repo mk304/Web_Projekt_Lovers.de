@@ -36,12 +36,12 @@ $row = $statement->fetchObject();
 
 if ($profilname == $row->folgt)
     {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
-    echo '<button onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-primary">Freunde</button>';
+    echo '<button onclick="location.href=do_profil_anderer_entfolgen.phpp\'" type="button" class="btn btn-outline-primary">Freunde</button>';
     }
 
     else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
         { ?>
-<button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
+<button type="button" class="btn btn-outline-primary" onclick="location.href='do_profil_anderer_folgen.php'">Folgen</button>
 <?php
 }
 

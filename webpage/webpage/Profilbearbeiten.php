@@ -91,7 +91,7 @@ include_once '../../userdata.php';
                 <a href="#" class="download">Profil Bearbeiten</a>
             </li>
             <li>
-                <a href="../register/logout.php" class="article">Abmelden</a>
+                <a href="../register/do_logout.php" class="article">Abmelden</a>
             </li>
         </ul>
     </nav>
