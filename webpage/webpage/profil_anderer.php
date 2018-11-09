@@ -4,7 +4,11 @@
 include_once '../../userdata.php';
 include_once '../ui/neuerheader.php';
 session_start();
-
+?>
+<script src="src/jquery-3.3.1.min.js"></script>
+<script src="src/fullclip.min.js"></script>
+<script src="src/fullclip.js"></script>
+<?php
 
 
 $profilname = $_GET["profilname"];
@@ -36,7 +40,7 @@ $row = $statement->fetchObject();
 
 if ($profilname == $row->folgt)
     {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
-    echo '<button onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-primary">Freunde</button>';
+    echo '<button id="entfolgen" onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-primary">Freunde</button>';
     }
 
     else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
@@ -52,8 +56,20 @@ if ($profilname == $row->folgt)
             </div>
 <?php
 }
-
 ?>
+
+<script>
+    $(document).ready(function () {
+        $("#entfolgen").mouseover(function () {
+            $(this).html("als Freund entfernen");
+        });
+        $("#entfolgen").mouseout(function () {
+            $(this).html("Freunde");
+        });
+    });
+
+</script>
+
 
 
 
