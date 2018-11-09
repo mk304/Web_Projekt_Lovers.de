@@ -21,7 +21,7 @@ $profilname = $_GET["profilname"];
 </div>
 
 <?php
-
+// Ausgabe der Skills
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)";
 $query = $pdo->prepare($sql);
