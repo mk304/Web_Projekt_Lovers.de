@@ -18,7 +18,7 @@ session_start();
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <a class="navbar-brand" href="#"><img src="../bilder/logoklein.png" width="56" height="51,52"></a>
+    <a class="navbar-brand" href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php"><img src="../bilder/logoklein.png" width="56" height="51,52"></a>
 
     <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

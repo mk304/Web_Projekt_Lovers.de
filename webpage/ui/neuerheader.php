@@ -91,7 +91,7 @@ session_start();
 
         <ul class="list-unstyled CTAs">
             <li>
-                <a href="#" class="download">Profil Bearbeiten</a>
+                <a href="../webpage/profil.php" class="download">Profil Bearbeiten</a>
             </li>
             <li>
                 <a href="../register/logout.php" class="article">Abmelden</a>

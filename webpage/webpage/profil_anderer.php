@@ -42,6 +42,14 @@ if ($profilname == $row->folgt)
     else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
         { ?>
 <button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
+
+
+
+            <div class="wrapper1">
+                <div class="one">One</div>
+                <div class="two">Two</div>
+
+            </div>
 <?php
 }
 
