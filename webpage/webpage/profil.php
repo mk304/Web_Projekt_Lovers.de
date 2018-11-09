@@ -20,10 +20,17 @@ $profilname = $_GET["profilname"];
 
 </div>
 
+<?php
+
+$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)";
+$query = $pdo->prepare($sql);
+if (!$query->execute(array(":kuerzel"=>"$kuerzel")));
+while ($row = $query->fetchObject()) {
+    echo "<ul>$row->skill</ul>";
+}
 
 
-    <?php
-    session_start();
-    include_once '../ui/footer.php';
 
-    ?>
+include_once '../ui/footer.php';
+?>

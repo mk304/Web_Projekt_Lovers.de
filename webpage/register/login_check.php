@@ -39,7 +39,7 @@ $row = $statement->fetchObject();
 
 if ($pw == $row->pw) {
     $_SESSION["log"] = "TRUE";
-    header("Location: ../home/home.php");
+    header("Location: ../webpage/home.php");
 
 
 } else {
