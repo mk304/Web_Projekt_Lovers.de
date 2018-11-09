@@ -46,7 +46,7 @@ session_start();
                 <img src="../bilder/user.png" width="45" height="45" alt="">
             </a>
 
-            <a href="../register/do_logout.php">
+            <a href="../register/logout.php">
             <button type="button" class="btn btn-outline-secondary">Abmelden</button>
             </a>
 

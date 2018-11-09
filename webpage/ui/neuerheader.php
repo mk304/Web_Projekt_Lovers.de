@@ -94,7 +94,7 @@ session_start();
                 <a href="#" class="download">Profil Bearbeiten</a>
             </li>
             <li>
-                <a href="../register/do_logout.php" class="article">Abmelden</a>
+                <a href="../register/logout.php" class="article">Abmelden</a>
             </li>
         </ul>
     </nav>
@@ -156,7 +156,7 @@ session_start();
                                                 showCancelButton: true
                                             });
                                             if (text) {
-                                                $.ajax({ type: "POST",  url: "../register/do_post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
+                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
 
                                                 });
                                                 swal(

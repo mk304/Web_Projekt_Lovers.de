@@ -86,7 +86,7 @@ if ($_SESSION["log"]=="TRUE") {
                                                         </div>
                                                     </div>
                                             </form>
-                                            <form id="login-form" action="../register/do_login_check.php"
+                                            <form id="login-form" action="../register/login_check.php"
                                                   method="post"
                                                   role="form" style="display: none;">
                                                 <div class="form-group">
