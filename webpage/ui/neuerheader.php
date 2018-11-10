@@ -127,8 +127,8 @@ session_start();
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">Notifications
+                                <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Nachrichten
                                     <?php
 
                                     //auszählen der Anzahl der ungelesenen Nachrichten
