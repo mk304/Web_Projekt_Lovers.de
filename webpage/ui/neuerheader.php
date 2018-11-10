@@ -206,6 +206,7 @@ session_start();
                             <script>
                                 var kuerzel = sessionStorage.getItem('kuerzel');
                                 var channel = sessionStorage.getItem('channel');
+                                var status ="unread";
 
                                 $(document).ready(function () {
                                     $('#new-btn').click(function () {
@@ -217,7 +218,7 @@ session_start();
                                                 showCancelButton: true
                                             });
                                             if (text) {
-                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzel, "channel": channel},
+                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzel, "channel": channel, "status": status},
 
                                                 });
                                                 swal(

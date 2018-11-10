@@ -8,8 +8,9 @@ $channel = $_POST["channel"];
 $kuerzel = $_SESSION["kuerzel"];
 
 
+
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql = "INSERT INTO posts (kuerzel, channel, post) VALUES (?, ?, ?)";
+$sql = "INSERT INTO posts (kuerzel, channel, post, status) VALUES (?, ?, ?, 'unread')";
 
 $statement = $pdo->prepare($sql);
 $statement->execute(array("$kuerzel", "$channel", "$post"));
