@@ -146,7 +146,7 @@ session_start();
                                     <?php
                                     // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
                                     if ($anzahl_notification > 0) {
-                                        $sql = "SELECT post, date, kuerzel,channel from posts where status = 'unread' ";
+                                        $sql = "SELECT post, date, kuerzel, channel from posts where status = 'unread' ";
                                         $query = $pdo->prepare($sql);
                                         $query->execute();
                                         $rows = array();
@@ -156,10 +156,10 @@ session_start();
 
 
                                             ?>
-                                            <a class="dropdown-item" href="../webpage/home.php?channel=">
+                                            <a class="dropdown-item" href="../webpage/home.php?channel=<?php echo $row['channel']?>">
                                                 <small><i>
                                                         <?php
-                                                        echo $row['date'];
+                                                        echo date('F j, Y, g:i a',strtotime($row['date']));
                                                         ?>
                                                     </i></small>
                                                 <br/>
