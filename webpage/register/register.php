@@ -73,7 +73,7 @@ $statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))
 $row = $statement->fetchObject();
 
 //$_SESSION["log"] = "1";
-//header("Location: ../home/home.php");
+//header("Location: ../webpage/home.php");
 
 
 
