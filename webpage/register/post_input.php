@@ -17,7 +17,7 @@ $statement->execute(array("$kuerzel", "$channel", "$post"));
 
 $row = $statement->fetchObject();
 
-header("Location: ../home/home.php");
+header("Location: ../webpage/home.php");
 
 ?>
 
