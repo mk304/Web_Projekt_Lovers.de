@@ -38,6 +38,14 @@ session_start();
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
 
     <script>
 
@@ -110,14 +118,67 @@ session_start();
                     <span></span>
                     <span></span>
                 </button>
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="http://example.com" id="dropdown01" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Notifications
+                                    <?php
+
+                                    //auszählen der Anzahl der ungelesenen Nachrichten
+                                    $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+
+                                    $statement = $pdo->prepare("SELECT * from posts WHERE status = 'unread'");
+                                    $statement->execute();
+                                    $anzahl_notification = $statement->rowCount();
+
+                                    ?>
+                                    <span class="badge badge-primary"><?php echo $anzahl_notification ?></span>
+
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <?php
+                                    // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
+                                    if ($anzahl_notification > 0) {
+                                        $sql = "SELECT post, date, kuerzel, channel, posts_id from posts where status = 'unread'ORDER BY date DESC ";
+                                        $query = $pdo->prepare($sql);
+                                        $query->execute();
+                                        $rows = array();
+                                        while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                                            $rows[] = $row;
+                                        foreach ($rows as $row){
+
+
+                                            ?>
+                                            <a class="dropdown-item" href="../webpage/do_gelesen.php?channel=<?php echo $row['channel']?>&posts_id=<?php echo $row['posts_id']?>">
+                                                <small><i>
+                                                        <?php
+                                                        echo date('F j, Y, g:i a',strtotime($row['date']));
+                                                        ?>
+                                                    </i></small>
+                                                <br/>
+                                                Ein neuer Beitrag von
+                                                <?php
+                                                echo $row['kuerzel'];?>:
+                                                <br>
+                                                <?php
+                                                echo $row['post'] ?>
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <?php
+                                        }
+                                    } else {
+                                        echo 'Keine neuen Nachrichten.';
+                                    }
+                                    ?>
+
+                                </div>
 
 
                         <li class="nav-item">
@@ -143,8 +204,9 @@ session_start();
 
                             <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
                             <script>
-                                var kuerzeltest = sessionStorage.getItem('kuerzel');
-                                var channeltest = sessionStorage.getItem('channel');
+                                var kuerzel = sessionStorage.getItem('kuerzel');
+                                var channel = sessionStorage.getItem('channel');
+                                var status ="unread";
 
                                 $(document).ready(function () {
                                     $('#new-btn').click(function () {
@@ -156,7 +218,7 @@ session_start();
                                                 showCancelButton: true
                                             });
                                             if (text) {
-                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzeltest, "channel": channeltest},
+                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzel, "channel": channel, "status": status},
 
                                                 });
                                                 swal(
