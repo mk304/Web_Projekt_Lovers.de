@@ -4,8 +4,8 @@ include_once '../../userdata.php';
 
 
 $kuerzel = $_POST["kuerzel"];
-$bild = $_FILES['bild'];
-$bild2 = $_FILES['bild2'];
+$bild = $_POST['bild'];
+$bild2 = $_POST['bild2'];
 $post = $_POST["post"];
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
