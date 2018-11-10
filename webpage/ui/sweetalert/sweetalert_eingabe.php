@@ -44,11 +44,12 @@
             ]).then((result) => {
                 if (result.value) {
 
-                    var bild = result[0];
-                    var bild2 = result[1];
-                    var post = result[2];
+                    var bild = result.value[0];
+                    var bild2 = result.value[1];
+                    var post = result.value[2];
 
-                    $.ajax({ type: "POST",  url: "../../register/profil_update.php", data: {"post": post,"bild": bild,"bild2": bild2, "kuerzel": kuerzeltest, "channel": channeltest},
+                    $.ajax({ type: "POST",  url: "../../register/profil_update.php",
+                        data: {"post":result.value[2],"bild":result.value[0], "kuerzel": kuerzeltest },
 
                     });
                     swal(
