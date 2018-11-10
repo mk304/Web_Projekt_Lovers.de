@@ -13,8 +13,7 @@
 <button type="button" id="new-btn" class="btn btn-primary" >Beitrag Erstellen</button>
 <div id="result"></div>
 <script>
-    var kuerzeltest = "mk304";
-    var channeltest = "3";
+
 
     $(document).ready(function () {
         $('#new-btn').click(function () {
@@ -27,7 +26,11 @@
             }).queue([
                 {
                     input: 'file',
-                    name: 'file',
+                    inputAttributes: {
+                        name:"image",
+                        class:"image",
+
+                    },
                     title: 'Profilbild hochladen',
                     text: 'Empfohlen wird 1X1'
                 },
@@ -45,18 +48,16 @@
             ]).then((result) => {
                 if (result.value) {
 
-                    var form_data = new FormData();
-                    form_data.append('file', file_data);
+                    var kuerzeltest = "mk304";
+
 
                     $.ajax({ type: "POST",  url: "../../register/profil_update.php",
-                        data: {"post":result.value[2], "kuerzel": kuerzeltest },
+                        data: {"post":result.value[2], "kuerzel": kuerzeltest  },
 
 
 
                     });  $.ajax({ type: "POST",  url: "../../register/profil_update.php",
                         data: {"bild":result.value[0],"bild2":result.value[1], "kuerzel": kuerzeltest },
-
-                        cache: false,
                         contentType: false,
                         processData: false,
 

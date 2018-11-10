@@ -3,7 +3,7 @@ include_once '../../userdata.php';
 //Posts in Datenbank schreiben
 
 
-$kuerzel = $_SESSION["kuerzel"];
+$kuerzel = $_POST["kuerzel"];
 $bild = $_FILES['bild'];
 $bild2 = $_FILES['bild2'];
 $post = $_POST["post"];
