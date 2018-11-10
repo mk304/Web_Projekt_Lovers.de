@@ -27,6 +27,7 @@
             }).queue([
                 {
                     input: 'file',
+                    name: 'file',
                     title: 'Profilbild hochladen',
                     text: 'Empfohlen wird 1X1'
                 },
@@ -44,12 +45,20 @@
             ]).then((result) => {
                 if (result.value) {
 
-                    var bild = result.value[0];
-                    var bild2 = result.value[1];
-                    var post = result.value[2];
+                    var form_data = new FormData();
+                    form_data.append('file', file_data);
 
                     $.ajax({ type: "POST",  url: "../../register/profil_update.php",
-                        data: {"post":result.value[2],"bild":result.value[0], "kuerzel": kuerzeltest },
+                        data: {"post":result.value[2], "kuerzel": kuerzeltest },
+
+
+
+                    });  $.ajax({ type: "POST",  url: "../../register/profil_update.php",
+                        data: {"bild":result.value[0],"bild2":result.value[1], "kuerzel": kuerzeltest },
+
+                        cache: false,
+                        contentType: false,
+                        processData: false,
 
                     });
                     swal(
