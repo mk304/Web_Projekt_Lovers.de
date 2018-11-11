@@ -226,7 +226,9 @@ session_start();
                                                     "Dein Beitrag wurde erfolgreich gespeichert!",
                                                     "success"
 
+
                                                 )
+                                                window.location.reload();
                                             }
                                         })()
                                     });

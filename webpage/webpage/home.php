@@ -12,7 +12,6 @@ session_start();
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-
 <div class="container">
     <div class="row">
         <div class="col-md-8">
