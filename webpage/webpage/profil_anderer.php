@@ -46,17 +46,30 @@ if ($profilname == $row->folgt)
     else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
         { ?>
 <button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
-
-
-
-            <div class="wrapper1">
-                <div class="one">One</div>
-                <div class="two">Two</div>
-
-            </div>
 <?php
 }
+
+
+//Ausgabe der Skills
+$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql_2 = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:profilname)";
+$query_2 = $pdo->prepare($sql_2);
 ?>
+
+
+
+<div class="wrapper1">
+    <div class="one">
+        <?php
+        if (!$query_2->execute(array(":profilname"=>"$profilname")));
+        while ($row = $query_2->fetchObject()) {
+        echo "<ul>$row->skill</ul>";
+        }
+        ?>
+       </div>
+    <div class="two">Two</div>
+
+</div>
 
 <script>
     $(document).ready(function () {
@@ -74,14 +87,8 @@ if ($profilname == $row->folgt)
 
 
 <?php
-//Ausgabe der Skills
-$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:profilname)";
-$query = $pdo->prepare($sql);
-if (!$query->execute(array(":profilname"=>"$profilname")));
-while ($row = $query->fetchObject()) {
-    echo "<ul>$row->skill</ul>";
-}
+
+
 
 
 include_once '../ui/footer.php';
