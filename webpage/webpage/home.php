@@ -61,6 +61,7 @@ session_start();
                 echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
                         if (($row->kuerzel) == $kuerzel){
                             echo "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                            echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
                         }
                 echo "<br><br>";
             ?>
