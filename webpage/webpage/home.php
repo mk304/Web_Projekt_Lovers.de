@@ -58,8 +58,10 @@ session_start();
             $query_3->execute(array(":channel"=>"$channel"));
 
             while ($row = $query_3->fetchObject()) {
-                echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date).
-                      "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
+                        if (($row->kuerzel) == $kuerzel){
+                            echo "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                        }
                 echo "<br><br>";
             ?>
                 <script>
