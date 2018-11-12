@@ -21,15 +21,15 @@ include_once '../../../userdata.php';
 <body>
 <?php
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-if(isset($_POST['btn'])){
-    $name=$_FILES['myfile']['name'];
+if(isset($_POST['btn'])) {
+    $name = $_FILES['myfile']['name'];
     $type = $_FILES ['myfile']['type'];
     $data = file_get_contents($_FILES['myfile']['tmp_name']);
-    $sql = "insert into upload_image VALUES ('',?,?,?)";
+    $sql = "insert into upload_image (id,name,data, mime) VALUES ('',?,?,?)";
     $statement = $pdo->prepare($sql);
-    $statement -> bindParam(1,$name);
-    $statement -> bindParam(2,$type);
-    $statement -> bindParam(3,$data);
+    $statement->bindParam(1, $name);
+    $statement->bindParam(2, $type);
+    $statement->bindParam(3, $data);
     $statement->execute();
 }
 
@@ -43,7 +43,7 @@ if(isset($_POST['btn'])){
         <form method="post" enctype="multipart/form-data">
         <div class="avatar-edit">
             <input type='file' name="myfile" id="imageUpload" accept=".png, .jpg, .jpeg"/>
-            <label name="btn" for="imageUpload"></label>
+            <label name="" for="imageUpload"></label>
         </div>
         <div class="avatar-preview">
             <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
@@ -60,8 +60,8 @@ if(isset($_POST['btn'])){
     $statement = $pdo->prepare($sql);
     $statement->execute();
     while ($row = $statement->fetch()){
-        echo "<li><a target='_blank' href='../../bildupload/view.php?id=".$row['id']."'>".$row."</a>
-<embed src='data:".$row['mine'].";base64,".base64_encode($row['data'])."' width='200'</li>";
+        echo "<li><a target='_blank' href='../../bildupload/view.php?id=".$row['id']."'>".$row['name']."</a>
+<embed src='data:".$row['mine'].";base64,".$row['mine'].";.base64,".base64_encode($row['data'])."' width='200'/></li>";
     }
     ?>
 </ol>
