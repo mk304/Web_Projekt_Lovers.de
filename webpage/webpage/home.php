@@ -53,20 +53,53 @@ session_start();
 
             //Posts aus Channel ausgeben
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT post, kuerzel, date from posts WHERE channel=:channel ORDER BY posts.date DESC";
+            $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
             $query_3 = $pdo->prepare($sql_3);
             $query_3->execute(array(":channel"=>"$channel"));
 
             while ($row = $query_3->fetchObject()) {
-                echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date)." POST BEARBEITEN";
+                echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date).
+                      "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
                 echo "<br><br>";
-            }
-
             ?>
+                <script>
+                    var post_id = sessionStorage.getItem('id');
+
+                    $(document).ready(function () {
+                        $('.post_bearbeiten').click(function () {
+
+                            (async function getText () {
+                                const {value: text} = await swal({
+                                    input: 'textarea',
+                                    inputPlaceholder: 'Schreibe deinen neuen Text hier...',
+                                    showCancelButton: true
+                                });
+                                if (text) {
+                                    $.ajax({ type: "POST",  url: "../register/post_edit.php", data: {"post":text, "post_id": post_id}
+
+                                    });
+                                    swal(
+                                        "Super!",
+                                        "Dein Beitrag wurde erfolgreich gespeichert!",
+                                        "success"
+                                    )
+                                    window.location.reload();
+                                }
+                            })()
+                        });
+                    })
+                </script>
+            <?php
+            }
+            ?>
+
 </ul>
         </div>
     </div>
 </div>
+
+
+
 
 
 <?php

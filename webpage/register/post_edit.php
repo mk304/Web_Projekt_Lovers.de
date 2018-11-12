@@ -1,9 +1,11 @@
 <?php
-include_once 'userdata.php';
+include_once '../../userdata.php';
 session_start();
 
 $post = $_POST["post"];
 $id = $_POST["post_id"];
+
+
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 
