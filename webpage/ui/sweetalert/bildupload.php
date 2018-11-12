@@ -25,6 +25,7 @@ include_once '../../../userdata.php';
     if(isset($_POST['btn'])){
         $name = $_FILES['myfile']['name'];
         $mime = $_FILES['myfile']['type'];
+
         $data = mime_content_type($_FILES['myfile']['tmp_name']);
         $stmt = $pdo->prepare("insert into upload_image VALUES ('',?,?,?)");
         $stmt->bindParam(1,$name);
@@ -60,7 +61,8 @@ include_once '../../../userdata.php';
     $stat = $pdo->prepare("select * from upload_image");
     $stat->execute();
     while($row = $stat->fetch()){
-        echo "<li><a href='../../bildupload/view.php?id=".$row['id']."' target='_blank'>".$row['name']."</a></li>";
+        echo "<li><a target='_blank' href='../../bildupload/view.php?id=".$row['id']."'>".$row['name']."</a>
+<embed src='data:".$row['mime'].";base64,".$row['mime'].";.base64,".base64_encode($row['data'])."' width='200'/></li>";
     }
     ?>
 </ol>
