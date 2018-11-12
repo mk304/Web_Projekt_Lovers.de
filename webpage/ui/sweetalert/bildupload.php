@@ -20,18 +20,18 @@ include_once '../../../userdata.php';
 
 <body>
 <?php
-$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-if(isset($_POST['btn'])) {
-    $name = $_FILES['myfile']['name'];
-    $type = $_FILES ['myfile']['type'];
-    $data = file_get_contents($_FILES['myfile']['tmp_name']);
-    $sql = "insert into upload_image (id,name,data, mime) VALUES ('',?,?,?)";
-    $statement = $pdo->prepare($sql);
-    $statement->bindParam(1, $name);
-    $statement->bindParam(2, $type);
-    $statement->bindParam(3, $data);
-    $statement->execute();
-}
+
+    $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+    if(isset($_POST['btn'])){
+        $name = $_FILES['myfile']['name'];
+        $mime = $_FILES['myfile']['type'];
+        $data = mime_content_type($_FILES['myfile']['tmp_name']);
+        $stmt = $pdo->prepare("insert into upload_image VALUES ('',?,?,?)");
+        $stmt->bindParam(1,$name);
+        $stmt->bindParam(2,$mime);
+        $stmt->bindParam(3,$data, PDO::PARAM_LOB);
+        $stmt->execute();
+    }
 
 ?>
 
@@ -55,13 +55,12 @@ if(isset($_POST['btn'])) {
 </div>
 <p></p>
 <ol>
+
     <?php
-    $sql = "Select * from upload_image ";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-    while ($row = $statement->fetch()){
-        echo "<li><a target='_blank' href='../../bildupload/view.php?id=".$row['id']."'>".$row['name']."</a>
-<embed src='data:".$row['mine'].";base64,".$row['mine'].";.base64,".base64_encode($row['data'])."' width='200'/></li>";
+    $stat = $pdo->prepare("select * from upload_image");
+    $stat->execute();
+    while($row = $stat->fetch()){
+        echo "<li><a href='../../bildupload/view.php?id=".$row['id']."' target='_blank'>".$row['name']."</a></li>";
     }
     ?>
 </ol>
