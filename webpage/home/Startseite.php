@@ -33,10 +33,10 @@ if ($_SESSION["log"]=="TRUE") {
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-6">
-                                            <button class="btn btn-light btn-lg btn-block btn-huge" class="active" id="register-form-link">Registrierung</button>
+                                            <button class="btn btn-light btn-lg btn-block btn-huge" class="active" style="display: none"  id="register-form-link">Registrierung</button>
                                         </div>
                                         <div class="col-xs-6">
-                                            <button class="btn btn-light btn-lg btn-block btn-huge" id="login-form-link">Login</button>
+                                            <button class="btn btn-light btn-lg btn-block btn-huge" style="display: none" id="login-form-link">Login</button>
                                         </div>
 
                                     </div>
@@ -47,7 +47,7 @@ if ($_SESSION["log"]=="TRUE") {
                                         <div class="col-lg-12">
 
                                             <form id="register-form" class="dynamic-content" action="../register/register.php"
-                                                  method="post" role="form" style="display: block;">
+                                                  method="post" role="form" style="display: none;">
                                                 <div class="form-group">
                                                     <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
                                                            required="required"
@@ -121,6 +121,9 @@ if ($_SESSION["log"]=="TRUE") {
                                             <form  class="dynamic-content" style="display: none" id="register-form-seite2" action="#"
 
                                             </form>
+                                            <form  class="dynamic-content" style="display: none" id="register-form-seite3" action="#"
+
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -180,6 +183,9 @@ if ($_SESSION["log"]=="TRUE") {
             //show hide content
 
             $(document).ready(function () {
+                $('#register-form').show();
+                $('#register-form-link').show();
+                $('#login-form-link').show();
                 // Kontrolle ob Parameter 2 ist 2
                 if (dynamicContent == 'register-form-seite2') {
                     $('#register-form-site2').show();
@@ -189,6 +195,7 @@ if ($_SESSION["log"]=="TRUE") {
                 }
                 if (dynamicContent == 'register-form-seite3') {
                     $('#register-form-site3').show();
+                    $('#register-form-seite2').hide();
                     $('#register-form').hide();
                     $('#register-form-link').hide();
                     $('#login-form-link').hide();
