@@ -46,7 +46,7 @@ if ($_SESSION["log"]=="TRUE") {
                                     <div class="row">
                                         <div class="col-lg-12">
 
-                                            <form id="register-form" action="../register/register.php"
+                                            <form id="register-form" class="dynamic-content" action="../register/register.php"
                                                   method="post" role="form" style="display: block;">
                                                 <div class="form-group">
                                                     <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
@@ -86,7 +86,7 @@ if ($_SESSION["log"]=="TRUE") {
                                                         </div>
                                                     </div>
                                             </form>
-                                            <form id="login-form" action="../register/login_check.php"
+                                            <form id="login-form" class="dynamic-content" action="../register/login_check.php"
                                                   method="post"
                                                   role="form" style="display: none;">
                                                 <div class="form-group">
@@ -117,6 +117,9 @@ if ($_SESSION["log"]=="TRUE") {
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </form>
+                                            <form  class="dynamic-content" style="display: none" id="register-form-seite2" action="#"
+
                                             </form>
                                         </div>
                                     </div>
@@ -160,7 +163,42 @@ if ($_SESSION["log"]=="TRUE") {
 
             });
 
+            // Paramter an Url für jedes Form
+
+            function getParameterByName(name, url) {
+                if (!url) url = window.location.href;
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+
+            var dynamicContent = getParameterByName('seite');
+
+            //show hide content
+
+            $(document).ready(function () {
+                // Kontrolle ob Parameter 2 ist 2
+                if (dynamicContent == 'register-form-seite2') {
+                    $('#register-form-site2').show();
+                    $('#register-form').hide();
+                    $('#register-form-link').hide();
+                    $('#login-form-link').hide();
+                }
+                if (dynamicContent == 'register-form-seite3') {
+                    $('#register-form-site3').show();
+                    $('#register-form').hide();
+                    $('#register-form-link').hide();
+                    $('#login-form-link').hide();
+                }
+
+            });
+
         </script>
+
+    </script>
 
 
 <?php

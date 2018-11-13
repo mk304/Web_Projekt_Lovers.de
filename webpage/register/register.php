@@ -48,20 +48,18 @@ $statement_check->execute(array(":kuerzel"=>"$kuerzel"));
 $row = $statement_check->fetchObject();
 
 if ($kuerzel == $row->kuerzel) {
-    session_destroy();?>
+    session_destroy(); ?>
     <div class="alert alert-danger" role="alert">
         Sie sind bereits registriert. Weiter zum <a href="../home/Startseite.php" class="alert-link">LOGIN</a>
     </div>
 
-<?php
+    <?php
     //header("Location: ../home/Startseite.php");
 
-} else {
-    $_SESSION["log"] = "TRUE";
-    header("Location: ../webpage/home.php");
+}else{    $_SESSION["log"] = "TRUE";
+    header("Location: ../home/Startseite.php?seite=register-form-seite2");
+
 }
-
-
 
 //Daten werden in Datenbank geschrieben
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
