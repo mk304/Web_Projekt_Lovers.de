@@ -68,8 +68,6 @@ $sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?,
 $statement = $pdo->prepare($sql);
 $statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"));
 
-$row = $statement->fetchObject();
-
 
 
 // für jedes neue Kürzel eine eigene Spalte in Tabelle notification einfügen
