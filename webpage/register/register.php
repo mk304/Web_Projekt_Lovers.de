@@ -70,7 +70,38 @@ $statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))
 
 $row = $statement->fetchObject();
 
-//$_SESSION["log"] = "1";
+
+
+// für jedes neue Kürzel eine eigene Spalte in Tabelle notification einfügen
+$pdo_n2 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql_n2 = "ALTER TABLE notification ADD $kuerzel VARCHAR (50)";
+
+$stmt_n2=$pdo_n2->prepare($sql_n2);
+if (!$stmt_n2){
+    echo "Prepare Fehler.";
+}
+
+if (!$stmt_n2->execute(array("kuerzel"=>$kuerzel))) {
+    echo "Query Fehler.";
+}
+
+
+
+// alle Posts als gelesen markieren
+$pdo_n3 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql_n3 = "UPDATE notification SET $kuerzel = 'read'";
+
+$stmt_n3=$pdo_n3->prepare($sql_n3);
+if (!$stmt_n3){
+    echo "Prepare Fehler bei 3.";
+}
+
+if (!$stmt_n3->execute()) {
+    echo "Query Fehler bei 3.";
+}
+
+
+
 //header("Location: ../webpage/home.php");
 
 

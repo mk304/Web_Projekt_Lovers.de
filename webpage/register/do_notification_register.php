@@ -3,7 +3,7 @@ include_once '../../userdata.php';
 session_start();
 $kuerzel = $_SESSION["kuerzel"];
 
-
+/*
 // alle vorhandenen Posts automatisch in Tabelle notification übertragen
 $pdo_n = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql_n = "INSERT INTO notification (post)  
@@ -19,24 +19,9 @@ if (!$stmt_n->execute()) {
 }
 
 
-// für jedes Kürzel eine eigene Spalte in Tabelle notification einfügen
-$pdo_n2 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql_n2 = "ALTER TABLE notification ADD $kuerzel VARCHAR (50)";
-
-$stmt_n2=$pdo_n2->prepare($sql_n2);
-if (!$stmt_n2){
-    echo "Prepare Fehler.";
-}
-
-if (!$stmt_n2->execute(array("kuerzel"=>$kuerzel))) {
-    echo "Query Fehler.";
-}
-
-
-
-// alle Posts als gelesen markieren
+// alle Posts von allen Kürzeln als gelesen markieren (nur um auf aktuellen Stand zu setzten)
 $pdo_n3 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql_n3 = "UPDATE notification SET $kuerzel = 'read'";
+$sql_n3 = "UPDATE notification SET dt123 = 'read'";
 
 $stmt_n3=$pdo_n3->prepare($sql_n3);
 if (!$stmt_n3){
@@ -46,3 +31,10 @@ if (!$stmt_n3){
 if (!$stmt_n3->execute()) {
     echo "Query Fehler bei 3.";
 }
+
+*/
+
+
+
+
+?>
