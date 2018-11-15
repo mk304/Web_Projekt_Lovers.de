@@ -3,6 +3,7 @@
 
 include_once '../../userdata.php';
 session_start();
+$kuerzel = $_SESSION["kuerzel"];
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +135,7 @@ session_start();
                                     //auszählen der Anzahl der ungelesenen Nachrichten
                                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
 
-                                    $statement = $pdo->prepare("SELECT * from posts WHERE status = 'unread'");
+                                    $statement = $pdo->prepare("SELECT * from notification WHERE $kuerzel IS NULL");
                                     $statement->execute();
                                     $anzahl_notification = $statement->rowCount();
 
@@ -146,7 +147,8 @@ session_start();
                                     <?php
                                     // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
                                     if ($anzahl_notification > 0) {
-                                        $sql = "SELECT post, date, kuerzel, channel, posts_id from posts where status = 'unread'ORDER BY date DESC ";
+                                        $sql = "SELECT post, date, kuerzel, channel, posts_id from posts where post =
+                                                ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) ORDER BY date DESC ";
                                         $query = $pdo->prepare($sql);
                                         $query->execute();
                                         $rows = array();
