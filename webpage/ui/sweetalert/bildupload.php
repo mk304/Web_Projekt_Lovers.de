@@ -24,7 +24,7 @@ include_once '../../../userdata.php';
 
 
 
-<div class="container">
+<div class="container2">
     <div class="avatar-upload">
         <form action="../../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
         <div class="avatar-edit">

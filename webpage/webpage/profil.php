@@ -27,6 +27,21 @@ $profilname = $_GET["profilname"];
         </form>
     </div>
 
+    <div class="container2">
+        <div class="avatar-upload2">
+            <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
+                <div class="avatar-edit2">
+                    <input type='file' name="file" id="imageUpload2" accept=".png, .jpg, .jpeg"/>
+                    <label name="2" for="imageUpload2"></label>
+                </div>
+                <div class="avatar-preview2">
+                    <div id="imagePreview2" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                    </div>
+                </div>
+                <button type="submit" name="submit" for="imageUpload">Upload</button>
+            </form>
+        </div>
+    </div>
 
 <div class="wrapper1">
     <div class="one"><?php
@@ -44,7 +59,7 @@ while ($row = $query->fetchObject()) {
 
 </div>
 <script src="index.js"></script>
-
+    <script src="index2.js"></script>
 
     <?php
 include_once '../ui/footer.php';
