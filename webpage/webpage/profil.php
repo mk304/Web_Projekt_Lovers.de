@@ -26,12 +26,12 @@ $profilname = $_GET["profilname"];
 
                 if (file_exists($file_pointer))
                 {
-                    echo "<div id=\"imagePreview2\" style=\"background-image: url(../headerbilder/header".$kuerzel.".jpg);\">
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header".$kuerzel.".jpg);\">
                     </div>";
                 }
                 else
                 {
-                    echo "<div id=\"imagePreview2\" style=\"background-image: url(http://i.pravatar.cc/500?img=7);\">
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(http://i.pravatar.cc/500?img=7);\">
                     </div>";
                 }
                 ?>
@@ -54,12 +54,12 @@ $profilname = $_GET["profilname"];
 
                     if (file_exists($file_pointer))
                     {
-                        echo "<div id=\"imagePreview\" style=\"background-image: url(../profilbilder/profilbild".$kuerzel.".jpg);\">
+                        echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild".$kuerzel.".jpg);\">
                     </div>";
                     }
                     else
                     {
-                        echo "<div id=\"imagePreview\" style=\"background-image: url(https://i.imgur.com/nsNvtH0.jpg);\">
+                        echo "<div id=\"imagePreview2\" style=\"background-image: url(https://i.imgur.com/nsNvtH0.jpg);\">
                     </div>";
                     }
                     ?>
