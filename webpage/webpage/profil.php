@@ -20,26 +20,12 @@ $profilname = $_GET["profilname"];
                 <label name="" for="imageUpload"></label>
             </div>
             <div class="avatar-preview">
-
-                <?php
-                $file_pointer = '../headerbilder/header'.$kuerzel.'.jpg';
-
-                if (file_exists($file_pointer))
-                {
-                    echo "<div id=\"imagePreview2\" style=\"background-image: url(../headerbilder/header".$kuerzel.".jpg);\">
-                    </div>";
-                }
-                else
-                {
-                    echo "<div id=\"imagePreview2\" style=\"background-image: url(http://i.pravatar.cc/500?img=7);\">
-                    </div>";
-                }
-                ?>
+                <div id="imagePreview" style="background-image: url(https://i.imgur.com/nsNvtH0.jpg);">
+                </div>
             </div>
             <button type="submit" name="submit" for="imageUpload">Upload</button>
         </form>
     </div>
-</div>
 
     <div class="container2">
         <div class="avatar-upload2">
@@ -49,21 +35,8 @@ $profilname = $_GET["profilname"];
                     <label name="2" for="imageUpload2"></label>
                 </div>
                 <div class="avatar-preview2">
-                    <?php
-                    $file_pointer = '../profilbilder/profilbild'.$kuerzel.'.jpg';
-
-                    if (file_exists($file_pointer))
-                    {
-                        echo "<div id=\"imagePreview\" style=\"background-image: url(../profilbilder/profilbild".$kuerzel.".jpg);\">
-                    </div>";
-                    }
-                    else
-                    {
-                        echo "<div id=\"imagePreview\" style=\"background-image: url(https://i.imgur.com/nsNvtH0.jpg);\">
-                    </div>";
-                    }
-                    ?>
-
+                    <div id="imagePreview2" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                    </div>
                 </div>
                 <button type="submit" name="submit" for="imageUpload">Upload</button>
             </form>

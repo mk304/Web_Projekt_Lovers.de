@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
         if($fileError === 0){
             if($fileSize< 1000000){
                     $fileNameNew = uniqid('', true).$kuerzel.".".$fileActualExt;
-                    $fileDestination = "../bildupload/".$fileNameNew;
+                    $fileDestination = "../../bildupload/".$fileNameNew;
                     move_uploaded_file($fileTmpName,$fileDestination);
                     $bild_id = $fileNameNew;
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
