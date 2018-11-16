@@ -45,6 +45,11 @@ $kuerzel = $_SESSION["kuerzel"];
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+
 
 
 
@@ -195,7 +200,7 @@ $kuerzel = $_SESSION["kuerzel"];
                         </li>
 
                         <li class="nav-item">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <button class="btn btn-primary" type="submit">Search</button>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
