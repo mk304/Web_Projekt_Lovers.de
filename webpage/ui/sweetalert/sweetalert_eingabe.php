@@ -18,61 +18,29 @@
     $(document).ready(function () {
         $('#new-btn').click(function () {
 
-            swal.mixin({
-                input: 'text',
-                confirmButtonText: 'Next &rarr;',
-                showCancelButton: true,
-                progressSteps: ['1', '2', '3']
-            }).queue([
-                {
-                    input: 'file',
-                    inputAttributes: {
-                        name:"image",
-                        class:"image",
+            (async function getText () {
+                const {value: text} = await swal({
 
-                    },
-                    title: 'Profilbild hochladen',
-                    text: 'Empfohlen wird 1X1'
-                },
-                {
-                    input: 'file',
-                    title: 'Hintergrundbild hochladen',
-                    text: 'Empfohlen wird 16X9'
-                },
-                {
-
-                    title: 'Über mich',
-                    text: ''
-                },
-
-            ]).then((result) => {
-                if (result.value) {
-
-                    var kuerzeltest = "mk304";
-
-
-                    $.ajax({ type: "POST",  url: "../../register/profil_update.php",
-                        data: {"post":result.value[2], "kuerzel": kuerzeltest  },
-
-
-
-                    });  $.ajax({ type: "POST",  url: "../../register/profil_update.php",
-                        data: {"bild":result.value[0],"bild2":result.value[1], "kuerzel": kuerzeltest },
-                        contentType: false,
-                        processData: false,
+                    input: 'textarea',
+                    inputPlaceholder: 'Schreibe deine Nachricht hier...',
+                    showCancelButton: true
+                });
+                if (text) {
+                    $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzel, "channel": channel, "status": status},
 
                     });
                     swal(
                         "Super!",
-                        "Dein Profil wurde erfolgreich aktualisiert ",
+                        "Dein Beitrag wurde erfolgreich gespeichert!",
                         "success"
 
+
                     )
+                    window.location.reload();
                 }
-            })
+            })()
         });
     })
-
 
 </script>
 

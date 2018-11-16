@@ -19,53 +19,28 @@ include_once '../../../userdata.php';
 </head>
 
 <body>
-<?php
 
-    $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-    if(isset($_POST['btn'])){
-        $name = $_FILES['myfile']['name'];
-        $mime = $_FILES['myfile']['type'];
-
-        $data = mime_content_type($_FILES['myfile']['tmp_name']);
-        $stmt = $pdo->prepare("insert into upload_image VALUES ('',?,?,?)");
-        $stmt->bindParam(1,$name);
-        $stmt->bindParam(2,$mime);
-        $stmt->bindParam(3,$data, PDO::PARAM_LOB);
-        $stmt->execute();
-    }
-
-?>
 
 
 
 
 <div class="container">
     <div class="avatar-upload">
-        <form method="post" enctype="multipart/form-data">
+        <form action="upload.php" method="post" enctype="multipart/form-data">
         <div class="avatar-edit">
-            <input type='file' name="myfile" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+            <input type='file' name="file" id="imageUpload" accept=".png, .jpg, .jpeg"/>
             <label name="" for="imageUpload"></label>
         </div>
         <div class="avatar-preview">
             <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
             </div>
         </div>
-            <button name="btn" for="imageUpload">Upload</button>
+            <button type="submit" name="submit" for="imageUpload">Upload</button>
         </form>
     </div>
 </div>
 <p></p>
-<ol>
 
-    <?php
-    $stat = $pdo->prepare("select * from upload_image");
-    $stat->execute();
-    while($row = $stat->fetch()){
-        echo "<li><a target='_blank' href='../../bildupload/view.php?id=".$row['id']."'>".$row['name']."</a>
-<embed src='data:".$row['mime'].";base64,".$row['mime'].";.base64,".base64_encode($row['data'])."' width='200'/></li>";
-    }
-    ?>
-</ol>
 
 
 
