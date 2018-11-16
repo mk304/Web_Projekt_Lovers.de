@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<button type="button" id="new-btn" class="btn btn-primary" >Beitrag Erstellen</button>
+<button type="submit" id="new-btn" name="submit" class="btn btn-primary" >Beitrag Erstellen</button>
 <div id="result"></div>
 <script>
 
@@ -34,7 +34,7 @@
                     const reader = new FileReader;
                     reader.onload = (e) => {
                         const fd = new FormData;
-                        fd.append('bild', e.target.result);
+                        fd.append('file', e.target.result);
                         if (window.XMLHttpRequest) {
                             // code for modern browsers
                             var xmlhttp = new XMLHttpRequest();
@@ -46,7 +46,7 @@
                             // ... do something ...
                         };
 
-                        xmlhttp.open("POST", "../../register/profil_update.php", true);
+                        xmlhttp.open("POST", "../../register/bilder_posts.php", true);
                         xmlhttp.send(fd);
                     };
                     reader.readAsDataURL(file)
