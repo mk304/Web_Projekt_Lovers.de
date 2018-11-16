@@ -5,25 +5,23 @@ $kuerzel=$_SESSION['kuerzel'];
 
 
 
-
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+$pdo_s = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+
 $sql = 'SELECT skill from skills';
 $query = $pdo->prepare($sql);
 $query->execute();
 while ($row = $query->fetchObject()) {
-    $_POST["$row->skill"];
+    if ($_POST["$row->skill"] == TRUE) {
+        $skill = $_POST["$row->skill"];
+        $statement_s = $pdo_s->prepare("INSERT INTO user_skills (kuerzel, skill) VALUES (?, ?)");
+        $statement_s->execute(array("$kuerzel", "$skill"));
+        echo $skill;
+    }
 }
 
 
-$pdo_s = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql_s = "INSERT INTO user_skills (kuerzel, skill) VALUES (?, ?)";
 
-$statement_s = $pdo_s->prepare($sql_s);
-$statement_s->execute(array("$kuerzel", "
-
-        
-
-"));
 ?>
 
 
