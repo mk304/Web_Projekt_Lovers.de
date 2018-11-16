@@ -60,14 +60,6 @@ while ($row = $query->fetchObject()) {
 </div>
 <script src="index.js"></script>
     <script src="index2.js"></script>
-    <script>
-        document.ready(function(){
-            $('#imageUpload').click(function () {
-                    window.location.reload();
-                $('#imageUpload2').click(function () {
-                    window.location.reload();
-        });
-    </script>
 
     <?php
 include_once '../ui/footer.php';
