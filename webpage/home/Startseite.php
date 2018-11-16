@@ -210,7 +210,7 @@ if ($_SESSION["log"] == "TRUE") {
             $('#register-form').show();
             $('#register-form-link').show();
             $('#login-form-link').show();
-            
+
 
         });
 
