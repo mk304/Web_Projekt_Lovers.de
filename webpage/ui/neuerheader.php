@@ -140,10 +140,8 @@ $kuerzel = $_SESSION["kuerzel"];
                                     //auszählen der Anzahl der ungelesenen Nachrichten
                                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
 
-                                    $statement = $pdo->prepare("SELECT post from notification WHERE $kuerzel IS NULL
-                                                                         AND post = ANY (SELECT post FROM posts WHERE kuerzel=
-                                                                         ANY (SELECT folgt FROM abonnenten WHERE kuerzel=:kuerzel))");
-                                    $statement->execute(array(":kuerzel"=>"$kuerzel"));
+                                    $statement = $pdo->prepare("SELECT * from notification WHERE $kuerzel IS NULL");
+                                    $statement->execute();
                                     $anzahl_notification = $statement->rowCount();
 
                                     ?>
@@ -155,10 +153,9 @@ $kuerzel = $_SESSION["kuerzel"];
                                     // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
                                     if ($anzahl_notification > 0) {
                                         $sql = "SELECT post, date, kuerzel, channel, posts_id from posts where post =
-                                                ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) 
-                                                AND kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel=:kuerzel)ORDER BY date DESC ";
+                                                ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) ORDER BY date DESC ";
                                         $query = $pdo->prepare($sql);
-                                        $query->execute(array(":kuerzel"=>"$kuerzel"));
+                                        $query->execute();
                                         $rows = array();
                                         while ($row = $query->fetch(PDO::FETCH_ASSOC))
                                             $rows[] = $row;
@@ -249,11 +246,7 @@ $kuerzel = $_SESSION["kuerzel"];
 
                             </script>
 
-                        </li>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
+                      
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
