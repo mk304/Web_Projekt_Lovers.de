@@ -1,6 +1,8 @@
 <?php
+
 include_once '../../userdata.php';
-$kuerzel = "mk304";
+session_start();
+$kuerzel = $_SESSION["kuerzel"];
 
 
 

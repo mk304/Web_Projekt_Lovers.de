@@ -1,6 +1,7 @@
 <?php
 include_once '../../userdata.php';
-$kuerzel = "mk304";
+session_start();
+$kuerzel = $_SESSION["kuerzel"];
 
 
 
@@ -17,7 +18,7 @@ if(isset($_POST['submit'])){
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png');
+    $allowed = array('jpg', 'jpeg');
 
 
     if (in_array($fileActualExt, $allowed)){

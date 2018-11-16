@@ -16,7 +16,7 @@ $profilname = $_GET["profilname"];
     <div class="avatar-upload">
         <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
             <div class="avatar-edit">
-                <input type='file' name="file" id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                <input type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
                 <label name="" for="imageUpload"></label>
             </div>
             <div class="avatar-preview">
@@ -31,7 +31,7 @@ $profilname = $_GET["profilname"];
         <div class="avatar-upload2">
             <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
                 <div class="avatar-edit2">
-                    <input type='file' name="file" id="imageUpload2" accept=".png, .jpg, .jpeg"/>
+                    <input type='file' name="file" id="imageUpload2" accept=".jpg, .jpeg"/>
                     <label name="2" for="imageUpload2"></label>
                 </div>
                 <div class="avatar-preview2">
