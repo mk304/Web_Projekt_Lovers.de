@@ -93,7 +93,7 @@ $kuerzel = $_SESSION["kuerzel"];
                     $query->execute();
                     echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='../webpage/home.php'>General</a>";
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='../webpage/home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
+                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
                         $_SESSION ["channel"]="1";
                     }
 
@@ -192,24 +192,22 @@ $kuerzel = $_SESSION["kuerzel"];
                             <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <form action="../register/do_search.php" method="post">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../register/do_search.php"></a>
+                            <a class="nav-link" href="#"></a>
                         </li>
 
                         <li class="nav-item">
                             <button class="btn btn-primary" type="submit">Search</button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../register/do_search.php"></a>
+                            <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../register/do_search.php"></a>
+                            <a class="nav-link" href="#"></a>
                         <li class="nav-item">
-                            </form>
 
                             <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
                             <script>
@@ -251,20 +249,22 @@ $kuerzel = $_SESSION["kuerzel"];
                             <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
-
+<div class="headerprofilbild">
+    <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">
                             <?php
                             $file_pointer = '../profilbilder/profilbild'.$kuerzel.'.jpg';
 
                             if (file_exists($file_pointer))
                             {
-                                echo "<img src=\"$file_pointer\" width=\"39\" height=\"39\" alt=\"\">";
+                                echo "<img src=\"$file_pointer\">";
                             }
                             else
                             {
-                                echo "<img src=\"../bilder/user.png\" width=\"39\" height=\"39\" alt=\"\">";
+                                echo "<img src=\"../profilbilder/profilbild.jpg\" width=\"39\" height=\"39\" alt=\"\">";
                             }
                             ?>
-
+    </a>
+</div>
                         </li>
                     </ul>
                 </div>

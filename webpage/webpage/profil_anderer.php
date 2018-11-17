@@ -26,6 +26,8 @@ if ($profilname == $kuerzel) {
 
 echo "Das ist das profil von ".$profilname."<br>";
 
+?>
+<?php
 
 // Überprüfung, ob man dieser Person folgt oder nicht
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
@@ -39,14 +41,14 @@ $row = $statement->fetchObject();
 
 
 if ($profilname == $row->folgt)
-    {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
+{  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
     echo '<button id="entfolgen" onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-primary">Freunde</button>';
-    }
+}
 
-    else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
-        { ?>
-<button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
-<?php
+else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
+{ ?>
+    <button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
+    <?php
 }
 
 
@@ -55,6 +57,91 @@ $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql_2 = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:profilname)";
 $query_2 = $pdo->prepare($sql_2);
 ?>
+
+
+
+
+
+<link rel="stylesheet" href="style.css">
+
+<div class="container">
+    <div class="avatar-upload">
+        <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
+            <div class="avatar-edit">
+                <input type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
+                
+            </div>
+            <div class="avatar-preview">
+
+                <?php
+                $file_pointer = '../headerbilder/header'.$profilname.'.jpg';
+
+                if (file_exists($file_pointer))
+                {
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header".$profilname.".jpg);\">
+                    </div>";
+                }
+                else
+                {
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header.jpg);\">
+                    </div>";
+                }
+                ?>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="container2">
+    <div class="avatar-upload2">
+        <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
+            <div class="avatar-edit2">
+
+                <label name="2" for="imageUpload2"></label>
+            </div>
+            <div class="avatar-preview2">
+                <?php
+                $file_pointer = '../profilbilder/profilbild'.$profilname.'.jpg';
+
+                if (file_exists($file_pointer))
+                {
+                    echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild".$profilname.".jpg);\">
+                    </div>";
+                }
+                else
+                {
+                    echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild.jpg);\">
+                    </div>";
+                }
+                ?>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<script src="index.js"></script>
+<script src="index2.js"></script>
+<script>
+    document.ready(function(){
+        $('#imageUpload').click(function () {
+            window.location.reload();
+            $('#imageUpload2').click(function () {
+                window.location.reload();
+            });
+</script>
+
+
+
+
+
+
+
+
 
 
 
