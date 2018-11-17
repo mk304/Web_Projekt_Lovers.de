@@ -31,7 +31,7 @@ $profilname = $_GET["profilname"];
                 }
                 else
                 {
-                    echo "<div id=\"imagePreview\" style=\"background-image: url(http://i.pravatar.cc/500?img=7);\">
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(https://i.imgur.com/nsNvtH0.jpg);\">
                     </div>";
                 }
                 ?>
@@ -59,7 +59,7 @@ $profilname = $_GET["profilname"];
                     }
                     else
                     {
-                        echo "<div id=\"imagePreview2\" style=\"background-image: url(https://i.imgur.com/nsNvtH0.jpg);\">
+                        echo "<div id=\"imagePreview2\" style=\"background-image: url(http://i.pravatar.cc/500?img=7);\">
                     </div>";
                     }
                     ?>

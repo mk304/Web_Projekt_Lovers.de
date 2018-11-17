@@ -249,7 +249,20 @@ $kuerzel = $_SESSION["kuerzel"];
                             <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
-                            <img src="../bilder/user.png" width="39" height="39" alt="">
+
+                            <?php
+                            $file_pointer = '../profilbilder/profilbild'.$kuerzel.'.jpg';
+
+                            if (file_exists($file_pointer))
+                            {
+                                echo "<img src=\"$file_pointer\" width=\"39\" height=\"39\" alt=\"\">";
+                            }
+                            else
+                            {
+                                echo "<img src=\"../bilder/user.png\" width=\"39\" height=\"39\" alt=\"\">";
+                            }
+                            ?>
+
                         </li>
                     </ul>
                 </div>

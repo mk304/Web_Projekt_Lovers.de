@@ -1,4 +1,4 @@
-<?php
+<meta http-equiv="refresh" content="1; url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php"><?php
 include_once '../../userdata.php';
 session_start();
 $kuerzel = $_SESSION["kuerzel"];
