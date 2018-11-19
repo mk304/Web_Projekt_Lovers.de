@@ -209,7 +209,7 @@ $kuerzel = $_SESSION["kuerzel"];
                             <a class="nav-link" href="#"></a>
                         <li class="nav-item">
 
-                            <button type="button" id="new-btn" class="btn btn-primary">Beitrag Erstellen</button>
+                            <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
                             <script>
                                 var kuerzel = sessionStorage.getItem('kuerzel');
                                 var channel = sessionStorage.getItem('channel');
@@ -243,11 +243,37 @@ $kuerzel = $_SESSION["kuerzel"];
 
 
                             </script>
-
-                      
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
+                        <li class="nav-item">
+
+                             </li>
+                        <li class="nav-item">
+
+                                <div class="avatar-upload" >
+                                    <form action="../register/bilder_posts.php" method="post" enctype="multipart/form-data" >
+                                        <div class="btn btn-primary btn-sm" style="height: 39px">
+                                            <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} " type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
+                                            <label name="" for="imageUpload" style="margin-top: 4px;"> Bild auswählen</label>
+                                            <button id="ajax" type="submit" class="btn btn-primary" name="submit" for="imageUpload" style="height: 30px; margin-top: -5px;">Hochladen</button>
+
+                                        </div>
+
+
+                                    </form>
+
+
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        <li class="nav-item">
+
+
+
+
+
+
                         <li class="nav-item">
 <div class="headerprofilbild">
     <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">

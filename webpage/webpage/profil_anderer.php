@@ -69,7 +69,7 @@ $query_2 = $pdo->prepare($sql_2);
         <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
             <div class="avatar-edit">
                 <input type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
-                
+
             </div>
             <div class="avatar-preview">
 
