@@ -71,7 +71,8 @@ $profilname = $_GET["profilname"];
     </div>
 
 <div class="wrapper1">
-    <div class="one"><?php
+    <div class="one">
+        <?php
 // Ausgabe der Skills
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)";
@@ -82,7 +83,22 @@ while ($row = $query->fetchObject()) {
 }
 ?>
     </div>
-    <div class="two">Two</div>
+    <div class="two">
+        <?php
+        $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+        $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
+        $query_3 = $pdo->prepare($sql_3);
+        $query_3->execute(array(":kuerzel"=>"$kuerzel"));
+
+        while ($row = $query_3->fetchObject()) {
+            echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
+            if (($row->kuerzel) == $kuerzel){
+                echo "<p><button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button></p><br><a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
+
+            }}
+        ?>
+    </div>
+
 
 </div>
 <script src="index.js"></script>
