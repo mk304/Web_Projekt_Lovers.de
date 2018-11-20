@@ -1,0 +1,84 @@
+
+
+
+
+
+.inhalt {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr;
+    min-height: 80px;
+    width: 60vw;
+    background-color: #6e81c9;
+    height: auto;
+
+    border-radius: 20px;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.profil_bild_post img{
+    grid-column: 3 / 5;
+    grid-row: 1/ 1;
+    position: relative;
+    float: right;
+
+    object-fit: cover;
+
+    min-height: 60px;
+    min-width: 60px;
+    max-height: 60px;
+    max-width: 60px;
+    border-image: 30 round;
+    border-radius: 10%;
+    border:2px solid #167ffb;
+    border-width:2px;
+    border-style:solid;
+    border-color:#167ffb;
+}
+
+.text{
+    grid-column: 1 / 5;
+    grid-row: 2 / 4;
+
+
+}
+
+@media screen and (min-width:736px) {
+    .inhalt {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+        grid-template-rows: 1fr ;
+
+        margin-top: 10%;
+        height: 70%;
+        padding-top: 5%;
+    }
+
+.profil_bild_post img{
+    grid-column: 1 /5;
+    grid-row: 1 / 1;
+    position: relative;
+
+    object-fit: cover;
+
+    min-height: 60px;
+    min-width: 60px;
+    max-height: 60px;
+    max-width: 60px;
+    border-image: 30 round;
+    border-radius: 10%;
+    border:2px solid #167ffb;
+    border-width:2px;
+    border-style:solid;
+    border-color:#167ffb;
+}
+    .text{
+        grid-column: 2 / 8;
+        grid-row: 1 / 1;
+
+
+    }
+}
