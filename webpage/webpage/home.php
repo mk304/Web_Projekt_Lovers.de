@@ -66,6 +66,7 @@ echo"<div class='text'>";
                 echo"</div>";
                         if (($row->kuerzel) == $kuerzel){
                             echo "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+<<<<<<< HEAD
 
 
                             echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id&channel=$row->channel'>Post löschen</a>";
@@ -73,6 +74,8 @@ echo"<div class='text'>";
                 echo "<br><br>";
 
 
+=======
+>>>>>>> e0c8b6bd8699e07147e7c7df42aee8a61e611d77
                             echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
 
                         }  $file_pointer = '../profilbilder/profilbild'.($row->kuerzel).'.jpg';
@@ -86,7 +89,10 @@ echo"<div class='text'>";
                     echo "<img src=\"../profilbilder/profilbild.jpg\">";
                 }
                 echo "</div><br><br></div>";
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0c8b6bd8699e07147e7c7df42aee8a61e611d77
             ?>
                 <script>
                     var post_id = sessionStorage.getItem('id');
