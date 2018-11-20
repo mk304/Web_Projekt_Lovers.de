@@ -1,14 +1,11 @@
-
+<meta http-equiv="refresh" content="1; url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/home.php">
 <?php
 include_once '../../userdata.php';
 session_start();
 $kuerzel = $_SESSION["kuerzel"];
-$channel = $_GET["channel"];
-?>
+$channel = $_SESSION["channel"];
 
-<meta content="1; url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/home.php?channel=<?php echo $channel?>">
 
-<?php
 
 if(isset($_POST['submit'])){
  $file = $_FILES['file'];
@@ -38,7 +35,6 @@ if(isset($_POST['submit'])){
 
                 $statement = $pdo->prepare($sql);
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
-                header("location: home.php?channel=$channel");
             }else {
                 echo"Deine Datei ist zu groß! (Max Größe 1MB)";
             }
@@ -49,4 +45,3 @@ if(isset($_POST['submit'])){
         echo"Dieses Dateiformat wird nicht unterstützt!";
     }
 }
-
