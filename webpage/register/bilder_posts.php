@@ -35,7 +35,7 @@ if(isset($_POST['submit'])){
 
                 $statement = $pdo->prepare($sql);
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
-                header('Location: ../webpage/home.php?channel=6');
+                header("Location: ../webpage/home.php?channel=$channel");
             }else {
                 echo"Deine Datei ist zu groß! (Max Größe 1MB)";
             }

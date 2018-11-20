@@ -93,9 +93,12 @@ $kuerzel = $_SESSION["kuerzel"];
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='../webpage/home.php'>General</a>";
+
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
-                        $_SESSION ["channel"]="1";
+
+$_SESSION['channel'] = $_GET['channel']
+;
                     }
 
 
@@ -256,10 +259,13 @@ $kuerzel = $_SESSION["kuerzel"];
                         <li class="nav-item">
 
                                 <div class="avatar-upload" >
+
                                     <form action="../register/bilder_posts.php" method="post" enctype="multipart/form-data" >
+
                                         <div class="btn btn-primary btn-sm" style="height: 39px">
                                             <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} " type='file' name="file" id="imageUpload3" accept=".jpg, .jpeg"/>
                                             <label name="" for="imageUpload3" style="margin-top: 4px;"> Bild auswählen</label>
+
                                             <button id="ajax" type="submit" class="btn btn-primary" name="submit" for="imageUpload3" style="height: 30px; margin-top: -5px;">Hochladen</button>
 
                                         </div>
