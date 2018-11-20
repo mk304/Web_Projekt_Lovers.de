@@ -65,7 +65,7 @@ $profilname = $_GET["profilname"];
                     ?>
 
                 </div>
-                <button type="submit" name="submit" for="imageUpload">Upload</button>
+                <button type="submit" name="submit" for="imageUpload2">Upload</button>
             </form>
         </div>
     </div>

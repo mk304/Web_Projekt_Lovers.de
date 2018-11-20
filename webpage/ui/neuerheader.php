@@ -253,9 +253,9 @@ $kuerzel = $_SESSION["kuerzel"];
                                 <div class="avatar-upload" >
                                     <form action="../register/bilder_posts.php" method="post" enctype="multipart/form-data" >
                                         <div class="btn btn-primary btn-sm" style="height: 39px">
-                                            <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} " type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
-                                            <label name="" for="imageUpload" style="margin-top: 4px;"> Bild auswählen</label>
-                                            <button id="ajax" type="submit" class="btn btn-primary" name="submit" for="imageUpload" style="height: 30px; margin-top: -5px;">Hochladen</button>
+                                            <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} " type='file' name="file" id="imageUpload3" accept=".jpg, .jpeg"/>
+                                            <label name="" for="imageUpload3" style="margin-top: 4px;"> Bild auswählen</label>
+                                            <button id="ajax" type="submit" class="btn btn-primary" name="submit" for="imageUpload3" style="height: 30px; margin-top: -5px;">Hochladen</button>
 
                                         </div>
 
