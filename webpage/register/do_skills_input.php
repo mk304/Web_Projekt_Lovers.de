@@ -20,6 +20,7 @@ while ($row = $query->fetchObject()) {
     }
 }
 
+header("Location: ../home/Startseite.php?seite=bildupload");
 
 
 ?>

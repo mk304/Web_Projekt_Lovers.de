@@ -9,7 +9,7 @@ session_start();
 
 
 ?>
-
+<link rel="stylesheet" href="posts.css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <div class="container" style=" height: 90vh;
@@ -54,17 +54,39 @@ session_start();
 
             //Posts aus Channel ausgeben
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
+            $sql_3 = "SELECT post, kuerzel, date, posts_id, channel from posts WHERE channel=:channel ORDER BY posts.date DESC";
             $query_3 = $pdo->prepare($sql_3);
             $query_3->execute(array(":channel"=>"$channel"));
 
             while ($row = $query_3->fetchObject()) {
+                echo "<div class='inhalt'> ";
+
+echo"<div class='text'>";
                 echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
+                echo"</div>";
                         if (($row->kuerzel) == $kuerzel){
                             echo "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
-                            echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
+
+
+                            echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id&channel=$row->channel'>Post löschen</a>";
                         }
                 echo "<br><br>";
+
+
+                            echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
+
+                        }  $file_pointer = '../profilbilder/profilbild'.($row->kuerzel).'.jpg';
+                        echo"<div class='profil_bild_post'>";
+                if (file_exists($file_pointer))
+                {
+                    echo "<img src=\"$file_pointer\">";
+                }
+                else
+                {
+                    echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                }
+                echo "</div><br><br></div>";
+
             ?>
                 <script>
                     var post_id = sessionStorage.getItem('id');
@@ -98,6 +120,7 @@ session_start();
             ?>
 
 </ul>
+
         </div>
     </div>
 </div>

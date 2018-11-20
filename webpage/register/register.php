@@ -56,9 +56,6 @@ if ($kuerzel == $row->kuerzel) {
     <?php
     //header("Location: ../home/Startseite.php");
 
-}else{    $_SESSION["log"] = "TRUE";
-    header("Location: ../home/Startseite.php?seite=register-form-seite2");
-
 }
 
 //Daten werden in Datenbank geschrieben
@@ -66,9 +63,12 @@ $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?, ?, ?)";
 
 $statement = $pdo->prepare($sql);
-$statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"));
+if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))){
+    $_SESSION["log"] = "TRUE";
+    header("Location: ../home/Startseite.php?seite=skills");
+};
 
-
+header("Location: ../home/Startseite.php?seite=skills");
 
 // für jedes neue Kürzel eine eigene Spalte in Tabelle notification einfügen
 $pdo_n2 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
@@ -100,7 +100,9 @@ if (!$stmt_n3->execute()) {
 
 
 
-//header("Location: ../webpage/home.php");
+
+
+
 
 
 

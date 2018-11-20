@@ -4,6 +4,7 @@
 include_once '../../userdata.php';
 session_start();
 $kuerzel = $_SESSION["kuerzel"];
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ $kuerzel = $_SESSION["kuerzel"];
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Unser CSS -->
     <link rel="stylesheet" href="../ui/neuerheader.css">
-    <link rel="stylesheet" href="../webpage/profil.css">
+
 
 
 
@@ -49,7 +50,7 @@ $kuerzel = $_SESSION["kuerzel"];
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
-
+    <meta http-equiv="Cache-Control" content="no-store" />
 
 
 
@@ -170,13 +171,17 @@ $kuerzel = $_SESSION["kuerzel"];
                                                         ?>
                                                     </i></small>
                                                 <br/>
+                                                <div>
+
                                                 Ein neuer Beitrag von
                                                 <?php
                                                 echo $row['kuerzel'];?>:
                                                 <br>
+
                                                 <?php
                                                 echo $row['post'] ?>
                                             </a>
+
                                             <div class="dropdown-divider"></div>
                                             <?php
                                         }

@@ -5,6 +5,7 @@ session_start();
 
 $id = $_GET["id"];
 $kuerzel = $_SESSION["kuerzel"];
+$channel = $_GET["channel"];
 
 
 
@@ -19,6 +20,6 @@ if (!$stmt->execute(array( ':id'=>$id))) {
     echo "Query Fehler.";
 }
 
-header("Location: ../webpage/home.php");
+header("Location: ../webpage/home.php?channel=$channel");
 
 ?>

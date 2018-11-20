@@ -1,5 +1,7 @@
 <?php
 include_once '../ui/headerstartseite.php';
+include_once '../../userdata.php';
+
 session_start();
 
 if ($_SESSION["log"] == "TRUE") {
@@ -28,17 +30,22 @@ if ($_SESSION["log"] == "TRUE") {
 
             <div class="login">
                 <div class="row">
+
+                    <?php if ($_GET["seite"]==""){
+
+                        ?>
+
                     <div class="col-md-11 col-md-offset-8">
                         <div class="panel panel-login" id="start">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <button class="btn btn-light btn-lg btn-block btn-huge" class="active"
-                                                style="display: none" id="register-form-link">Registrierung
+                                                style="display: block" id="register-form-link">Registrierung
                                         </button>
                                     </div>
                                     <div class="col-xs-6">
-                                        <button class="btn btn-light btn-lg btn-block btn-huge" style="display: none"
+                                        <button class="btn btn-light btn-lg btn-block btn-huge" style="display: block"
                                                 id="login-form-link">Login
                                         </button>
                                     </div>
@@ -51,9 +58,11 @@ if ($_SESSION["log"] == "TRUE") {
                             <form action="../register/register.php" method="post">
                                 <div class="panel-body">
                                     <div class="row">
+
+                                    <form action="../register/do_input_bilder.php" method="post">
                                         <div class="col-lg-12">
                                             <div id="register-form"
-                                                 role="form" style="display: none;">
+                                                 role="form" style="display: block;">
                                                 <div class="form-group">
                                                     <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
                                                            minlength="5" maxlength="5"><br>
@@ -95,25 +104,12 @@ if ($_SESSION["log"] == "TRUE") {
                                                 </div>
                                             </div>
                                         </div>
+                                    </form>
 
-                                        <!-- zweite div-->
-                                        <div class="dynamic-content" style="display: none" id="register-form-seite2">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-6 col-sm-offset-3">
-                                                        <input type="submit" name="register-submit" id="register-submit"
-                                                               tabindex="4" class="form-control btn btn-login"
-                                                               value="Weiter"
-                                                               href="Startseite.php?register-submit=Weiter"
-                                                               onclick="sessionStorage.setItem('kuerzel');addUrl()">
-                                                    </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-                            </form>
+
                         </div>
 
 
@@ -151,27 +147,58 @@ if ($_SESSION["log"] == "TRUE") {
                                 </div>
                             </div>
                         </form>
-                        <div id="register-form-seite2">
-                            <form class="dynamic-content" style="display: none" id="register-form-2" action="#">
-                                <div class="form-group">
-                                    <div class="col-sm-6 col-sm-offset-3">
-                                        <input type="submit" name="weiter-submit"
-                                               href="Startseite.php?seite=register-form-seite3"
-                                               tabindex="4" class="form-control btn btn-login"
-                                               value="Weiter"
-                                               onclick="sessionStorage.setItem('kuerzel');">
-                                    </div>
-                                </div>
-                                <div>
-                            </form>
-                        </div>
                     </div>
+                    </form>
+                    <?php }
+
+                    elseif ($_GET["seite"]=="skills"){
+
+                        //zweite div für Checkboxen der Skills
+
+                      ?>
+
+                        <?php
+
+
+                        $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                        $sql = "SELECT skill, id from skills";
+                        $query = $pdo->prepare($sql);
+                        $query->execute();
+                        ?>
+                        <form action="../register/do_skills_input.php" method="post">
+                          <div class="custom-control custom-checkbox">
+                            <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
+                                echo "   <label class='custom-control-label'>
+                                         <input type='checkbox' class='custom-control-input'  name='".$zeile['skill']."' value='".$zeile['id']."'>".
+                                        $zeile['skill']."
+                                         </label>";
+                            }?>
+                            <input type="submit" value="weiter">
+                          </div>
+                        </form>
+
+
+
+
+
+
+
+
+                    <?php }
+                    elseif ($_GET["seite"]=="bildupload") {
+                        echo "hier werden die Bilder hochgeladen";
+                    }
+                    ?>
+
                 </div>
 
-                </form>
+
 
             </div>
         </div>
+
+
+
     </div>
 
 
@@ -206,13 +233,7 @@ if ($_SESSION["log"] == "TRUE") {
 
         });
 
-        $(document).ready(function () {
-            $('#register-form').show();
-            $('#register-form-link').show();
-            $('#login-form-link').show();
 
-
-        });
 
 
 
