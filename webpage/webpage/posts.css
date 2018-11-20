@@ -5,7 +5,7 @@
 
 .inhalt {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr r ;
     grid-template-rows: 1fr 1fr 1fr;
     min-height: 80px;
     width: 60vw;
@@ -20,7 +20,7 @@
 }
 
 .profil_bild_post img{
-    grid-column: 3 / 5;
+    grid-column: 1 / 1;
     grid-row: 1/ 1;
     position: relative;
     float: right;
@@ -40,7 +40,7 @@
 }
 
 .text{
-    grid-column: 1 / 5;
+    grid-column: 1 / 1;
     grid-row: 2 / 4;
 
 

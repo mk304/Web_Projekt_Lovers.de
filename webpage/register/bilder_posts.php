@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="1; url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/home.php">
+<meta http-equiv="refresh" content="url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/home.php">
 <?php
 include_once '../../userdata.php';
 session_start();
@@ -35,6 +35,7 @@ if(isset($_POST['submit'])){
 
                 $statement = $pdo->prepare($sql);
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
+                header('Location: ../webpage/home.php?channel=6');
             }else {
                 echo"Deine Datei ist zu groß! (Max Größe 1MB)";
             }
