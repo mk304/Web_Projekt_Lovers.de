@@ -20,7 +20,6 @@ $profilname = $_GET["profilname"];
                 <label name="" for="imageUpload"></label>
             </div>
             <div class="avatar-preview">
-
                 <?php
                 $file_pointer = '../headerbilder/header'.$kuerzel.'.jpg';
 
@@ -35,6 +34,7 @@ $profilname = $_GET["profilname"];
                     </div>";
                 }
                 ?>
+
             </div>
             <button type="submit" name="submit" for="imageUpload">Upload</button>
         </form>
