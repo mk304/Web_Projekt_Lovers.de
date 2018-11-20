@@ -49,7 +49,7 @@ $kuerzel = $_SESSION["kuerzel"];
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
-    <!-- Meta Daten löschen -->
+
 
 
 
