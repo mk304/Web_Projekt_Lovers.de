@@ -307,4 +307,3 @@ $_SESSION['channel'] = $_GET['channel']
                 </div>
             </div>
         </nav>
-

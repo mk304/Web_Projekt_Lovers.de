@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Registrierung</title>
+
+    <!-- Sweetalert 2 -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../ui/sweetalert/sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
+
+</head>
+
+<body>
+
+
 <?php
 include_once '../ui/headerstartseite.php';
 include_once '../../userdata.php';
@@ -7,8 +28,17 @@ session_start();
 if ($_SESSION["log"] == "TRUE") {
     header("Location: ../webpage/home.php");
 }
-?>
 
+if ($_GET["seite" == "warning"]){
+?>
+    <script>
+        $(document).ready(function () {
+        swal('Sie sind bereits registriert. Bitte logge dich mit deinem HdM-Kürzel ein.');
+        };
+    </script>
+<?php
+}
+?>
 
     <script src="src/jquery-3.3.1.min.js"></script>
     <script src="src/fullclip.min.js"></script>
@@ -31,7 +61,7 @@ if ($_SESSION["log"] == "TRUE") {
             <div class="login">
                 <div class="row">
 
-                    <?php if ($_GET["seite"]==""){
+                    <?php if ($_GET["seite"]=="" or $_GET["seite"]=="warning"){
 
                         ?>
 
