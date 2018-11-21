@@ -54,56 +54,51 @@ $statement_check->execute(array(":kuerzel"=>"$kuerzel"));
 $row = $statement_check->fetchObject();
 
 if ($kuerzel == $row->kuerzel) {
-    session_destroy(); ?>
-    <div class="alert alert-danger" role="alert">
-        Sie sind bereits registriert. Weiter zum <a href="../home/Startseite.php" class="alert-link">LOGIN</a>
-    </div>
-
-    <?php
-    //header("Location: ../home/Startseite.php");
-
+    session_destroy();
+    header("Location: ../home/Startseite.php?seite=warning");
 }
+else {
 
 //Daten werden in Datenbank geschrieben
-$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?, ?, ?)";
+    $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+    $sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?, ?, ?)";
 
 $statement = $pdo->prepare($sql);
-if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$hash"))){
+if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))){
     $_SESSION["log"] = "TRUE";
     header("Location: ../home/Startseite.php?seite=skills");
 };
 
-header("Location: ../home/Startseite.php?seite=skills");
+
+    header("Location: ../home/Startseite.php?seite=skills");
 
 // für jedes neue Kürzel eine eigene Spalte in Tabelle notification einfügen
-$pdo_n2 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql_n2 = "ALTER TABLE notification ADD $kuerzel VARCHAR (50)";
+    $pdo_n2 = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+    $sql_n2 = "ALTER TABLE notification ADD $kuerzel VARCHAR (50)";
 
-$stmt_n2=$pdo_n2->prepare($sql_n2);
-if (!$stmt_n2){
-    echo "Prepare Fehler.";
-}
+    $stmt_n2 = $pdo_n2->prepare($sql_n2);
+    if (!$stmt_n2) {
+        echo "Prepare Fehler.";
+    }
 
-if (!$stmt_n2->execute(array("kuerzel"=>$kuerzel))) {
-    echo "Query Fehler.";
-}
-
+    if (!$stmt_n2->execute(array("kuerzel" => $kuerzel))) {
+        echo "Query Fehler.";
+    }
 
 
 // alle Posts als gelesen markieren
-$pdo_n3 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql_n3 = "UPDATE notification SET $kuerzel = 'read'";
+    $pdo_n3 = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+    $sql_n3 = "UPDATE notification SET $kuerzel = 'read'";
 
-$stmt_n3=$pdo_n3->prepare($sql_n3);
-if (!$stmt_n3){
-    echo "Prepare Fehler bei 3.";
-}
+    $stmt_n3 = $pdo_n3->prepare($sql_n3);
+    if (!$stmt_n3) {
+        echo "Prepare Fehler bei 3.";
+    }
 
-if (!$stmt_n3->execute()) {
-    echo "Query Fehler bei 3.";
-}
-
+    if (!$stmt_n3->execute()) {
+        echo "Query Fehler bei 3.";
+    }
+};
 
 
 
