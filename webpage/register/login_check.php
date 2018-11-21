@@ -32,7 +32,7 @@ $_SESSION["pw"] = $pw;
 $options = [
     'cost' => 12
 ];
-$hash = password_verify($pw, PASSWORD_DEFAULT, $options);
+$hash = password_hash($pw, PASSWORD_DEFAULT, $options);
 
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
@@ -43,14 +43,14 @@ $statement->execute(array(":kuerzel"=>"$kuerzel"));
 
 $row = $statement->fetchObject();
 
-if (password_verify($pw == $row->pw)) {
+if (password_verify($pw,$hash)) {
     $_SESSION["log"] = "TRUE";
     header("Location: ../webpage/home.php");
 
 
 } else {
     $_SESSION["log"]="FALSE";
-   //header("Location: ../home/Startseite.php");
+   header("Location: ../home/Startseite.php");
    }
 
 
