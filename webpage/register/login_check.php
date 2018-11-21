@@ -22,11 +22,17 @@ include_once '../../userdata.php';
 
 
 
+
 $kuerzel = $_POST["kuerzel"];
 $pw = $_POST["pw"];
 
 $_SESSION["kuerzel"] = $kuerzel;
 $_SESSION["pw"] = $pw;
+
+$options = [
+    'cost' => 12
+];
+$hash = password_verify($pw, PASSWORD_DEFAULT, $options);
 
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
@@ -37,7 +43,7 @@ $statement->execute(array(":kuerzel"=>"$kuerzel"));
 
 $row = $statement->fetchObject();
 
-if ($pw == $row->pw) {
+if (password_verify($pw == $row->pw)) {
     $_SESSION["log"] = "TRUE";
     header("Location: ../webpage/home.php");
 

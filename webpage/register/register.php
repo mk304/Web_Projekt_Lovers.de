@@ -38,6 +38,12 @@ $_SESSION ["email"]="$email";
 $_SESSION ["pw"]="$pw";
 
 
+$options = [
+    'cost' => 18
+];
+$hash = password_hash($pw, PASSWORD_DEFAULT, $options);
+
+
 //Überprüfung, ob Kürzel in Datenbank bereits vergeben ist
 $pdo_check = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql_statement = "SELECT kuerzel FROM user WHERE kuerzel=:kuerzel";
@@ -63,7 +69,7 @@ $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?, ?, ?)";
 
 $statement = $pdo->prepare($sql);
-if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))){
+if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$hash"))){
     $_SESSION["log"] = "TRUE";
     header("Location: ../home/Startseite.php?seite=skills");
 };
