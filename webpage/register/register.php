@@ -64,7 +64,7 @@ else {
     $sql = "INSERT INTO user(kuerzel, vorname, nachname, email, pw) VALUES (?, ?, ?, ?, ?)";
 
 $statement = $pdo->prepare($sql);
-if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$pw"))){
+if($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$hash"))){
     $_SESSION["log"] = "TRUE";
     header("Location: ../home/Startseite.php?seite=skills");
 };
