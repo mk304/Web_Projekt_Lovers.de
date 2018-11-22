@@ -195,11 +195,11 @@ if ($_GET['seite'] == "warning") {
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     ?>
-                    <form action="../register/do_skills_input.php" method="post">
+                    <form action="../register/do_skills_input.php" method="post" ">
 
-                            <h3 class="headline_skills">Gib deine Skills an</h3>
+                            <h3 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h3>
                             <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                                echo "   <label >
+                                echo "   <label style='background-color: #3fc3ee;'>
                                          <input  type='checkbox'name='" . $zeile['skill'] . "' value='" . $zeile['id'] . "'>" .
                                     $zeile['skill'] . "
                                          </label>";
