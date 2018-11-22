@@ -30,6 +30,9 @@
     while($row = $stat->fetch()){
         echo "<li><a href='view.php?id=".$row['id']."' target='_blank'>".$row['name']."</a></li>";
     }
+    if {
+
+    }
     ?>
     </ol>
 </body>

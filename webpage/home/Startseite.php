@@ -31,7 +31,13 @@ if ($_SESSION["log"] == "TRUE") {
 if ($_GET['seite'] == "warning") {
     $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Sie sind bereits registriert. Bitte loggen Sie sich mit Ihrem HdM-Kürzel ein.');</script>";
-   echo "<script type='text/javascript'>show();</script>";
+   echo "<script type='text/javascript'>$(document).ready(function() {
+            $(\"#login-form\").style.display='block';
+            $(\"#register-form\").style.display='none';
+            $('#register-form-link').removeClass('active');
+            $('#login-form-link').addClass('active');
+        }</script>";
+
 }
 
 ?>
@@ -253,6 +259,7 @@ if ($_GET['seite'] == "warning") {
         });
 
     });
+
 
 
 </script>
