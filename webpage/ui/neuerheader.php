@@ -200,8 +200,9 @@ $_SESSION['channel'] = $_GET['channel']
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
+                        <form id="search-form" action="../register/do_search.php" method="post">
                         <li class="nav-item">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
 
                         </li>
                         <li class="nav-item">
@@ -211,12 +212,16 @@ $_SESSION['channel'] = $_GET['channel']
                         <li class="nav-item">
                             <button class="btn btn-primary" type="submit">Search</button>
                         </li>
+                        </form>
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
+                        </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
 
                             <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
                             <script>

@@ -14,21 +14,37 @@ echo"<h2>Suchergebnisse</h2>";
 if (isset($_POST['search'])) {
 
     $suche = $_POST['search'];
-    $statement = $pdo->prepare("SELECT kuerzel, vorname, nachname FROM user WHERE kuerzel=:suche");
+    // Suche nach Personen
+    $statement = $pdo->prepare("SELECT kuerzel, vorname, nachname FROM user WHERE kuerzel=:suche OR vorname=:suche OR nachname=:suche");
 
-    if ($statement->execute(array(":suche"=>"$suche"))) {
-        echo"<h3>Personen</h3>";
+        if ($statement->execute(array(":suche"=>"$suche", ":vorname"=>"$suche", ":nachname"=>"$suche"))) {
+            if ($anzahl_treffer = $statement->rowCount() >= 0){
+                echo"<h3>Personen</h3>";
+            }
+
         while ($row = $statement->fetch()) {
-            echo $row['kuerzel']." -> ".$row['vorname']." ".$row['nachname']?>
-
+          ?>
           <table>
-          <tr><td>Kürzel:</td><td><a href="../webpage/profil_anderer.php?profilname=<?php $row["kuerzel"] ?>"><?php echo $row["kuerzel"]?></td></tr>
+              <tr><td><?php $file_pointer = '../profilbilder/profilbild'.$row["kuerzel"].'.jpg';
 
-          <tr><td>Vorname:</td><td> <?php echo $row["vorname"]?> </td></tr>
-          <tr><td>Nachname:</td><td> <?php echo $row["nachname"]?> </td></tr>
+                      if (file_exists($file_pointer))
+                      {
+                          echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild".$row["kuerzel"].".jpg);\">
+                    </div>";
+                      }
+                      else
+                      {
+                          echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild.jpg);\">
+                    </div>";
+                      } ?>
+                  </td>
+                  <td> <?php echo $row["vorname"]." ".$row["nachname"]?><br> <a href="../webpage/profil_anderer.php?profilname=<?php $row["kuerzel"] ?>"><?php echo $row["kuerzel"]?></a>
+                     <br> <a>Skills: </a>
+                  </td>
 
+              </tr>
           </table>
-            <hr />
+            <hr/>
         <?php
             }
     }}
