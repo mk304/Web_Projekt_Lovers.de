@@ -32,7 +32,7 @@ $profilname = $_GET["profilname"];
                 }
                 ?>
             </div>
-            <button type="submit" name="submit" style="display: none" id="imageUploadbtn" for="imageUpload">Upload
+            <button type="submit" name="submit" id="imageUploadbtn" for="imageUpload">Upload
             </button>
         </form>
     </div>
@@ -59,7 +59,7 @@ $profilname = $_GET["profilname"];
                 ?>
 
             </div>
-            <button type="submit" name="submit" id="imageUpload2btn" for="imageUpload2" style="display: none">Upload
+            <button type="submit" name="submit" id="imageUpload2btn" for="imageUpload2">Upload
             </button>
         </form>
     </div>
@@ -120,6 +120,10 @@ $profilname = $_GET["profilname"];
             });
 
             document.ready(function () {
+                $('#imageUploadbtn').hide();
+                $('#imageUpload2btn').hide();
+            });
+
                 $('#profilBearbeiten').click(function () {
                     $('#imageUploadbtn').show();
                     $('#imageUpload2btn').show();
