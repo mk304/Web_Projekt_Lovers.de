@@ -24,10 +24,10 @@
 <body>
 
 <?php
-
+include_once '../../userdata.php';
 session_start();
 
-include_once '../../userdata.php';
+
 
 
 $kuerzel = $_POST["kuerzel"];
@@ -45,7 +45,7 @@ $_SESSION ["pw"] = "$pw";
 
 
 $options = [
-    'cost' => 18
+    'cost' => 5
 ];
 $hash = password_hash($pw, PASSWORD_DEFAULT, $options);
 
@@ -75,7 +75,6 @@ if ($kuerzel == $row->kuerzel) {
     };
 
 
-    header("Location: ../home/Startseite.php?seite=skills");
 
 // für jedes neue Kürzel eine eigene Spalte in Tabelle notification einfügen
     $pdo_n2 = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));

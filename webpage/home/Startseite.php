@@ -129,8 +129,7 @@ if ($_GET['seite'] == "warning") {
                                                                        id="register-submit"
                                                                        tabindex="4" class="form-control btn btn-login"
                                                                        value="Weiter"
-                                                                       href="Startseite.php?register-submit=Weiter"
-                                                                       onclick="sessionStorage.setItem('kuerzel')">
+                                                                       href="#">
                                                             </div>
 
                                                         </div>
@@ -197,18 +196,25 @@ if ($_GET['seite'] == "warning") {
                     $query->execute();
                     ?>
                     <form action="../register/do_skills_input.php" method="post">
-                        <div class="custom-control custom-checkbox">
+
+                            <h3 class="headline_skills">Gib deine Skills an</h3>
                             <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                                echo "   <label class='custom-control-label'>
-                                         <input type='checkbox' class='custom-control-input'  name='" . $zeile['skill'] . "' value='" . $zeile['id'] . "'>" .
+                                echo "   <label >
+                                         <input  type='checkbox'name='" . $zeile['skill'] . "' value='" . $zeile['id'] . "'>" .
                                     $zeile['skill'] . "
                                          </label>";
                             }
                             if (!$query){
                                 echo "Fehler.";
                             }?>
-                            <input type="submit" value="weiter">
-                        </div>
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="register-submit"
+                                       id="register-submit"
+                                       tabindex="4" class="form-control btn btn-login"
+                                       value="Weiter"
+                                       href="#">
+                            </div>
+
                     </form>
 
 
