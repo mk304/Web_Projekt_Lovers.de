@@ -171,7 +171,7 @@ html, body {
 
 input{
     width: 100%;
-    background: gainsboro;
+    background: #dcdcdc;
     border:  10px;
     padding: 16px 40px;
     border-radius: 20px;
@@ -185,7 +185,7 @@ input{
     margin-outside: 20px;
 }
 .submit{
-    background-color: darkgrey;
+    background-color: #a9a9a9;
 }
 .submit:hover{
     background-color: dimgrey;
@@ -287,6 +287,6 @@ a {
 #defaultCheck1{
     padding: 8888px;
 }
-.headline_skills h3{
-
-}
+ .container{
+     background-color: #dcdcdc; width: 90%; height: 50px; margin-top: 10px; border-radius: 30px; opacity:0.91; margin-left: 20px; padding-right:-20px;
+ }

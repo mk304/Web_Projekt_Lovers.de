@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
 
+
 </head>
 
 <body>
@@ -169,7 +170,8 @@ if ($_GET['seite'] == "warning") {
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="row">
+                                <div class="row " style=" height: 90vh;
+    overflow: scroll;">
                                     <div class="col-lg-12">
                                         <div class="text-center">
                                             <a href="https://phpoll.com/recover" tabindex="5"
@@ -195,18 +197,21 @@ if ($_GET['seite'] == "warning") {
                     $query = $pdo->prepare($sql);
                     $query->execute();
                     ?>
-                    <form action="../register/do_skills_input.php" method="post" ">
+                    <link rel="stylesheet" href="skills.css">
+                    <form style="width: 100%;  height: 500px;
+    overflow: scroll;" action="../register/do_skills_input.php"  method="post" ">
 
-                            <h3 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h3>
+                            <h4 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h4>
                             <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                                echo "   <label style='background-color: #3fc3ee;'>
-                                         <input  type='checkbox'name='" . $zeile['skill'] . "' value='" . $zeile['id'] . "'>" .
-                                    $zeile['skill'] . "
-                                         </label>";
+                                echo "   <label class='container5' >
+                                         <input class='input' type='checkbox' checked=\"checked\" name='" . $zeile['skill'] . "'value='" . $zeile['id'] . "'>" . "<h3>".
+                                    $zeile['skill'] . "</h3>"."<span class=\"checkmark\"></span>
+                                         </label><br>";
                             }
+
                             if (!$query){
                                 echo "Fehler.";
-                            }?>
+                            }?> </form>
                             <div class="col-sm-6 col-sm-offset-3">
                                 <input type="submit" name="register-submit"
                                        id="register-submit"
@@ -215,7 +220,7 @@ if ($_GET['seite'] == "warning") {
                                        href="#">
                             </div>
 
-                    </form>
+
 
 
                 <?php } elseif ($_GET["seite"] == "bildupload") {
