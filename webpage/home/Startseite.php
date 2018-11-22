@@ -197,7 +197,10 @@ if ($_GET['seite'] == "warning") {
                                          <input type='checkbox' class='custom-control-input'  name='" . $zeile['skill'] . "' value='" . $zeile['id'] . "'>" .
                                     $zeile['skill'] . "
                                          </label>";
-                            } ?>
+                            }
+                            if (!$query){
+                                echo "Fehler.";
+                            }?>
                             <input type="submit" value="weiter">
                         </div>
                     </form>
