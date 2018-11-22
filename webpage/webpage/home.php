@@ -54,31 +54,23 @@ session_start();
 
             //Posts aus Channel ausgeben
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT post, kuerzel, date, posts_id, channel from posts WHERE channel=:channel ORDER BY posts.date DESC";
+            $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
             $query_3 = $pdo->prepare($sql_3);
             $query_3->execute(array(":channel"=>"$channel"));
 
             while ($row = $query_3->fetchObject()) {
-                echo "<div class='inhalt'> ";
+                echo "<div class='inhalt'>";
 
 echo"<div class='text'>";
-                echo ($row->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
-                echo"</div>";
+
+                echo "<h3>".($row->post)."</h3><br><h4>"." schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
+                echo"</h4>";
                         if (($row->kuerzel) == $kuerzel){
-                            echo "<button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
-
-
-
-                            echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id&channel=$row->channel'>Post löschen</a>";
-                        }
-                echo "<br><br>";
-
-
-
-                            echo "<a <a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
+                            echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                            echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
 
                         }  $file_pointer = '../profilbilder/profilbild'.($row->kuerzel).'.jpg';
-                        echo"<div class='profil_bild_post'>";
+                        echo"</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
                 if (file_exists($file_pointer))
                 {
                     echo "<img src=\"$file_pointer\">";
@@ -87,8 +79,7 @@ echo"<div class='text'>";
                 {
                     echo "<img src=\"../profilbilder/profilbild.jpg\">";
                 }
-                echo "</div><br><br></div>";
-
+                echo "</div></div>";
             ?>
                 <script>
                     var post_id = sessionStorage.getItem('id');
@@ -118,7 +109,7 @@ echo"<div class='text'>";
                     })
                 </script>
             <?php
-
+            }
             ?>
 
 </ul>
