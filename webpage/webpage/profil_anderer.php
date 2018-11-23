@@ -56,6 +56,7 @@ else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql_2 = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:profilname)";
 $query_2 = $pdo->prepare($sql_2);
+
 ?>
 
 

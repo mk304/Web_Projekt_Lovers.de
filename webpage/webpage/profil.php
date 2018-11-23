@@ -66,7 +66,7 @@ $profilname = $_GET["profilname"];
         </div>
     </div>
 
-    <button type="button" id="profilBearbeiten" class="btn btn-primary">Profil bearbeiten</button>
+
 
 
     <div class="wrapper1">
@@ -78,7 +78,11 @@ $profilname = $_GET["profilname"];
             $query = $pdo->prepare($sql);
             if (!$query->execute(array(":kuerzel" => "$kuerzel"))) ;
             while ($row = $query->fetchObject()) {
-                echo "<ul>$row->skill</ul>";
+               $skill = $row->skill;
+                echo "<ul>$skill</ul>";
+                echo "<div  style=\"background-image: url(../skills/" . $row->skill . ".png);\">
+                    </div>";
+                echo "<img src=\"../skills/" . $skill . ".png\">";
             }
             if (!$query) {
                 echo "Prepare Fehler.";
