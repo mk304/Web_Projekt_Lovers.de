@@ -294,7 +294,7 @@ $_SESSION['channel'] = $_GET['channel']
 
                         <li class="nav-item">
 <div class="headerprofilbild">
-    <!-- <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php"> -->
+    <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php"> 
                             <?php
                             $file_pointer = '../profilbilder/profilbild'.$kuerzel.'.jpg';
 
