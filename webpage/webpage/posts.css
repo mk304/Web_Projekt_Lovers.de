@@ -194,3 +194,199 @@
         grid-row: 1 / 1;
     }
 }
+
+
+
+
+
+.inhalt2 {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    min-height: 80px;
+    width: 60vw;
+    background-color: #6e81c9;
+    height: auto;
+    border-radius: 20px;
+
+}
+
+
+
+.profil_bild_post2 img{
+    grid-column: 1 / 1;
+    grid-row: 1/ 1;
+    position: relative;
+    float: right;
+
+    object-fit: cover;
+
+    min-height: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    max-width: 100px;
+    border-image: 30 round;
+    border-radius: 10%;
+    border:2px solid #167ffb;
+    border-width:2px;
+    border-style:solid;
+    border-color:#167ffb;
+}
+.profil_bild_post2{
+    margin: auto;
+    width: auto;
+    border-radius: 7px;
+
+
+    padding-right: 40px;
+    padding-left: 40px;}
+.text2{
+    grid-column: 1 / 1;
+    grid-row: 2 / 5;
+
+}
+.text2 h3{
+    margin: auto;
+    width: auto;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: whitesmoke;
+    font-size: 50px;
+
+}
+.text2 h4{
+    font-family: 'Montserrat', sans-serif;
+    color: #212529;
+    font-size: 14px;
+    margin: auto;
+    width: auto;
+    padding-left: 20px;}
+.text2 button{
+    float: right;
+    background: #fff;
+    color: #7386D5;
+    text-align: center;
+    font-size: 0.8em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    min-height: 35px;}
+.post_bearbeiten3 {
+    float: right;
+    background: #fff;
+    color: #7386D5;
+    text-align: center;
+    font-size: 0.8em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    min-height: 35px;
+    font-family: 'Montserrat', sans-serif;}
+.atag2{
+    grid-column: 4 / 4;
+    grid-row: 1 / 2;
+}
+
+
+@media screen and (min-width:736px) {
+    .inhalt2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+        grid-template-rows: 1fr ;
+        min-height: 80px;
+        width: 60vw;
+        background-color: #6e81c9;
+        height: auto;
+        margin-top: 3%;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 20px;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .profil_bild_post2 img{
+        grid-column: 1 /5;
+        grid-row: 1 / 1;
+
+
+        display: block;
+
+        object-fit: cover;
+
+        min-height: 100px;
+        min-width: 100px;
+        max-height: 100px;
+        max-width: 100px;
+        border-image: 30 round;
+        border-radius: 10%;
+        border:2px solid #167ffb;
+        border-width:2px;
+        border-style:solid;
+        border-color:#167ffb;
+    }
+    .profil_bild_post2{
+        margin: auto;
+        width: auto;
+        border-radius: 7px;
+        border-right: 6px solid #F8F8F8;
+
+        padding-right: 40px;
+        padding-left: 40px;
+
+
+
+    }
+    .text2{
+        grid-column: 2 / 6;
+        grid-row: 1 / 1;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-size-adjust: inherit;
+    }
+    .text2 h3{
+        margin: auto;
+        width: auto;
+        padding-top: 20px;
+        padding-left: 20px;
+        font-family: 'Montserrat', sans-serif;
+        color: whitesmoke;
+        font-size: 4vw;
+
+    }
+    .text2 h4{
+        font-family: 'Montserrat', sans-serif;
+        color: #212529;
+        font-size: 14px;
+        margin: auto;
+        width: auto;
+        padding-left: 20px;}
+    .text2 button{
+        float: right;
+        background: #fff;
+        color: #7386D5;
+        text-align: center;
+        font-size: 0.8em !important;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        min-height: 35px;}
+    .post_bearbeiten2 {
+        float: right;
+        background: #fff;
+        color: #7386D5;
+        text-align: center;
+        font-size: 0.8em !important;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        min-height: 35px;
+        font-family: 'Montserrat', sans-serif;}
+
+    .atag2{
+        grid-column: 3 / 4;
+        grid-row: 1 / 1;
+    }
+}

@@ -51,6 +51,7 @@ session_start();
                 }
 
                 //Posts aus Channel ausgeben
+
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
                 $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
                 $query_3 = $pdo->prepare($sql_3);
@@ -112,25 +113,26 @@ session_start();
                     <?php
                 }
 
-
                 //Bilder aus Channel ausgeben;
-                $sql = "SELECT * from postimg WHERE channel=:channel ORDER BY posts.date DESC";
-                $query = $pdo->prepare($sql);
-                $query->execute(array(":channel" => "$channel"));
-                $fileDestination = "../bildupload/" . $bild_id;
 
-                while ($row = $query->fetchObject()) {
-                    echo "<div class='inhalt'>";
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                $sql_4 = "SELECT * from postimg WHERE channel=:channel  ORDER BY postimg.date DESC";
+                $query_4 = $pdo->prepare($sql_4);
+                $query_4->execute(array(":channel" => "$channel"));
 
-                    echo "<div class='text'>";
+                while ($zeile = $query_4->fetchObject()) {
+
+                    echo "<div class='inhalt2'>";
+
+                    echo "<div class='text2'>";
+                    $bildlink= $zeile-> bild_id;
 
                     echo "<h3>" . ($row->bild_id) . "</h3><br><h4>" . " postete <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
                     echo "</h4>";
-                    if (file_exists($fileDestination)) {
-                        echo "<img src=\"$fileDestination\">";
-                    } else {
-                        echo "Fehler";
-                    }
+
+
+                    echo "<img src='../bildupload/$bildlink'>";
+
 
 
                     if (($row->kuerzel) == $kuerzel) {
@@ -139,7 +141,7 @@ session_start();
 
                     }
                     $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
-                    echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+                    echo "</div><div class='profil_bild_post2' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
                     if (file_exists($file_pointer)) {
                         echo "<img src=\"$file_pointer\">";
                     } else {
