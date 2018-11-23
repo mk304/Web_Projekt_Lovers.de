@@ -53,22 +53,37 @@ session_start();
                 //Posts aus Channel ausgeben
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-                $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
+                $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
                 $query_3 = $pdo->prepare($sql_3);
                 $query_3->execute(array(":channel" => "$channel"));
 
                 while ($row = $query_3->fetchObject()) {
-                    echo "<div class='inhalt'>";
 
-                    echo "<div class='text'>";
+                    if ($row->bild_id == NULL){
+                        echo "<div class='inhalt'>";
 
-                    echo "<h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
-                    echo "</h4>";
-                    if (($row->kuerzel) == $kuerzel) {
-                        echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
-                        echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
+                        echo "<div class='text'>";
 
+                        echo "<h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                        echo "</h4>";
+                        if (($row->kuerzel) == $kuerzel) {
+                            echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                            echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
+
+                        }
                     }
+
+                    if ($row->post == NULL) {
+
+                        echo "<div class='inhalt2'>";
+
+                        echo "<div class='text2'>";
+                        $bildlink= $row-> bild_id;
+                        
+
+                        echo "<img src='../bildupload/$bildlink'>";
+                    }
+
                     $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
                     echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
                     if (file_exists($file_pointer)) {
