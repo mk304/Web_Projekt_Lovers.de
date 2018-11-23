@@ -223,8 +223,7 @@ if ($_GET['seite'] == "warning") {
 
 
 
-                <?php } elseif ($_GET["seite"] == "bildupload") {
-                    echo "hier werden die Bilder hochgeladen";
+                <?php
                 }
                 ?>
 
