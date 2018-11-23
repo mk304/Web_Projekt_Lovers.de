@@ -199,7 +199,7 @@
 
 
 
-.inhalt2 {
+.inhalt {
     margin-top: 15px;
     display: grid;
     grid-template-columns: 1fr;
@@ -214,7 +214,7 @@
 
 
 
-.profil_bild_post2 img{
+.profil_bild_post img{
     grid-column: 1 / 1;
     grid-row: 1/ 1;
     position: relative;
@@ -233,7 +233,7 @@
     border-style:solid;
     border-color:#167ffb;
 }
-.profil_bild_post2{
+.profil_bild_post{
     margin: auto;
     width: auto;
     border-radius: 7px;
@@ -241,12 +241,12 @@
 
     padding-right: 40px;
     padding-left: 40px;}
-.text2{
+.text{
     grid-column: 1 / 1;
     grid-row: 2 / 5;
 
 }
-.text2 h3{
+.text h3{
     margin: auto;
     width: auto;
     padding-top: 20px;
@@ -256,14 +256,14 @@
     font-size: 50px;
 
 }
-.text2 h4{
+.text h4{
     font-family: 'Montserrat', sans-serif;
     color: #212529;
     font-size: 14px;
     margin: auto;
     width: auto;
     padding-left: 20px;}
-.text2 button{
+.text button{
     float: right;
     background: #fff;
     color: #7386D5;
@@ -273,7 +273,7 @@
     border-radius: 5px;
     margin-bottom: 5px;
     min-height: 35px;}
-.post_bearbeiten3 {
+.post_bearbeiten2 {
     float: right;
     background: #fff;
     color: #7386D5;
@@ -284,14 +284,14 @@
     margin-bottom: 5px;
     min-height: 35px;
     font-family: 'Montserrat', sans-serif;}
-.atag2{
+.atag{
     grid-column: 4 / 4;
     grid-row: 1 / 2;
 }
 
 
 @media screen and (min-width:736px) {
-    .inhalt2 {
+    .inhalt {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
         grid-template-rows: 1fr ;
@@ -306,10 +306,24 @@
         border: 6px solid #F8F8F8;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     }
+    .bild_post img{
+        object-fit: cover;
+        border-style: solid;
+        min-height: 39px;
+        min-width: 39px;
+        max-height: 39px;
+        max-width: 39px;
+        border-image: 30 round;
+        border-radius: 10%;
+        border:2px solid #167ffb;
+        border-width:2px;
+        border-style:solid;
+        border-color:#167ffb;
 
-    .profil_bild_post2 img{
-        grid-column: 1 /5;
-        grid-row: 1 / 1;
+    }
+
+    .profil_bild_post img{
+
 
 
         display: block;
@@ -327,7 +341,8 @@
         border-style:solid;
         border-color:#167ffb;
     }
-    .profil_bild_post2{
+
+    .profil_bild_post{
         margin: auto;
         width: auto;
         border-radius: 7px;
@@ -336,17 +351,19 @@
         padding-right: 40px;
         padding-left: 40px;
 
-
-
     }
-    .text2{
+    .text{
         grid-column: 2 / 6;
         grid-row: 1 / 1;
         font-family: 'Montserrat', sans-serif;
         font-size: 20px;
         font-size-adjust: inherit;
+
     }
-    .text2 h3{
+
+
+
+    .text h3{
         margin: auto;
         width: auto;
         padding-top: 20px;
@@ -356,14 +373,14 @@
         font-size: 4vw;
 
     }
-    .text2 h4{
+    .text h4{
         font-family: 'Montserrat', sans-serif;
         color: #212529;
         font-size: 14px;
         margin: auto;
         width: auto;
         padding-left: 20px;}
-    .text2 button{
+    .text button{
         float: right;
         background: #fff;
         color: #7386D5;
@@ -385,8 +402,9 @@
         min-height: 35px;
         font-family: 'Montserrat', sans-serif;}
 
-    .atag2{
+    .atag{
         grid-column: 3 / 4;
         grid-row: 1 / 1;
     }
+
 }
