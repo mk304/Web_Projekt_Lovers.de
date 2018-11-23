@@ -116,7 +116,7 @@ session_start();
                 //Bilder aus Channel ausgeben;
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-                $sql_4 = "SELECT * from postimg WHERE channel=:channel  ORDER BY postimg.date DESC";
+                $sql_4 = "SELECT * from posts WHERE channel=:channel  ORDER BY posts.date DESC";
                 $query_4 = $pdo->prepare($sql_4);
                 $query_4->execute(array(":channel" => "$channel"));
 
