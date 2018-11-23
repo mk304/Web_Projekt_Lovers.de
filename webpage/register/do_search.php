@@ -29,13 +29,13 @@ if (isset($_POST['search'])) {
 
                       if (file_exists($file_pointer))
                       {
-                          echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild".$row["kuerzel"].".jpg);\">
-                    </div>";
+                          echo "<img src=\"$file_pointer\">";
                       }
                       else
                       {
                           echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild.jpg);\">
                     </div>";
+
                       } ?>
                   </td>
                   <td> <?php echo $row["vorname"]." ".$row["nachname"]?><br> <a href="../webpage/profil_anderer.php?profilname=<?php $row["kuerzel"] ?>"><?php echo $row["kuerzel"]?></a>

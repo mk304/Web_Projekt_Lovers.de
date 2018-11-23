@@ -187,14 +187,14 @@ h1 small {
 
 @media screen and (min-width:736px) {
     .wrapper1 {
+
         display: grid;
 
-
+        margin-top: -200px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
-        margin-top: 10%;
-        height: 70%;
-        padding-top: 5%;
+        height: 633px;
+
 
     }
 
@@ -208,6 +208,7 @@ h1 small {
     }
 
     .two {
+
         margin-top: 0%;
         margin-left: 2%;
         background-color: #cccccc;

@@ -35,20 +35,6 @@ session_start();
                 echo "<h2>$row->name</h2>";
             }
 
-            // Channel "General" als Startseite definieren
-            // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
-            if($channel == "") {
-                echo "<h2>General</h2>";
-                $pdo = new PDO ($dsn, $dbuser, $dbpass);
-                $sql = "SELECT post, kuerzel, date FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
-                $query = $pdo->prepare($sql);
-                $query->execute(array(":kuerzel"=>"$kuerzel"));
-
-                while ($zeile = $query->fetchObject()) {
-                    echo ($zeile->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>".($zeile->kuerzel)."</a> um ".($zeile->date);
-                    echo "<br><br>";
-                }
-            }
 
 
 
