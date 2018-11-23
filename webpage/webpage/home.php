@@ -146,7 +146,7 @@ session_start();
                     echo "</h4>";
 
 
-                    echo "<img class='bild'  src='../bildupload/$bildlink'>";
+                    echo "<img class='bild'   src='../bildupload/$bildlink'>";
 
 
 
