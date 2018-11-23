@@ -32,7 +32,6 @@ if(isset($_POST['submit'])){
                     $bild_id = $fileNameNew;
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
                 $sql = "INSERT INTO postimg (kuerzel, channel, bild_id) VALUES (?, ?, ?)";
-
                 $statement = $pdo->prepare($sql);
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
                 header("Location: ../webpage/home.php?channel=$channel");

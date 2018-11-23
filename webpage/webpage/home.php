@@ -26,15 +26,14 @@ session_start();
                 $kuerzel = $_SESSION["kuerzel"];
 
 
-
-            //Channel auch als headline
-            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT name from channels WHERE channel_id=:channel ";
-            $query_3 = $pdo->prepare($sql_3);
-            $query_3->execute(array(":channel"=>"$channel"));
-            while ($row = $query_3->fetchObject()) {
-                echo "<h2>$row->name</h2>";
-            }
+                //Channel auch als headline
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                $sql_3 = "SELECT name from channels WHERE channel_id=:channel ";
+                $query_3 = $pdo->prepare($sql_3);
+                $query_3->execute(array(":channel" => "$channel"));
+                while ($row = $query_3->fetchObject()) {
+                    echo "<h2>$row->name</h2>";
+                }
 
                 // Channel "General" als Startseite definieren
                 // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
@@ -118,6 +117,7 @@ session_start();
                 $sql = "SELECT * from postimg WHERE channel=:channel ORDER BY posts.date DESC";
                 $query = $pdo->prepare($sql);
                 $query->execute(array(":channel" => "$channel"));
+                $fileDestination = "../bildupload/" . $bild_id;
 
                 while ($row = $query->fetchObject()) {
                     echo "<div class='inhalt'>";
@@ -126,6 +126,13 @@ session_start();
 
                     echo "<h3>" . ($row->bild_id) . "</h3><br><h4>" . " postete <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
                     echo "</h4>";
+                    if (file_exists($fileDestination)) {
+                        echo "<img src=\"$fileDestination\">";
+                    } else {
+                        echo "Fehler";
+                    }
+
+
                     if (($row->kuerzel) == $kuerzel) {
                         echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
                         echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
