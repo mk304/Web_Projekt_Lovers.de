@@ -122,16 +122,16 @@ session_start();
 
                 while ($zeile = $query_4->fetchObject()) {
 
-                    echo "<div class='inhalt2'>";
+                    echo "<div class='inhalt'>";
 
-                    echo "<div class='text2'>";
+                    echo "<div class='text' >";
                     $bildlink= $zeile-> bild_id;
 
-                    echo "<h3>" . ($row->bild_id) . "</h3><br><h4>" . " postete <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+
                     echo "</h4>";
 
 
-                    echo "<img src='../bildupload/$bildlink'>";
+                    echo "<img class='' style='object-fit:cover; height: 200px; min-width: 100vw;' src='../bildupload/$bildlink'>";
 
 
 
@@ -141,7 +141,7 @@ session_start();
 
                     }
                     $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
-                    echo "</div><div class='profil_bild_post2' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+                    echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
                     if (file_exists($file_pointer)) {
                         echo "<img src=\"$file_pointer\">";
                     } else {
