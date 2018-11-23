@@ -30,8 +30,6 @@ $kuerzel = $_SESSION["kuerzel"];
     <link rel="stylesheet" href="../ui/neuerheader.css">
 
 
-
-
     <!-- Font Awesome JS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -51,14 +49,13 @@ $kuerzel = $_SESSION["kuerzel"];
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
-    <meta http-equiv="Cache-Control" content="no-store" />
-
+    <meta http-equiv="Cache-Control" content="no-store"/>
 
 
     <script>
 
         $(document).ready(function () {
-            }
+        }
 
     </script>
 
@@ -84,7 +81,7 @@ $kuerzel = $_SESSION["kuerzel"];
                     </i>
                     Messages
                 </a>
-                    <form id="channel_id" method="get">
+                <form id="channel_id" method="get">
                     <?php
 
 
@@ -96,15 +93,14 @@ $kuerzel = $_SESSION["kuerzel"];
                     echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . "' name='channel' href='../webpage/home.php'>General</a>";
 
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='../webpage/home.php?channel=".$zeile['channel_id']."'>" . $zeile["name"]."</a>";
+                        echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='../webpage/home.php?channel=" . $zeile['channel_id'] . "'>" . $zeile["name"] . "</a>";
 
-$_SESSION['channel'] = $_GET['channel']
-;
+                        $_SESSION['channel'] = $_GET['channel'];
                     }
 
 
-                        ?>
-                    </form>
+                    ?>
+                </form>
             </li>
         </ul>
 
@@ -137,178 +133,221 @@ $_SESSION['channel'] = $_GET['channel']
 
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">Nachrichten
-                                    <?php
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Nachrichten
+                                <?php
 
-                                    //auszählen der Anzahl der ungelesenen Nachrichten
-                                    $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                                //auszählen der Anzahl der ungelesenen Nachrichten
+                                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
 
-                                    $statement = $pdo->prepare("SELECT * from notification WHERE $kuerzel IS NULL");
-                                    $statement->execute();
-                                    $anzahl_notification = $statement->rowCount();
+                                $statement = $pdo->prepare("SELECT * from notification WHERE $kuerzel IS NULL");
+                                $statement->execute();
+                                $anzahl_notification = $statement->rowCount();
 
-                                    ?>
-                                    <span class="badge badge-primary"><?php echo $anzahl_notification ?></span>
 
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <?php
-                                    // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
-                                    if ($anzahl_notification > 0) {
-                                        $sql = "SELECT post, date, kuerzel, channel, posts_id from posts where post =
+                                ?>
+                                <span class="badge badge-primary"><?php echo $anzahl_notification ?></span>
+
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <?php
+                                // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
+                                if ($anzahl_notification > 0) {
+
+
+                                $sql = "SELECT post, date, kuerzel, channel, posts_id, bild_id from posts where post =
                                                 ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) ORDER BY date DESC ";
-                                        $query = $pdo->prepare($sql);
-                                        $query->execute();
-                                        $rows = array();
-                                        while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                                            $rows[] = $row;
-                                        foreach ($rows as $row){
+                                $query = $pdo->prepare($sql);
+                                $query->execute();
+                                $rows = array();
+                                while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                                    $rows[] = $row;
+                                foreach ($rows as $row) {
 
 
-                                            ?>
-                                            <a class="dropdown-item" href="../webpage/do_gelesen.php?channel=<?php echo $row['channel']?>&posts_id=<?php echo $row['posts_id']?>">
-                                                <small><i>
-                                                        <?php
-                                                        echo date('F j, Y, g:i a',strtotime($row['date']));
-                                                        ?>
-                                                    </i></small>
-                                                <br/>
-                                                <div>
+                                    if ($row->bild_id == NULL) {
+
+                                        ?>
+                                        <a class="dropdown-item"
+                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                            <small><i>
+                                                    <?php
+                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
+                                                    ?>
+                                                </i></small>
+                                            <br/>
+
+
+                                            <div>
 
                                                 Ein neuer Beitrag von
                                                 <?php
-                                                echo $row['kuerzel'];?>:
+                                                echo $row['kuerzel']; ?>:
                                                 <br>
 
                                                 <?php
                                                 echo $row['post'] ?>
-                                            </a>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <?php
+                                    }
 
-                                            <div class="dropdown-divider"></div>
-                                            <?php
+
+                                    if ($row->post == NULL) {
+
+                                        ?>
+                                        <a class="dropdown-item"
+                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                            <small><i>
+                                                    <?php
+                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
+                                                    ?>
+                                                </i></small>
+                                            <br/>
+
+
+                                            <div>
+
+                                                <?php
+                                                echo $row['kuerzel']; ?>:
+                                                <br>
+
+                                                <?php
+                                                echo "hat ein neues Bild hochgeladen." ?>
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+                                        <?php
+                                    }
+                                    }
+                                }
+                                else {
+                                    echo 'Keine neuen Nachrichten.';
+                                }
+                                ?>
+
+                            </div>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+
+
+                        <form class="form-inline my-2 my-lg-0" id="search-form" action="../register/do_search.php"
+                              method="post">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                                   name="search">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </form>
+                        <li class="nav-item">
+
+                        </li>
+
+                        <li class="nav-item">
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+
+                        <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
+                        <script>
+                            var kuerzel = sessionStorage.getItem('kuerzel');
+                            var channel = sessionStorage.getItem('channel');
+                            var status = "unread";
+
+                            $(document).ready(function () {
+                                $('#new-btn').click(function () {
+
+                                    (async function getText() {
+                                        const {value: text} = await swal({
+                                            input: 'textarea',
+                                            inputPlaceholder: 'Schreibe deine Nachricht hier...',
+                                            showCancelButton: true
+                                        });
+                                        if (text) {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "../register/post_input.php",
+                                                data: {
+                                                    "post": text,
+                                                    "kuerzel": kuerzel,
+                                                    "channel": channel,
+                                                    "status": status
+                                                },
+
+                                            });
+                                            swal(
+                                                "Super!",
+                                                "Dein Beitrag wurde erfolgreich gespeichert!",
+                                                "success"
+                                            )
+                                            window.location.reload();
                                         }
+                                    })()
+                                });
+                            })
+
+
+                        </script>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        <li class="nav-item">
+
+                             
+                        </li>
+                        <li class="nav-item">
+
+                            <div class="avatar-upload">
+
+                                <form action="../register/bilder_posts.php" method="post" enctype="multipart/form-data">
+
+                                    <div class="btn btn-primary btn-sm" style="height: 39px">
+                                        <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} "
+                                               type='file' name="file" id="imageUpload3" accept=".jpg, .jpeg"/>
+                                        <label name="" for="imageUpload3" style="margin-top: 4px;"> Bild
+                                            auswählen</label>
+
+                                        <button id="ajax" type="submit" class="btn btn-primary" name="submit"
+                                                for="imageUpload3" style="height: 30px; margin-top: -5px;">Hochladen
+                                        </button>
+
+                                    </div>
+
+
+                                </form>
+
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        <li class="nav-item">
+
+
+                        <li class="nav-item">
+                            <div class="headerprofilbild">
+                                <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">
+                                    <?php
+                                    $file_pointer = '../profilbilder/profilbild' . $kuerzel . '.jpg';
+
+                                    if (file_exists($file_pointer)) {
+                                        echo "<img src=\"$file_pointer\">";
                                     } else {
-                                        echo 'Keine neuen Nachrichten.';
+                                        echo "<img src=\"../profilbilder/profilbild.jpg\" width=\"39\" height=\"39\" alt=\"\">";
                                     }
                                     ?>
-
-                                </div>
-
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-
-
-                            <form class="form-inline my-2 my-lg-0"  id="search-form" action="../register/do_search.php" method="post">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
-                                <button class="btn btn-primary" type="submit">Search</button>
-                            </form>
-                        <li class="nav-item">
-
-                        </li>
-
-                        <li class="nav-item">
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-
-                            <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
-                            <script>
-                                var kuerzel = sessionStorage.getItem('kuerzel');
-                                var channel = sessionStorage.getItem('channel');
-                                var status ="unread";
-
-                                $(document).ready(function () {
-                                    $('#new-btn').click(function () {
-
-                                        (async function getText () {
-                                            const {value: text} = await swal({
-                                                input: 'textarea',
-                                                inputPlaceholder: 'Schreibe deine Nachricht hier...',
-                                                showCancelButton: true
-                                            });
-                                            if (text) {
-                                                $.ajax({ type: "POST",  url: "../register/post_input.php", data: {"post":text, "kuerzel": kuerzel, "channel": channel, "status": status},
-
-                                                });
-                                                swal(
-                                                    "Super!",
-                                                    "Dein Beitrag wurde erfolgreich gespeichert!",
-                                                    "success"
-
-
-                                                )
-                                                window.location.reload();
-                                            }
-                                        })()
-                                    });
-                                })
-
-
-                            </script>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        <li class="nav-item">
-
-                             </li>
-                        <li class="nav-item">
-
-                                <div class="avatar-upload" >
-
-                                    <form action="../register/bilder_posts.php" method="post" enctype="multipart/form-data" >
-
-                                        <div class="btn btn-primary btn-sm" style="height: 39px">
-                                            <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} " type='file' name="file" id="imageUpload3" accept=".jpg, .jpeg"/>
-                                            <label name="" for="imageUpload3" style="margin-top: 4px;"> Bild auswählen</label>
-
-                                            <button id="ajax" type="submit" class="btn btn-primary" name="submit" for="imageUpload3" style="height: 30px; margin-top: -5px;">Hochladen</button>
-
-                                        </div>
-
-
-                                    </form>
-
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        <li class="nav-item">
-
-
-
-
-
-
-                        <li class="nav-item">
-<div class="headerprofilbild">
-    <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php"> 
-                            <?php
-                            $file_pointer = '../profilbilder/profilbild'.$kuerzel.'.jpg';
-
-                            if (file_exists($file_pointer))
-                            {
-                                echo "<img src=\"$file_pointer\">";
-                            }
-                            else
-                            {
-                                echo "<img src=\"../profilbilder/profilbild.jpg\" width=\"39\" height=\"39\" alt=\"\">";
-                            }
-                            ?>
-    </a>
-</div>
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
