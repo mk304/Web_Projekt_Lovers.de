@@ -18,108 +18,133 @@ session_start();
         <div class="col-md-8">
 
             <br>
-<ul>
+            <ul>
 
 
+                <?php
+                $channel = $_GET["channel"];
+                $kuerzel = $_SESSION["kuerzel"];
 
-            <?php
-            $channel = $_GET["channel"];
-            $kuerzel = $_SESSION["kuerzel"];
-
-            //Channel auch als headline
-            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT name from channels WHERE channel_id=:channel ";
-            $query_3 = $pdo->prepare($sql_3);
-            $query_3->execute(array(":channel"=>"$channel"));
-            while ($row = $query_3->fetchObject()) {
-                echo "<h2>$row->name</h2>";
-            }
-
-            // Channel "General" als Startseite definieren
-            // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
-            if($channel == "") {
-                echo "<h2>General</h2>";
-                $pdo = new PDO ($dsn, $dbuser, $dbpass);
-                $sql = "SELECT post, kuerzel, date FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
-                $query = $pdo->prepare($sql);
-                $query->execute(array(":kuerzel"=>"$kuerzel"));
-
-                while ($zeile = $query->fetchObject()) {
-                    echo ($zeile->post)."<br>"." schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>".($zeile->kuerzel)."</a> um ".($zeile->date);
-                    echo "<br><br>";
+                //Channel auch als headline
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                $sql_3 = "SELECT name from channels WHERE channel_id=:channel ";
+                $query_3 = $pdo->prepare($sql_3);
+                $query_3->execute(array(":channel" => "$channel"));
+                while ($row = $query_3->fetchObject()) {
+                    echo "<h2>$row->name</h2>";
                 }
-            }
 
+                // Channel "General" als Startseite definieren
+                // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
+                if ($channel == "") {
+                    echo "<h2>General</h2>";
+                    $pdo = new PDO ($dsn, $dbuser, $dbpass);
+                    $sql = "SELECT post, kuerzel, date FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
+                    $query = $pdo->prepare($sql);
+                    $query->execute(array(":kuerzel" => "$kuerzel"));
 
-
-            //Posts aus Channel ausgeben
-            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-            $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
-            $query_3 = $pdo->prepare($sql_3);
-            $query_3->execute(array(":channel"=>"$channel"));
-
-            while ($row = $query_3->fetchObject()) {
-                echo "<div class='inhalt'>";
-
-echo"<div class='text'>";
-
-                echo "<h3>".($row->post)."</h3><br><h4>"." schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>".($row->kuerzel)."</a> um ".($row->date);
-                echo"</h4>";
-                        if (($row->kuerzel) == $kuerzel){
-                            echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
-                            echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
-
-                        }  $file_pointer = '../profilbilder/profilbild'.($row->kuerzel).'.jpg';
-                        echo"</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
-                if (file_exists($file_pointer))
-                {
-                    echo "<img src=\"$file_pointer\">";
+                    while ($zeile = $query->fetchObject()) {
+                        echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . ($zeile->date);
+                        echo "<br><br>";
+                    }
                 }
-                else
-                {
-                    echo "<img src=\"../profilbilder/profilbild.jpg\">";
-                }
-                echo "</div></div>";
-            ?>
-                <script>
-                    var post_id = sessionStorage.getItem('id');
 
-                    $(document).ready(function () {
-                        $('.post_bearbeiten').click(function () {
+                //Posts aus Channel ausgeben
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
+                $query_3 = $pdo->prepare($sql_3);
+                $query_3->execute(array(":channel" => "$channel"));
 
-                            (async function getText () {
-                                const {value: text} = await swal({
-                                    input: 'textarea',
-                                    inputPlaceholder: 'Schreibe deinen neuen Text hier...',
-                                    showCancelButton: true
-                                });
-                                if (text) {
-                                    $.ajax({ type: "POST",  url: "../register/post_edit.php", data: {"post":text, "post_id": post_id}
+                while ($row = $query_3->fetchObject()) {
+                    echo "<div class='inhalt'>";
 
+                    echo "<div class='text'>";
+
+                    echo "<h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                    echo "</h4>";
+                    if (($row->kuerzel) == $kuerzel) {
+                        echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                        echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
+
+                    }
+                    $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
+                    echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+                    if (file_exists($file_pointer)) {
+                        echo "<img src=\"$file_pointer\">";
+                    } else {
+                        echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                    }
+                    echo "</div></div>";
+                    ?>
+
+
+                    <script>
+                        var post_id = sessionStorage.getItem('id');
+
+                        $(document).ready(function () {
+                            $('.post_bearbeiten').click(function () {
+
+                                (async function getText() {
+                                    const {value: text} = await swal({
+                                        input: 'textarea',
+                                        inputPlaceholder: 'Schreibe deinen neuen Text hier...',
+                                        showCancelButton: true
                                     });
-                                    swal(
-                                        "Super!",
-                                        "Dein Beitrag wurde erfolgreich gespeichert!",
-                                        "success"
-                                    )
-                                    window.location.reload();
-                                }
-                            })()
-                        });
-                    })
-                </script>
-            <?php
-            }
-            ?>
+                                    if (text) {
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "../register/post_edit.php",
+                                            data: {"post": text, "post_id": post_id}
 
-</ul>
+                                        });
+                                        swal(
+                                            "Super!",
+                                            "Dein Beitrag wurde erfolgreich gespeichert!",
+                                            "success"
+                                        )
+                                        window.location.reload();
+                                    }
+                                })()
+                            });
+                        })
+                    </script>
+                    <?php
+                }
+
+
+                //Bilder aus Channel ausgeben;
+                $sql = "SELECT * from postimg WHERE channel=:channel ORDER BY posts.date DESC";
+                $query = $pdo->prepare($sql);
+                $query->execute(array(":channel" => "$channel"));
+
+                while ($row = $query->fetchObject()) {
+                    echo "<div class='inhalt'>";
+
+                    echo "<div class='text'>";
+
+                    echo "<h3>" . ($row->bild_id) . "</h3><br><h4>" . " postete <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                    echo "</h4>";
+                    if (($row->kuerzel) == $kuerzel) {
+                        echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                        echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
+
+                    }
+                    $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
+                    echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+                    if (file_exists($file_pointer)) {
+                        echo "<img src=\"$file_pointer\">";
+                    } else {
+                        echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                    }
+                    echo "</div></div>";
+                }
+                ?>
+
+            </ul>
 
         </div>
     </div>
 </div>
-
-
-
 
 
 <?php
