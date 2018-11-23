@@ -360,7 +360,13 @@
         font-size-adjust: inherit;
 
     }
+.bild{
+    object-fit:cover;
 
+        min-width: 44vw;
+        max-height: 400px;
+
+}
 
 
     .text h3{
