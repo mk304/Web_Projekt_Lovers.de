@@ -70,7 +70,7 @@ $profilname = $_GET["profilname"];
 
 
     <div class="wrapper1">
-        <div class="one">
+        <div class="one" >
             <?php
             // Ausgabe der Skills
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -85,7 +85,7 @@ $profilname = $_GET["profilname"];
             }
             ?>
         </div>
-        <div class="two">
+        <div class="two" style="overflow: scroll; height: 100%; width: 100%">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
             $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";

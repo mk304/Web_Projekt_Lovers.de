@@ -200,19 +200,20 @@ $_SESSION['channel'] = $_GET['channel']
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
-                        <form id="search-form" action="../register/do_search.php" method="post">
+
+
+                            <form class="form-inline my-2 my-lg-0"  id="search-form" action="../register/do_search.php" method="post">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
                         <li class="nav-item">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
 
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
 
                         <li class="nav-item">
-                            <button class="btn btn-primary" type="submit">Search</button>
+
                         </li>
-                        </form>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
@@ -293,7 +294,7 @@ $_SESSION['channel'] = $_GET['channel']
 
                         <li class="nav-item">
 <div class="headerprofilbild">
-    <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">
+    <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php"> 
                             <?php
                             $file_pointer = '../profilbilder/profilbild'.$kuerzel.'.jpg';
 

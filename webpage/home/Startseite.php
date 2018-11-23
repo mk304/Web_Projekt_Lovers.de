@@ -26,7 +26,7 @@ session_start();
 
 
 if ($_SESSION["log"] == "TRUE") {
-    header("Location: ../webpage/home.php");
+    //header("Location: ../webpage/home.php");
 }
 
 if ($_GET['seite'] == "warning") {
@@ -211,7 +211,7 @@ if ($_GET['seite'] == "warning") {
 
                             if (!$query){
                                 echo "Fehler.";
-                            }?> </form>
+                            }?>
                             <div class="col-sm-6 col-sm-offset-3">
                                 <input type="submit" name="register-submit"
                                        id="register-submit"
@@ -219,7 +219,7 @@ if ($_GET['seite'] == "warning") {
                                        value="Weiter"
                                        href="#">
                             </div>
-
+                    </form>
 
 
 

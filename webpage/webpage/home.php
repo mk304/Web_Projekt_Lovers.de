@@ -25,14 +25,16 @@ session_start();
                 $channel = $_GET["channel"];
                 $kuerzel = $_SESSION["kuerzel"];
 
-                //Channel auch als headline
-                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-                $sql_3 = "SELECT name from channels WHERE channel_id=:channel ";
-                $query_3 = $pdo->prepare($sql_3);
-                $query_3->execute(array(":channel" => "$channel"));
-                while ($row = $query_3->fetchObject()) {
-                    echo "<h2>$row->name</h2>";
-                }
+
+
+            //Channel auch als headline
+            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+            $sql_3 = "SELECT name from channels WHERE channel_id=:channel ";
+            $query_3 = $pdo->prepare($sql_3);
+            $query_3->execute(array(":channel"=>"$channel"));
+            while ($row = $query_3->fetchObject()) {
+                echo "<h2>$row->name</h2>";
+            }
 
                 // Channel "General" als Startseite definieren
                 // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt

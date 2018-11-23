@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="posts.css">
+
 <?php
 
 include_once '../../userdata.php';
@@ -18,25 +20,33 @@ if (isset($_POST['search'])) {
     $statement = $pdo->prepare("SELECT kuerzel, vorname, nachname FROM user WHERE kuerzel=:suche OR vorname=:suche OR nachname=:suche");
 
         if ($statement->execute(array(":suche"=>"$suche", ":vorname"=>"$suche", ":nachname"=>"$suche"))) {
-            if ($anzahl_treffer = $statement->rowCount() >= 0){
-                echo"<h3>Personen</h3>";
+            if ($anzahl_treffer = $statement->rowCount() > 0){
+                echo"<h3>Personen</h3>"."<br>";
+            }
+            else {
+                echo "Ihre Suche hat leider keinen Treffer ergeben.";
+
             }
 
         while ($row = $statement->fetch()) {
           ?>
           <table>
-              <tr><td><?php $file_pointer = '../profilbilder/profilbild'.$row["kuerzel"].'.jpg';
+              <tr><td>
+                      <?php
+                      echo"<div class='text'>";
 
+                      $file_pointer = '../profilbilder/profilbild'.($row->kuerzel).'.jpg';
+                      echo"</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
                       if (file_exists($file_pointer))
                       {
-                          echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild".$row["kuerzel"].".jpg);\">
-                    </div>";
+                          echo "<img src=\"$file_pointer\">";
                       }
                       else
                       {
-                          echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild.jpg);\">
-                    </div>";
-                      } ?>
+                          echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                      }
+                      echo "</div></div>";
+                      ?>
                   </td>
                   <td> <?php echo $row["vorname"]." ".$row["nachname"]?><br> <a href="../webpage/profil_anderer.php?profilname=<?php $row["kuerzel"] ?>"><?php echo $row["kuerzel"]?></a>
                      <br> <a>Skills: </a>
@@ -48,17 +58,15 @@ if (isset($_POST['search'])) {
         <?php
             }
     }}
-     else {
-        echo "Ihre Suche hat leider keinen Treffer ergeben.";
-    }
 
 
-$statement = $pdo->prepare("SELECT post FROM posts WHERE post=:suche");
 
-if ($statement->execute(array(":suche"=>"$suche"))) {
-    echo"<h3>Personen</h3>";
-    while ($row = $statement->fetch()) {
-        echo $row['post'];
-    }}
+
+//$statement = $pdo->prepare("SELECT post FROM posts WHERE post=:suche");
+
+//if ($statement->execute(array(":suche"=>"$suche"))) {
+  //  while ($row = $statement->fetch()) {
+   //     echo $row['post'];
+ //   }}
 
 ?>
