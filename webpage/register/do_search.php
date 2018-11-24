@@ -10,73 +10,77 @@ session_start();
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 
+
 echo"<h2>Suchergebnisse</h2>";
+$suche = $_POST['search'];
 
 
-if (isset($_POST['search'])) {
+// Suche von Personen nach Kürzel, Namen oder Skills
+$statement = $pdo->prepare("SELECT kuerzel, vorname, nachname FROM user WHERE kuerzel LIKE '%".$suche."%' OR vorname LIKE '%".$suche."%' OR nachname LIKE '%".$suche."%'
+                                    OR kuerzel = ANY(SELECT kuerzel FROM user_skills WHERE skill = ANY (SELECT id FROM skills WHERE skill LIKE '%".$suche."%')) ");
 
-    $suche = $_POST['search'];
-    // Suche nach Personen
-    $statement = $pdo->prepare("SELECT kuerzel, vorname, nachname FROM user WHERE kuerzel=:suche OR vorname=:suche OR nachname=:suche");
-        if ($statement->execute(array(":suche"=>"$suche", ":vorname"=>"$suche", ":nachname"=>"$suche"))) {
-            if ($anzahl_treffer = $statement->rowCount() > 0){
-                echo"<h3>Personen</h3>"."<br>";
+if ($statement->execute(array(":suche"=>"$suche", ":vorname"=>"$suche", ":nachname"=>"$suche"))) {
 
-                while ($row = $statement->fetch()) {
-                    $daskuerzel = $row["kuerzel"];
-                    ?>
-                    <table>
-                        <tr>
-                            <td>
-                                <?php
-                                echo "<div class='text'>";
+    if ($anzahl_treffer = $statement->rowCount() > 0){
+        echo"<h4>Personen</h4>"."<br>";
 
-                                $file_pointer = '../profilbilder/profilbild' . ($row["kuerzel"]) . '.jpg';
-                                echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=".$row['kuerzel']."'>";
-                                if (file_exists($file_pointer)) {
-                                    echo "<img src=\"$file_pointer\">";
-                                } else {
-                                    echo "<img src=\"../profilbilder/profilbild.jpg\">";
-                                }
-                                echo "</div></div>";
-                                ?>
-                            </td>
-                            <td> <?php echo $row["vorname"] . " " . $row["nachname"] ?><br> <a
-                                        href="../webpage/profil_anderer.php?profilname=<?php echo $row["kuerzel"] ?>"><?php echo $row["kuerzel"] ?></a>
-                                <br>
-                                <a>Skills: <?php
-                                            $statement_skills = $pdo->prepare("SELECT skill FROM skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)");
-                                            $statement_skills->execute(array(":kuerzel" => "$daskuerzel"));
+                            while ($row = $statement->fetch()) {
+                            $daskuerzel = $row["kuerzel"];
+                            ?>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <?php
+                                        echo "<div class='text'>";
 
-                                            while ($row_skill = $statement_skills->fetch()) {
-                                                echo $row_skill["skill"].", ";
-                                            } ?>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                    <hr/>
-                    <?php
+                                        $file_pointer = '../profilbilder/profilbild' . ($row["kuerzel"]) . '.jpg';
+                                        echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=".$row['kuerzel']."'>";
+                                        if (file_exists($file_pointer)) {
+                                            echo "<img src=\"$file_pointer\">";
+                                        } else {
+                                            echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                                        }
+                                        echo "</div></div>";
+                                        ?>
+                                    </td>
+                                    <td> <?php echo $row["vorname"] . " " . $row["nachname"] ?><br> <a
+                                                href="../webpage/profil_anderer.php?profilname=<?php echo $row["kuerzel"] ?>"><?php echo $row["kuerzel"] ?></a>
+                                        <br>
+                                        <a>Skills: <?php
+                                                    $statement_skills = $pdo->prepare("SELECT skill FROM skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)");
+                                                    $statement_skills->execute(array(":kuerzel" => "$daskuerzel"));
 
+                                                    while ($row_skill = $statement_skills->fetch()) {
+                                                        echo $row_skill["skill"].", ";
+                                                    } ?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr/>
+                            <?php
 
-            }}
-            else {
-                echo "Deine Suche hat leider keinen Treffer ergeben.";
-
+                    }}
+                    else {
+                        echo "Es konnte leider keine Person gefunden werden.";
+                    }
             }
 
 
+// Suche nach Posts
+$statement = $pdo->prepare("SELECT post, channel FROM posts WHERE post LIKE '%".$suche."%'");
 
-    }}
+if ($statement->execute(array(":suche"=>"$suche"))) {
+    if ($anzahl_treffer = $statement->rowCount() > 0){
+        echo "<h4>Beiträge</h4><br>";
 
-
-
-
-//$statement = $pdo->prepare("SELECT post FROM posts WHERE post=:suche");
-
-//if ($statement->execute(array(":suche"=>"$suche"))) {
-  //  while ($row = $statement->fetch()) {
-   //     echo $row['post'];
- //   }}
-
+        while ($reihe = $statement->fetch()) {
+            echo "<a href='../webpage/home.php?channel=".$reihe['channel']."'>".$reihe['post']."</a>";
+            echo "<hr/>";
+        }
+    }
+}
 ?>
+
+
+
