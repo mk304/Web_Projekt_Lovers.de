@@ -45,3 +45,33 @@ if(isset($_POST['submit'])){
         echo"Dieses Dateiformat wird nicht unterstützt!";
     }
 }
+
+
+// neue Bilder in Tabelle notification übertragen
+$pdo2 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql2 = "INSERT INTO notification (post)  
+SELECT posts_id FROM posts WHERE not exists
+(select post from notification where notification.post = posts.posts_id) ";
+
+$stmt=$pdo2->prepare($sql2);
+if (!$stmt){
+    echo "Prepare Fehler.";
+}
+if (!$stmt->execute()) {
+    echo "Query Fehler.";
+}
+
+
+
+
+// eigene Posts sollen als "gelesen" markiert werden, damit diese nicht als neue Nachrichten angezeigt werden
+$bild = uniqid('', true).$kuerzel.".".$fileActualExt;
+
+$sql3 = "UPDATE notification SET $kuerzel ='read' WHERE post= (SELECT posts_id FROM posts WHERE bild_id=:bild)";
+
+$statement3 = $pdo3->prepare($sql3);
+
+$statement3->execute(array(":bild"=>"$bild"));
+
+
+

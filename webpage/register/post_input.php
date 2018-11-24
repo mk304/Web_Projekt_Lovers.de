@@ -33,7 +33,7 @@ if (!$stmt->execute()) {
 // eigene Posts sollen als "gelesen" markiert werden, damit diese nicht als neue Nachrichten angezeigt werden
 
 $pdo3 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql3 = "UPDATE notification SET $kuerzel ='read' WHERE post=:post";
+$sql3 = "UPDATE notification SET $kuerzel ='read' WHERE post = (SELECT posts_id FROM posts WHERE post=:post)";
 
 $statement3 = $pdo3->prepare($sql3);
 $statement3->execute(array(":post"=>"$post"));
