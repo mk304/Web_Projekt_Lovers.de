@@ -34,7 +34,7 @@ if ($statement->execute(array(":suche"=>"$suche", ":vorname"=>"$suche", ":nachna
                                         echo "<div class='text'>";
 
                                         $file_pointer = '../profilbilder/profilbild' . ($row["kuerzel"]) . '.jpg';
-                                        echo "</div><div class='profil_bild_post' ><a class='searchprofil' href='../webpage/profil_check.php?profilname=".$row['kuerzel']."'>";
+                                        echo "</div><div class='profil_bild_post' ><a  href='../webpage/profil_check.php?profilname=".$row['kuerzel']."'>";
                                         if (file_exists($file_pointer)) {
                                             echo "<img src=\"$file_pointer\">";
                                         } else {

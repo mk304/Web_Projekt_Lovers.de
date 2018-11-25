@@ -70,7 +70,24 @@ $profilname = $_GET["profilname"];
 
 
     <div class="wrapper1">
-        <div class="one" >
+        <div class="one" style="overflow: scroll"; >
+            <div class="infobox">
+            <?php
+            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+            $sql_5 = "SELECT vorname, nachname, email, kuerzel from user WHERE kuerzel=:kuerzel ";
+            $query_5 = $pdo->prepare($sql_5);
+            $query_5->execute(array(":kuerzel" => "$kuerzel"));
+
+            while ($row = $query_5->fetchObject()) {
+
+                echo ("<div class='name'>".$row->vorname." " .$row->nachname."</div>");
+                echo ("<div class='email'>".$row->email."</div>");
+
+            }
+            ?></div>
+
+            <div class="aboutme"></div>
+            <div class="skills"
             <?php
             // Ausgabe der Skills
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -88,7 +105,17 @@ $profilname = $_GET["profilname"];
                 echo "Prepare Fehler.";
             }
             ?>
+            </div>
         </div>
+
+
+
+
+
+
+
+
+
         <div class="two" style="overflow: scroll; height: 100%; width: 100%">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
