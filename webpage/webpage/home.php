@@ -18,7 +18,7 @@ session_start();
         <div class="col-md-8">
 
             <br>
-            <ul>
+            <ul class="alleposts" >
 
 
                 <?php
@@ -45,6 +45,7 @@ session_start();
                     $query->execute(array(":kuerzel" => "$kuerzel"));
 
                     while ($zeile = $query->fetchObject()) {
+                       $kuerzel2= $zeile->kuerzel;
                         echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . ($zeile->date);
                         echo "<br><br>";
                     }
@@ -64,7 +65,7 @@ session_start();
 
                         echo "<div class='text'>";
 
-                        echo "<h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                        echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
                         echo "</h4>";
                         if (($row->kuerzel) == $kuerzel) {
                             echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
@@ -75,13 +76,13 @@ session_start();
 
                     if ($row->post == NULL) {
 
-                        echo "<div class='inhalt2'>";
+                        echo "<div class='inhalt'>";
 
-                        echo "<div class='text2'>";
+                        echo "<div class='text' >";
                         $bildlink= $row-> bild_id;
                         
 
-                        echo "<img src='../bildupload/$bildlink'>";
+                        echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
                     }
 
                     $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
