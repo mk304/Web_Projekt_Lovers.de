@@ -16,40 +16,6 @@ $kuerzel = $_SESSION["kuerzel"];
 $_SESSION["profilname"] = $profilname;
 
 
-// Wenn auf das eigene profil geklickt wird, wird auf die profil.php umgeleitet
-if ($profilname == $kuerzel) {
-    header ("Location: profil.php");
-}
-
-
-
-
-echo "Das ist das profil von ".$profilname."<br>";
-
-?>
-<?php
-
-// Überprüfung, ob man dieser Person folgt oder nicht
-$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-$sql = "SELECT folgt FROM abonnenten WHERE (kuerzel=:kuerzel AND folgt=:profilname)";
-
-$statement = $pdo->prepare($sql);
-$statement->execute(array(":kuerzel"=>"$kuerzel", ":profilname"=>"$profilname"));
-
-$row = $statement->fetchObject();
-
-
-
-if ($profilname == $row->folgt)
-{  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
-    echo '<button id="entfolgen" onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-primary">Freunde</button>';
-}
-
-else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
-{ ?>
-    <button type="button" class="btn btn-outline-primary" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
-    <?php
-}
 
 
 //Ausgabe der Skills
@@ -147,11 +113,73 @@ $query_2 = $pdo->prepare($sql_2);
 
 
 <div class="wrapper1">
-    <div class="one">
+    <div class="one" style="overflow: scroll"; >
+        <div class="infobox">
+            <?php
+            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+            $sql_5 = "SELECT vorname, nachname, email, kuerzel from user WHERE kuerzel=:profilname ";
+            $query_5 = $pdo->prepare($sql_5);
+            $query_5->execute(array(":profilname"=>"$profilname"));
+
+            while ($row = $query_5->fetchObject()) {
+$name= $row->vorname." " .$row->nachname;
+                echo ("<div class='name'>".$row->vorname." " .$row->nachname."</div>");
+
+
+            }
+
+            // Wenn auf das eigene profil geklickt wird, wird auf die profil.php umgeleitet
+            if ($profilname == $kuerzel) {
+            header ("Location: profil.php");
+            }
+
+            // Überprüfung, ob man dieser Person folgt oder nicht
+            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+            $sql = "SELECT folgt FROM abonnenten WHERE (kuerzel=:kuerzel AND folgt=:profilname)";
+
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":kuerzel"=>"$kuerzel", ":profilname"=>"$profilname"));
+
+            $row = $statement->fetchObject();
+
+
+
+            if ($profilname == $row->folgt)
+            {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
+                echo '<button id="entfolgen" onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-light">';
+                echo " du bist mit $name befreundet</button>";
+            }
+
+            else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag
+            { ?>
+            <button type="button" class="btn btn-light" onclick="location.href='profil_anderer_folgen.php'">Folgen</button>
+            <?php
+}
+?>
+            </div>
+
+        <div class="aboutme">
+            <?php
+            $query_5 = $pdo->prepare($sql_5);
+            $query_5->execute(array(":profilname"=>"$profilname"));
+            while ($row = $query_5->fetchObject()) {
+                echo("<div class='email'> E-Mail-Adresse: " .$row->email . "</div>");
+
+
+
+            }?>
+        </div>
         <?php
         if (!$query_2->execute(array(":profilname"=>"$profilname")));
         while ($row = $query_2->fetchObject()) {
-        echo "<ul>$row->skill</ul>";
+            $skill = $row->skill;
+            echo "<ul>$skill</ul>";
+
+            echo ("<img src=\"../skills/". $skill.".png \")");
+            echo " title=\"Smiley face\"/>";
+        }
+        if (!$query) {
+            echo "Prepare Fehler.";
         }
         ?>
        </div>
