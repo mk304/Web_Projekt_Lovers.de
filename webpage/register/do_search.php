@@ -13,6 +13,9 @@ $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 
 echo"<h2>Suchergebnisse</h2>";
 $suche = $_POST['search'];
+if (!isset ($suche)) {
+    $suche = $_GET['search'];
+}
 
 
 // Suche von Personen nach Kürzel, Namen oder Skills
