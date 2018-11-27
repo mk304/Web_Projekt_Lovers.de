@@ -29,7 +29,7 @@ $query_2 = $pdo->prepare($sql_2);
 
 
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="posts.css">
 
 <div class="container">
     <div class="avatar-upload">
@@ -184,8 +184,53 @@ $name= $row->vorname." " .$row->nachname;
         }
         ?></div></div>
        </div>
-    <div class="two">Two</div>
+    <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+        <?php
+        $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+        $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
+        $query_3 = $pdo->prepare($sql_3);
+        $query_3->execute(array(":kuerzel" => "$profilname"));
 
+        while ($row = $query_3->fetchObject()) {
+
+            if ($row->bild_id == NULL){
+                echo "<div class='inhalt'>";
+
+                echo "<div class='text'>";
+
+                echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$profilname'>" . ($profilname) . "</a> um " . ($row->date);
+                echo "</h4>";
+
+            }
+
+
+            if ($row->post == NULL) {
+
+                echo "<div class='inhalt'>";
+
+                echo "<div class='text' >";
+                $bildlink= $row-> bild_id;
+
+
+                echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
+
+
+            }
+
+            $file_pointer = '../profilbilder/profilbild' . ($profilname) . '.jpg';
+            echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$profilname'>";
+
+
+
+            if (file_exists($file_pointer)) {
+                echo "<img src=\"$file_pointer\">";
+            } else {
+                echo "<img src=\"../profilbilder/profilbild.jpg\">";
+            }
+            echo "</div></div>";
+        }
+        ?>
+    </div>
 </div>
 
 <script>
