@@ -209,6 +209,16 @@ $kuerzel = $_SESSION["kuerzel"];
                                         $rows[] = $row;
                                     foreach ($rows as $row) {
 
+                                        ?>
+                                        <a class="dropdown-item"
+                                           href="../register/do_alle_gelesen.php?channel=<?php echo $row['channel'] ?>">
+                                            <div>
+                                                Alle neuen Nachrichten löschen
+                                                <br>
+                                                <div class="dropdown-divider"></div>
+                                        </a>
+                                        <?php
+
                                         if ($row['bild_id'] == NULL) {
                                             ?>
                                             <a class="dropdown-item"
