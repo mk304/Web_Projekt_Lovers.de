@@ -9,7 +9,7 @@ $profilname = $_GET["profilname"];
 
 
 ?>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="posts.css">
     <script src="jquery-3.3.1.min.js"></script>
 
     <div class="container">
@@ -81,13 +81,16 @@ $profilname = $_GET["profilname"];
             while ($row = $query_5->fetchObject()) {
 
                 echo ("<div class='name'>".$row->vorname." " .$row->nachname."</div>");
+
                 echo ("<div class='email'>".$row->email."</div>");
 
             }
             ?></div>
 
             <div class="aboutme"></div>
-            <div class="skills"
+            <div class="skills"><h4> Meine Skills </h4>
+                <div class="row">
+
             <?php
             // Ausgabe der Skills
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -95,16 +98,15 @@ $profilname = $_GET["profilname"];
             $query = $pdo->prepare($sql);
             if (!$query->execute(array(":kuerzel" => "$kuerzel"))) ;
             while ($row = $query->fetchObject()) {
-               $skill = $row->skill;
-                echo "<ul>$skill</ul>";
-                echo "<div  style=\"background-image: url(../skills/" . $row->skill . ".png);\">
-                    </div>";
-                echo "<img src=\"../skills/" . $skill . ".png\">";
+                $skill = $row->skill;
+
+
+                echo "<div class=\"column\"><img src=\"../skills/" . $skill . ".png\"> </div>";
             }
             if (!$query) {
                 echo "Prepare Fehler.";
             }
-            ?>
+            ?></div>
             </div>
         </div>
 
@@ -119,22 +121,54 @@ $profilname = $_GET["profilname"];
         <div class="two" style="overflow: scroll; height: 100%; width: 100%">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-            $sql_3 = "SELECT post, kuerzel, date, posts_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
+            $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
             $query_3 = $pdo->prepare($sql_3);
             $query_3->execute(array(":kuerzel" => "$kuerzel"));
 
             while ($row = $query_3->fetchObject()) {
 
-                echo ($row->post) . "<br>" . " schrieb <a  href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
-                if (($row->kuerzel) == $kuerzel) {
+                if ($row->bild_id == NULL){
+                    echo "<div class='inhalt'>";
 
-                    echo ($row->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                    echo "<div class='text'>";
+
+                    echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                    echo "</h4>";
                     if (($row->kuerzel) == $kuerzel) {
-
-                        echo "<p><button class='post_bearbeiten' onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button></p><br><a href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</a>";
+                        echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
+                        echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
 
                     }
                 }
+
+
+                if ($row->post == NULL) {
+
+                    echo "<div class='inhalt'>";
+
+                    echo "<div class='text' >";
+                    $bildlink= $row-> bild_id;
+
+
+                    echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
+                    if (($row->kuerzel) == $kuerzel) {
+                        echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
+
+                    }
+
+                }
+
+                $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
+                echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+
+
+
+                if (file_exists($file_pointer)) {
+                    echo "<img src=\"$file_pointer\">";
+                } else {
+                    echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                }
+                echo "</div></div>";
             }
             ?>
         </div>

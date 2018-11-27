@@ -6,7 +6,7 @@ $kuerzel = $_SESSION["kuerzel"];
 $channel = $_SESSION["channel"];
 
 
-
+// Code Quelle(ohne Datenbank): https://www.youtube.com/watch?v=y4GxrIa7MiE
 if(isset($_POST['submit'])){
  $file = $_FILES['file'];
 
@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
                 echo"Deine Datei ist zu groß! (Max Größe 1MB)";
             }
         }else {
-            echo"Leider gab es ein Probleim! :(";
+            echo"Leider gab es ein Problem! :(";
         }
     }else {
         echo"Dieses Dateiformat wird nicht unterstützt!";

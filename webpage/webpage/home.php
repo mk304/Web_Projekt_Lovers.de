@@ -87,6 +87,9 @@ session_start();
 
                     $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
                     echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+
+
+
                     if (file_exists($file_pointer)) {
                         echo "<img src=\"$file_pointer\">";
                     } else {

@@ -22,6 +22,9 @@ $kuerzel = $_SESSION["kuerzel"];
     <script src="../ui/sweetalert/sweetalert2.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
+    <!-- sweet-modal  -->
+    <link rel="stylesheet" href="path/to/sweetmodal/dist/min/jquery.sweet-modal.min.css" />
+    <script src="path/to/sweetmodal/dist/min/jquery.sweet-modal.min.js"></script>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
@@ -275,7 +278,8 @@ $kuerzel = $_SESSION["kuerzel"];
                                             inputPlaceholder: 'Schreibe deine Nachricht hier...',
                                             showCancelButton: true
                                         });
-                                        if (text) {
+                                        //text noch nach untersuchen <> XCC string search method!
+                                        if (text && text.search("<") ==-1 ) {
                                             $.ajax({
                                                 type: "POST",
                                                 url: "../register/post_input.php",
@@ -293,7 +297,12 @@ $kuerzel = $_SESSION["kuerzel"];
                                                 "success"
                                             )
                                             window.location.reload();
-                                        }
+                                        }else swal({
+                                            type: 'error',
+                                            title: 'Oops...',
+                                            text: 'Ungültiger Text!',
+
+                                        })
                                     })()
                                 });
                             })

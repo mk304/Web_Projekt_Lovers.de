@@ -164,24 +164,25 @@ $name= $row->vorname." " .$row->nachname;
             $query_5->execute(array(":profilname"=>"$profilname"));
             while ($row = $query_5->fetchObject()) {
                 echo("<div class='email'> E-Mail-Adresse: " .$row->email . "</div>");
-
+                echo ("<a class=\"btn btn-light\"href=\"mailto:$row->email?Subject=Hallo%20$row->vorname $row->nachname! \" target=\"_top\">Send Mail</a>");
 
 
             }?>
-        </div>
+
+        </div><div class="skills"> <h4> Meine Skills: </h4>
+            <div class="row">
         <?php
         if (!$query_2->execute(array(":profilname"=>"$profilname")));
         while ($row = $query_2->fetchObject()) {
             $skill = $row->skill;
-            echo "<ul>$skill</ul>";
 
-            echo ("<img src=\"../skills/". $skill.".png \")");
-            echo " title=\"Smiley face\"/>";
+
+            echo "<div class=\"column\"><img src=\"../skills/" . $skill . ".png\"> </div>";
         }
         if (!$query) {
             echo "Prepare Fehler.";
         }
-        ?>
+        ?></div></div>
        </div>
     <div class="two">Two</div>
 
