@@ -47,3 +47,9 @@ if(isset($_POST['submit'])){
         echo"Dieses Dateiformat wird nicht unterstützt!";
     }
 }
+
+// neue Posts in Tabelle notification übertragen
+$pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
+$sql = "INSERT INTO notification (post)  
+SELECT posts_id FROM posts WHERE not exists
+(select post from notification where notification.post = posts.posts_id) ";

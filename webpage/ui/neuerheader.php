@@ -167,71 +167,62 @@ $kuerzel = $_SESSION["kuerzel"];
                                 $rows = array();
                                 while ($row = $query->fetch(PDO::FETCH_ASSOC))
                                     $rows[] = $row;
-                                foreach ($rows as $row) {
+
+                                foreach ($rows
+
+                                as $row) {
 
 
+                                ?>
+                                <a class="dropdown-item"
+                                   href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                    <small><i>
+                                            <?php
+                                            echo date('F j, Y, g:i a', strtotime($row['date']));
+                                            ?>
+                                        </i></small>
+                                    <br/>
+
+                                    <?php
                                     if ($row->bild_id == NULL) {
 
-                                        ?>
-                                        <a class="dropdown-item"
-                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
-                                            <small><i>
-                                                    <?php
-                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
-                                                    ?>
-                                                </i></small>
-                                            <br/>
+                                    ?>
+                                    <div>
 
-
-                                            <div>
-
-                                                Ein neuer Beitrag von
-                                                <?php
-                                                echo $row['kuerzel']; ?>:
-                                                <br>
-
-                                                <?php
-                                                echo $row['post'] ?>
-                                        </a>
-                                        <div class="dropdown-divider"></div>
+                                        Ein neuer Beitrag von
                                         <?php
-                                    }
+                                        echo $row['kuerzel']; ?>:
+                                        <br>
 
-
-                                    if ($row->post == NULL) {
-
-                                        ?>
-                                        <a class="dropdown-item"
-                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
-                                            <small><i>
-                                                    <?php
-                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
-                                                    ?>
-                                                </i></small>
-                                            <br/>
-
-
-                                            <div>
-
-                                                <?php
-                                                echo $row['kuerzel']; ?>:
-                                                <br>
-
-                                                <?php
-                                                echo "hat ein neues Bild hochgeladen." ?>
-                                        </a>
-
-                                        <div class="dropdown-divider"></div>
                                         <?php
-                                    }
-                                    }
-                                }
-                                else {
-                                    echo 'Keine neuen Nachrichten.';
-                                }
+                                        echo $row['post'] ?>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <?php
+                                }else{
+
                                 ?>
+                                <div>
 
-                            </div>
+                                    <?php
+                                    echo $row['kuerzel']; ?>:
+                                    <br>
+
+                                    <?php
+                                    echo "hat ein neues Bild gepostet." ?>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+
+
+                                    <?php
+                                    }
+                                    }
+                                    } else {
+                                        echo 'Keine neuen Nachrichten.';
+                                    }
+                                    ?>
+
+                                </div>
 
 
                         <li class="nav-item">
