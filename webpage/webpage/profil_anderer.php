@@ -177,7 +177,7 @@ $name= $row->vorname." " .$row->nachname;
             $skill = $row->skill;
 
 
-            echo "<div class=\"column\"><img src=\"../skills/" . $skill . ".png\"> </div>";
+            echo "<a href='../register/do_search.php?search=".$row->skill."'  class=\"column\"><img src=\"../skills/" . $skill . ".png\"> </a>";
         }
         if (!$query) {
             echo "Prepare Fehler.";
