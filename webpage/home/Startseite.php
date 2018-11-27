@@ -9,6 +9,8 @@
     <title>Registrierung</title>
 
     <!-- Sweetalert 2 -->
+
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../ui/sweetalert/sweetalert2.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -93,7 +95,7 @@ if ($_GET['seite'] == "warning") {
                                     <div class="row">
 
                                         <form action="../register/do_input_bilder.php" method="post">
-                                            <div class="col-lg-12">
+                                            <div class="col-lg-12" >
                                                 <div id="register-form"
                                                      role="form" style="display: block;">
                                                     <div class="form-group">
@@ -212,10 +214,10 @@ if ($_GET['seite'] == "warning") {
                             if (!$query){
                                 echo "Fehler.";
                             }?>
-                            <div class="col-sm-6 col-sm-offset-3">
+                            <div class="form-group">
                                 <input type="submit" name="register-submit"
-                                       id="register-submit"
-                                       tabindex="4" class="form-control btn btn-login"
+                                       id="register-submit2"
+                                       tabindex="4" class="input"
                                        value="Weiter"
                                        href="#">
                             </div>

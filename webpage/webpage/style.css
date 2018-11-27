@@ -168,7 +168,7 @@ h1 small {
 }
 
 .one {
-    background-color: #cccccc;
+
     border-color: snow;
     border-radius: 10px;
     grid-column: 1 / 5;
@@ -177,8 +177,7 @@ h1 small {
 
 .two {
     margin-top: 2%;
-    background-color: #cccccc;
-    border-color: snow;
+
     border-radius: 10px;
     grid-column: 1 / 5;
     grid-row: 2 / 5;
@@ -199,8 +198,8 @@ h1 small {
 
     .one {
 
-        background-color: #cccccc;
-        border-color: snow;
+
+        background-color: #7386d5;
         border-radius: 10px;
         grid-column: 1 /1;
         grid-row: 1 / 5;
@@ -212,6 +211,43 @@ h1 small {
         border-bottom: 50px;
         background-color: #7386d5;
 
+    }
+    .aboutme{
+        padding-top: 6%;
+        padding-bottom: 2%;
+        background-color: #859aef;
+
+
+    }
+  .email{
+      font-family: 'Noto Sans SC', sans-serif;
+      font-size: 1vw;
+      padding-left: 2.5%;
+  }
+
+    .row {
+        padding: 9%;
+        background-color: #7386d5;
+
+    }
+    .skills h4{
+
+        font-family: 'Noto Sans SC', sans-serif;
+        text-align: center;
+        font-size: 2vw;
+        padding-top: 2.5%;
+        color: snow;
+    }
+
+    .column {
+        float: left;
+
+        margin: 0.3vw;
+    }
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
     }
 
     .name{
@@ -229,7 +265,6 @@ h1 small {
 
         margin-top: 0%;
         margin-left: 2%;
-        background-color: #cccccc;
         border-color: snow;
         border-radius: 10px;
         grid-column: 2 / 5;

@@ -9,7 +9,7 @@ session_start();
 $kuerzel = $_SESSION["kuerzel"];
 
 
-
+// Code Quelle: https://www.youtube.com/watch?v=y4GxrIa7MiE
 if(isset($_POST['submit'])){
     $file = $_FILES['file'];
 
