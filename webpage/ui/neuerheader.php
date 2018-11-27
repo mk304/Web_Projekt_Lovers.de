@@ -157,69 +157,70 @@ $kuerzel = $_SESSION["kuerzel"];
                                 if ($anzahl_notification > 0) {
 
 
-                                $sql = "SELECT post, date, kuerzel, channel, posts_id, bild_id from posts where post =
+                                    $sql = "SELECT post, date, kuerzel, channel, posts_id, bild_id from posts where posts_id =
                                                 ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) ORDER BY date DESC ";
-                                $query = $pdo->prepare($sql);
-                                $query->execute();
-                                $rows = array();
-                                while ($row = $query->fetch(PDO::FETCH_ASSOC))
-                                    $rows[] = $row;
+                                    $query = $pdo->prepare($sql);
+                                    $query->execute();
+                                    $rows = array();
+                                    while ($row = $query->fetch(PDO::FETCH_ASSOC))
+                                        $rows[] = $row;
+                                    foreach ($rows as $row) {
 
-                                foreach ($rows
+                                    if ($row -> bild_id == NULL) {
+                                        ?>
+                                        <a class="dropdown-item"
+                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                            <small><i>
+                                                    <?php
+                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
+                                                    ?>
+                                                </i></small>
+                                            <br/>
 
-                                as $row) {
 
+                                            <div>
 
-                                ?>
-                                <a class="dropdown-item"
-                                   href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
-                                    <small><i>
-                                            <?php
-                                            echo date('F j, Y, g:i a', strtotime($row['date']));
-                                            ?>
-                                        </i></small>
-                                    <br/>
+                                                Ein neuer Beitrag von
+                                                <?php
+                                                echo $row['kuerzel']; ?>:
+                                                <br>
 
-                                    <?php
-                                    if ($row->bild_id == NULL) {
-
-                                    ?>
-                                    <div>
-
-                                        Ein neuer Beitrag von
+                                                <?php
+                                                echo $row['post'] ?>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
                                         <?php
-                                        echo $row['kuerzel']; ?>:
-                                        <br>
+                                    }
+                                    else {
+                                        ?>
+                                        <a class="dropdown-item"
+                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                            <small><i>
+                                                    <?php
+                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
+                                                    ?>
+                                                </i></small>
+                                            <br/>
 
+
+                                            <div>
+
+                                                <?php
+                                                echo $row['kuerzel']; ?>:
+                                                <br>
+                                                hat ein neues Bild hochgeladen
+                                        </a>
+                                        <div class="dropdown-divider"></div>
                                         <?php
-                                        echo $row['post'] ?>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <?php
-                                }else{
+                                    }
 
+                                    }
+                                }else {
+                                    echo 'Keine neuen Nachrichten.';
+                                }
                                 ?>
-                                <div>
 
-                                    <?php
-                                    echo $row['kuerzel']; ?>:
-                                    <br>
-
-                                    <?php
-                                    echo "hat ein neues Bild gepostet." ?>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-
-
-                                    <?php
-                                    }
-                                    }
-                                    } else {
-                                        echo 'Keine neuen Nachrichten.';
-                                    }
-                                    ?>
-
-                                </div>
+                            </div>
 
 
                         <li class="nav-item">
