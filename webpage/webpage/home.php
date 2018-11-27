@@ -33,24 +33,55 @@ session_start();
                 $query_3->execute(array(":channel" => "$channel"));
                 while ($row = $query_3->fetchObject()) {
                     echo "<h2>$row->name</h2>";
-                }
 
-                // Channel "General" als Startseite definieren
-                // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
-                if ($channel == "") {
-                    echo "<h2>General</h2>";
-                    $pdo = new PDO ($dsn, $dbuser, $dbpass);
-                    $sql = "SELECT post, kuerzel, date FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
-                    $query = $pdo->prepare($sql);
-                    $query->execute(array(":kuerzel" => "$kuerzel"));
 
-                    while ($zeile = $query->fetchObject()) {
-                       $kuerzel2= $zeile->kuerzel;
-                        echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . ($zeile->date);
-                        echo "<br><br>";
+                    // Channel "General" als Startseite definieren
+                    // Nur Posts von Personen, denen der Eingeloggte folgt werden ausgespielt
+                    if ($channel == "") {
+
+                        if ($row->bild_id == NULL) {
+                            echo "<div class='inhalt'>";
+                            echo "<div class='text'>";
+
+                            echo "<h2>General</h2>";
+                            $pdo = new PDO ($dsn, $dbuser, $dbpass);
+                            $sql = "SELECT post, kuerzel, date FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel = :kuerzel) ORDER BY posts.date DESC";
+                            $query = $pdo->prepare($sql);
+                            $query->execute(array(":kuerzel" => "$kuerzel"));
+
+                            while ($zeile = $query->fetchObject()) {
+                                $kuerzel2 = $zeile->kuerzel;
+                                echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . ($zeile->date);
+                                echo "<br><br>";
+                                echo "</div></div>";
+
+                            }
+                        }
+
+
+                        if ($row->post == NULL) {
+
+                            echo "<div class='inhalt'>";
+
+                            echo "<div class='text' >";
+                            $bildlink = $row->bild_id;
+
+
+                            echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
+                        }
+
+                        $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
+                        echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+                        if (file_exists($file_pointer)) {
+                            echo "<img src=\"$file_pointer\">";
+                        } else {
+                            echo "<img src=\"../profilbilder/profilbild.jpg\">";
+                        }
+                        echo "</div></div>";
+
                     }
-                }
 
+                }
                 //Posts aus Channel ausgeben
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -60,6 +91,7 @@ session_start();
 
                 while ($row = $query_3->fetchObject()) {
 
+                    // Ausgabe der Textposts
                     if ($row->bild_id == NULL){
                         echo "<div class='inhalt'>";
 
@@ -74,6 +106,7 @@ session_start();
                         }
                     }
 
+                    // Ausgabe der Bildposts
                     if ($row->post == NULL) {
 
                         echo "<div class='inhalt'>";
