@@ -23,7 +23,7 @@ $kuerzel = $_SESSION["kuerzel"];
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
     <!-- sweet-modal  -->
-    <link rel="stylesheet" href="path/to/sweetmodal/dist/min/jquery.sweet-modal.min.css" />
+    <link rel="stylesheet" href="path/to/sweetmodal/dist/min/jquery.sweet-modal.min.css"/>
     <script src="path/to/sweetmodal/dist/min/jquery.sweet-modal.min.js"></script>
 
     <!-- Bootstrap CSS CDN -->
@@ -169,55 +169,55 @@ $kuerzel = $_SESSION["kuerzel"];
                                         $rows[] = $row;
                                     foreach ($rows as $row) {
 
-                                    if ($row -> bild_id == NULL) {
-                                        ?>
-                                        <a class="dropdown-item"
-                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
-                                            <small><i>
+                                        if ($row['bild_id'] == NULL) {
+                                            ?>
+                                            <a class="dropdown-item"
+                                               href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                                <small><i>
+                                                        <?php
+                                                        echo date('F j, Y, g:i a', strtotime($row['date']));
+                                                        ?>
+                                                    </i></small>
+                                                <br/>
+
+
+                                                <div>
+
+                                                    Ein neuer Beitrag von
                                                     <?php
-                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
-                                                    ?>
-                                                </i></small>
-                                            <br/>
+                                                    echo $row['kuerzel']; ?>:
+                                                    <br>
 
-
-                                            <div>
-
-                                                Ein neuer Beitrag von
-                                                <?php
-                                                echo $row['kuerzel']; ?>:
-                                                <br>
-
-                                                <?php
-                                                echo $row['post'] ?>
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <?php
-                                    }
-                                    else {
-                                        ?>
-                                        <a class="dropdown-item"
-                                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
-                                            <small><i>
                                                     <?php
-                                                    echo date('F j, Y, g:i a', strtotime($row['date']));
-                                                    ?>
-                                                </i></small>
-                                            <br/>
+                                                    echo $row['post'] ?>
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <?php
+                                        }
+
+                                        elseif ($row['post'] == NULL) {
+                                            ?>
+                                            <a class="dropdown-item"
+                                               href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                                                <small><i>
+                                                        <?php
+                                                        echo date('F j, Y, g:i a', strtotime($row['date']));
+                                                        ?>
+                                                    </i></small>
+                                                <br/>
 
 
-                                            <div>
+                                                <div>
 
-                                                <?php
-                                                echo $row['kuerzel']; ?>:
-                                                <br>
-                                                hat ein neues Bild hochgeladen
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                        <?php
-                                    }
-
-                                    }
+                                                    <?php
+                                                    echo $row['kuerzel']; ?>
+                                                    <br>
+                                                    hat ein neues Bild hochgeladen
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <?php
+                                        }
+                                }
                                 }else {
                                     echo 'Keine neuen Nachrichten.';
                                 }
@@ -271,7 +271,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                             showCancelButton: true
                                         });
                                         //text noch nach untersuchen <> XCC string search method!
-                                        if (text && text.search("<") ==-1 ) {
+                                        if (text && text.search("<") == -1) {
                                             $.ajax({
                                                 type: "POST",
                                                 url: "../register/post_input.php",
@@ -289,7 +289,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                                 "success"
                                             )
                                             window.location.reload();
-                                        }else swal({
+                                        } else swal({
                                             type: 'error',
                                             title: 'Oops...',
                                             text: 'Ungültiger Text!',
