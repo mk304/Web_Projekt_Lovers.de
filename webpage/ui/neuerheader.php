@@ -104,7 +104,47 @@ $kuerzel = $_SESSION["kuerzel"];
 
         <ul class="list-unstyled CTAs">
             <li>
-                <a href="../webpage/profil.php" class="download">Profil Bearbeiten</a>
+                <button style="width:100%;" type="button" id="new-btn2" class="btn btn-light">Neuen Channel anlegen</button>
+                <script>
+
+                    $(document).ready(function () {
+                        $('#new-btn2').click(function () {
+
+                            (async function getText() {
+                                const {value: text} = await swal({
+                                    input: 'textarea',
+                                    inputPlaceholder: 'Bitte neuen Channelnamen eingeben',
+                                    showCancelButton: true
+                                });
+                                //text noch nach untersuchen <> XCC string search method!
+                                if (text && text.search("<") == -1) {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "../register/do_channel_input.php",
+                                        data: {
+                                            "channel": text
+
+                                        },
+
+                                    });
+                                    swal(
+                                        "Super!",
+                                        "Ein neuer Channel wurde erfolgreich angelegt!",
+                                        "success"
+                                    )
+                                    window.location.reload();
+                                } else swal({
+                                    type: 'error',
+                                    title: 'Oops...',
+                                    text: 'Ungültiger Text!',
+
+                                })
+                            })()
+                        });
+                    })
+
+
+                </script>
             </li>
             <li>
                 <a href="../register/logout.php" class="article">Abmelden</a>
@@ -162,6 +202,16 @@ $kuerzel = $_SESSION["kuerzel"];
                                     while ($row = $query->fetch(PDO::FETCH_ASSOC))
                                         $rows[] = $row;
                                     foreach ($rows as $row) {
+
+                                        ?>
+                                        <a class="dropdown-item"
+                                           href="../register/do_alle_gelesen.php?channel=<?php echo $row['channel'] ?>">
+                                            <div>
+                                                Alle neuen Nachrichten löschen
+                                                <br>
+                                                <div class="dropdown-divider"></div>
+                                        </a>
+                                        <?php
 
                                         if ($row['bild_id'] == NULL) {
                                             ?>
