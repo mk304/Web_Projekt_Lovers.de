@@ -108,9 +108,6 @@ html, body {
 
 }
 
-
-
-
 .navbar {
     opacity: 0.93;
 }
@@ -241,13 +238,6 @@ input#register-submit {
     margin-right: 50%;
     margin-left:50%;
 }
- .form-group{
-     min-height: 35px;
-    height: 6.5vh;
-
-
- }
-
 
 a {
     padding: 5%;
