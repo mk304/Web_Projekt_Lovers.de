@@ -119,6 +119,7 @@ $profilname = $_GET["profilname"];
 
 
         <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+            // Ausgabe der selbst verfassten Posts
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
             $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
@@ -132,7 +133,7 @@ $profilname = $_GET["profilname"];
 
                     echo "<div class='text'>";
 
-                    echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                    echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                     echo "</h4>";
                     if (($row->kuerzel) == $kuerzel) {
                         echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
