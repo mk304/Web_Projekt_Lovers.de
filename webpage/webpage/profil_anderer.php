@@ -185,6 +185,7 @@ $name= $row->vorname." " .$row->nachname;
         ?></div></div>
        </div>
     <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+        //Ausgabe der selbst verfassten Posts
         <?php
         $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
         $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
@@ -198,7 +199,7 @@ $name= $row->vorname." " .$row->nachname;
 
                 echo "<div class='text'>";
 
-                echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$profilname'>" . ($profilname) . "</a> um " . ($row->date);
+                echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$profilname'>" . ($profilname) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                 echo "</h4>";
 
             }

@@ -54,7 +54,7 @@ session_start();
 
 
 
-                                echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . ($zeile->date);
+                                echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                                 echo "<br><br>";
                                 echo "</div></div>";
 
@@ -99,7 +99,7 @@ session_start();
 
                         echo "<div class='text'>";
 
-                        echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . ($row->date);
+                        echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                         echo "</h4>";
                         if (($row->kuerzel) == $kuerzel) {
                             echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
