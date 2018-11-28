@@ -44,10 +44,7 @@ $_SESSION ["email"] = "$email";
 $_SESSION ["pw"] = "$pw";
 
 
-$options = [
-    'cost' => 5
-];
-$hash = password_hash($pw, PASSWORD_DEFAULT, $options);
+$hash = password_hash($pw, PASSWORD_DEFAULT);
 
 
 //Überprüfung, ob Kürzel in Datenbank bereits vergeben ist

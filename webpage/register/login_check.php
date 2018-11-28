@@ -27,40 +27,34 @@ session_start();
 
 include_once '../../userdata.php';
 
-
-$kuerzel = $_POST["kuerzel"];
-$pw = $_POST["pw"];
-
-$_SESSION["kuerzel"] = $kuerzel;
-$_SESSION["pw"] = $pw;
-
-$options = [
-    'cost' => 12
-];
-$hash = password_hash($pw, PASSWORD_DEFAULT, $options);
-
-
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-$sql = "SELECT pw FROM user WHERE kuerzel=:kuerzel";
 
-$statement = $pdo->prepare($sql);
-$statement->execute(array(":kuerzel" => "$kuerzel"));
+if (isset($_GET['login'])) {
+    $kuerzel = $_POST["kuerzel"];
+    $pw = $_POST["pw"];
 
-$row = $statement->fetchObject();
+    $sql = "SELECT * FROM user WHERE kuerzel=:kuerzel";
+    $statement = $pdo->prepare($sql);
+    $statement->execute(array(":kuerzel" => "$kuerzel"));
+    $row = $statement->fetchObject();
 
-if (password_verify($pw, $hash)) {
-    $_SESSION["log"] = "TRUE";
-    header("Location: ../webpage/home.php");
+//Überprüfung des Passworts
+    if ($row !== false && password_verify($pw, $row->pw)) {
+       
+        $_SESSION["kuerzel"] = $row->kuerzel;
+        header("Location: ../webpage/home.php");
 
 
-} else {
-    $_SESSION["log"] = "FALSE";
-    header("Location: ../home/Startseite.php");
+    } else {
+        $_SESSION["log"] = "FALSE";
+        echo "Fehler";
+    }
 }
-
-if (!$statement){
+if (!$statement) {
     echo "Prepare Fehler.";
+    die();
 }
+
 
 ?>
 
