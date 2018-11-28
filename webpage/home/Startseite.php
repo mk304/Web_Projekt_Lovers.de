@@ -148,8 +148,8 @@ if ($_GET['seite'] == "warning") {
                         </div>
 
 
-                        <form  id="login-form" class="dynamic-content"
-                              action="../register/login_check.php?login"
+                        <form id="login-form" class="dynamic-content"
+                              action="../register/login_check.php"
                               method="post"
                               role="form" style="display: none;">
                             <div class="form-group">
