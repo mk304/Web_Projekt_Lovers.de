@@ -1,6 +1,10 @@
 <meta http-equiv="refresh" content="1; url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">
 
-
+<!-- Sweetalert 2 -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../ui/sweetalert/sweetalert2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
 
 <?php
 
@@ -38,9 +42,14 @@ if(isset($_POST['submit'])){
 
 
             }else {
-                echo"Deine Datei ist zu groß! (Max Größe 1MB)";
-            }
-        }else {
+                echo"<script> swal({
+                type: 'error',
+                title: 'Deine Datei ist zu groß!', 
+                text: 'Max Größe 1MB',
+            </script>";}
+
+        }
+        else {
             echo"Leider gab es ein Probleim! :(";
         }
     }else {
