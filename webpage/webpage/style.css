@@ -178,13 +178,13 @@ h1 small {
     padding-top: 2%;
     height: auto;
     border-bottom: 50px;
-    background-color: #7386d5;
+    background-color: #bdc3c7;
 
 }
 .aboutme{
     padding-top: 6%;
     padding-bottom: 2%;
-    background-color: #859aef;
+    background-color: #bdc3c7;
 
 
 }
@@ -196,7 +196,7 @@ h1 small {
 
 .row {
     padding: 9%;
-    background-color: #7386d5;
+    background-color: #bdc3c7;
 
 }
 .skills h4{
@@ -253,7 +253,7 @@ h1 small {
     .one {
 
 
-        background-color: #7386d5;
+        background-color: #DDDDDD;
         border-radius: 10px;
         grid-column: 1 /1;
         grid-row: 1 / 5;
@@ -263,13 +263,13 @@ h1 small {
         padding-top: 2%;
         height: auto;
         border-bottom: 50px;
-        background-color: #7386d5;
+        background-color: #DDDDDD;
 
     }
     .aboutme{
         padding-top: 6%;
         padding-bottom: 2%;
-        background-color: #859aef;
+        background-color: #DDDDDD;
 
 
     }
@@ -277,11 +277,12 @@ h1 small {
       font-family: 'Noto Sans SC', sans-serif;
       font-size: 1vw;
       padding-left: 2.5%;
+      color: #484848;
   }
 
     .row {
         padding: 9%;
-        background-color: #7386d5;
+        background-color: #DDDDDD;
 
     }
     .skills h4{
@@ -290,7 +291,7 @@ h1 small {
         text-align: center;
         font-size: 2vw;
         padding-top: 2.5%;
-        color: snow;
+        color: #484848;
     }
 
     .column {
@@ -308,7 +309,7 @@ h1 small {
         text-align: center;
         font-family: 'Noto Sans SC', sans-serif;
         font-style: initial;
-        color: whitesmoke;
+        color: #484848;
         font-size: 2.7vw;
 
     }
@@ -335,7 +336,7 @@ h1 small {
         grid-template-rows: 1fr ;
         min-height: 80px;
         width: 60vw;
-        background-color: #6e81c9;
+        background-color: #bdc3c7;
         height: auto;
         margin-top: 3%;
         padding-top: 7px;
@@ -404,7 +405,7 @@ h1 small {
     .text button{
         float: right;
         background: #fff;
-        color: #7386d5;
+        color: #bdc3c7;
         text-align: center;
         font-size: 0.8em !important;
         display: block;
@@ -414,7 +415,7 @@ h1 small {
     .post_bearbeiten2 {
         float: right;
         background: #fff;
-        color: #7386D5;
+        color: #bdc3c7;
         text-align: center;
         font-size: 0.8em !important;
         display: block;

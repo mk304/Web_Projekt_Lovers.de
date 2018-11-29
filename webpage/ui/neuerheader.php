@@ -169,7 +169,7 @@ $kuerzel = $_SESSION["kuerzel"];
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ml-auto ">
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">Nachrichten
@@ -184,7 +184,7 @@ $kuerzel = $_SESSION["kuerzel"];
 
 
                                 ?>
-                                <span class="badge badge-primary"><?php echo $anzahl_notification ?></span>
+                                <span class="badge badge-danger"><?php echo $anzahl_notification ?></span>
 
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -287,7 +287,7 @@ $kuerzel = $_SESSION["kuerzel"];
                               method="post">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                                    name="search">
-                            <button class="btn btn-primary" type="submit">Search</button>
+                            <button class="btn btn-danger" type="submit">Search</button>
                         </form>
                         <li class="nav-item">
 
@@ -309,9 +309,37 @@ $kuerzel = $_SESSION["kuerzel"];
 <!-- Button verstecken im General -->
                         <?php if ($_GET["channel"] == "") {
 
-                        }
+         }
                         else {
                             ?>
+
+                        <button type="button" id="new-btn" class="btn btn-danger ">Beitrag Erstellen</button>
+                        <script>
+                            var kuerzel = sessionStorage.getItem('kuerzel');
+                            var channel = sessionStorage.getItem('channel');
+                            var status = "unread";
+
+                            $(document).ready(function () {
+                                $('#new-btn').click(function () {
+
+                                    (async function getText() {
+                                        const {value: text} = await swal({
+                                            input: 'textarea',
+                                            inputPlaceholder: 'Schreibe deine Nachricht hier...',
+                                            showCancelButton: true
+                                        });
+                                        //text noch nach untersuchen <> XCC string search method!
+                                        if (text && text.search("<") == -1) {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "../register/post_input.php",
+                                                data: {
+                                                    "post": text,
+                                                    "kuerzel": kuerzel,
+                                                    "channel": channel,
+                                                    "status": status
+                                                },
+
 
                             <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
 
@@ -380,13 +408,13 @@ $kuerzel = $_SESSION["kuerzel"];
 
                                 <form action="../register/bilder_posts.php" method="post" enctype="multipart/form-data">
 
-                                    <div class="btn btn-primary btn-sm" style="height: 39px">
+                                    <div class="btn btn-danger btn-sm" style="height: 39px">
                                         <input style="	width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;} "
                                                type='file' name="file" id="imageUpload3" accept=".jpg, .jpeg"/>
                                         <label name="" for="imageUpload3" style="margin-top: 4px;"> Bild
                                             auswählen</label>
 
-                                        <button id="ajax" type="submit" class="btn btn-primary" name="submit"
+                                        <button id="ajax" type="submit" class="btn btn-danger" name="submit"
                                                 for="imageUpload3" style="height: 30px; margin-top: -5px;">Hochladen
                                         </button>
 
