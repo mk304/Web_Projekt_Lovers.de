@@ -54,20 +54,21 @@ session_start();
                                 echo "<a ><h3>" . ($zeile->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                                 echo "</h4>";
 
-                            }}
-                            while ($zeile = $query->fetchObject()) {
+                            }
+                           
 
                             if ($zeile->post == NULL) {
+
 
 
                                 $bildlink= $zeile-> bild_id;
 
 
                                 echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
-
                                 echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                                 echo "<br><br>";
 
+                            }
 
                             $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
                             echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
