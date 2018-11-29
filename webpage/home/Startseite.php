@@ -34,12 +34,13 @@ if ($_SESSION["log"] == "TRUE") {
 if ($_GET['seite'] == "warning") {
     $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Sie sind bereits registriert. Bitte loggen Sie sich mit Ihrem HdM-Kürzel ein.');</script>";
-    echo "<script type='text/javascript'>$(document).ready(function() {
-            $(\"#login-form\").style.display='block';
-            $(\"#register-form\").style.display='none';
-            $('#register-form-link').removeClass('active');
-            $('#login-form-link').addClass('active');
-        }</script>";
+
+
+}
+
+if ($_GET['seite'] == "warning_login") {
+    $message = "wrong answer";
+    echo "<script type='text/javascript'>swal('Ungültiger Benutzername oder Passwort.');</script>";
 
 }
 
@@ -66,7 +67,7 @@ if ($_GET['seite'] == "warning") {
         <div class="login">
             <div class="row " style="height: auto">
 
-                <?php if ($_GET["seite"] == "" or $_GET["seite"] == "warning") {
+                <?php if ($_GET["seite"] == "" or $_GET["seite"] == "warning" or $_GET['seite'] == "warning_login") {
 
                     ?>
 
@@ -147,7 +148,6 @@ if ($_GET['seite'] == "warning") {
 
                         </div>
 
-
                         <form  id="login-form" class="dynamic-content"
                                action="../register/login_check.php?login"
                                method="post"
@@ -183,7 +183,7 @@ if ($_GET['seite'] == "warning") {
                         </form>
                     </div>
                     </form>
-                <?php } elseif ($_GET["seite"] == "skills") {
+                <?php }elseif ($_GET["seite"] == "skills") {
 
                     //zweite div für Checkboxen der Skills
 

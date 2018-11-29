@@ -45,14 +45,16 @@ $statement->execute(array(":kuerzel" => "$kuerzel"));
 
 $row = $statement->fetchObject();
 
+
+
 if (password_verify($pw, $row->pw)) {
     $_SESSION["log"] = "TRUE";
     header("Location: ../webpage/home.php");
 
 
 } else {
-    $_SESSION["log"] = "FALSE";
-    header("Location: ../home/Startseite.php");
+    session_destroy();
+    header("Location: ../home/Startseite.php?seite=warning_login");;
 }
 
 if (!$statement){
