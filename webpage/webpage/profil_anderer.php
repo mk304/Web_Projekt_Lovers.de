@@ -198,7 +198,7 @@ $name= $row->vorname." " .$row->nachname;
 
                 echo "<div class='text'>";
 
-                echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$profilname'>" . ($profilname) . "</a> um " . ($row->date);
+                echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$profilname'>" . ($profilname) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                 echo "</h4>";
 
             }
