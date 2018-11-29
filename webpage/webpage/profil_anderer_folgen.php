@@ -15,6 +15,11 @@ $statement = $pdo->prepare($sql);
 $statement->execute(array("$kuerzel", "$profilname"));
 
 $row = $statement->fetchObject();
+
+$stmt = $pdo->prepare("UPDATE notification SET $kuerzel ='read' WHERE post= ANY(SELECT posts_id FROM posts WHERE kuerzel=:profilname)");
+$stmt->execute(array(":kuerzel"=>"$profilname"));
+
 header("Location: profil_anderer.php?profilname=$profilname");
 
 ?>
+
