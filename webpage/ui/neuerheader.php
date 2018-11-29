@@ -185,8 +185,8 @@ $kuerzel = $_SESSION["kuerzel"];
                                 //auszählen der Anzahl der ungelesenen Nachrichten
                                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
 
-                                $statement = $pdo->prepare("SELECT * from notification WHERE $kuerzel IS NULL");
-                                $statement->execute();
+                                $statement = $pdo->prepare("SELECT * from notification WHERE $kuerzel IS NULL AND post =ANY (SELECT posts_id FROM posts WHERE kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel=:kuerzel))");
+                                $statement->execute(array(":kuerzel"=>"$kuerzel"));
                                 $anzahl_notification = $statement->rowCount();
 
 
