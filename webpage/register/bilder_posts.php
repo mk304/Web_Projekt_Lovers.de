@@ -65,13 +65,13 @@ if (!$stmt->execute()) {
 
 
 // eigene Posts sollen als "gelesen" markiert werden, damit diese nicht als neue Nachrichten angezeigt werden
-$bild = uniqid('', true).$kuerzel.".".$fileActualExt;
 
-$sql3 = "UPDATE notification SET $kuerzel ='read' WHERE post= (SELECT posts_id FROM posts WHERE bild_id=:bild)";
+$sql3 = "UPDATE notification SET $kuerzel ='read' WHERE post= (SELECT posts_id FROM posts WHERE bild_id=:bild_id)";
 
-$statement3 = $pdo2->prepare($sql3);
+$statement3 = $pdo->prepare($sql3);
 
-$statement3->execute(array(":bild"=>"$bild"));
+$statement3->execute(array(":bild_id"=>"$bild_id"));
+
 
 
 
