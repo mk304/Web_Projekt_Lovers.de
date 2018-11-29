@@ -12,13 +12,12 @@ session_start();
 <link rel="stylesheet" href="posts.css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<div class="container" style=" height: 90vh;
-    overflow: scroll;">
+<div class="container" style=" min-width: 100%; max-height: 95vh; overflow: auto;">
     <div class="row">
         <div class="col-md-8">
 
             <br>
-            <ul class="alleposts" >
+            <ul class="alleposts " style="min-width: 80vmax" >
 
 
                 <?php
