@@ -200,10 +200,10 @@ $kuerzel = $_SESSION["kuerzel"];
                                 if ($anzahl_notification > 0) {
 
 
-                                    $sql = "SELECT post, date, kuerzel, channel, posts_id, bild_id from posts where posts_id =
-                                                ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) ORDER BY date DESC ";
+                                    $sql = "SELECT post, date, kuerzel, channel, posts_id, bild_id from posts where posts_id = 
+                                                ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) AND kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel=:kuerzel) ORDER BY date DESC ";
                                     $query = $pdo->prepare($sql);
-                                    $query->execute();
+                                    $query->execute(array(":kuerzel"=>"$kuerzel"));
                                     $rows = array();
                                     while ($row = $query->fetch(PDO::FETCH_ASSOC))
                                         $rows[] = $row;
