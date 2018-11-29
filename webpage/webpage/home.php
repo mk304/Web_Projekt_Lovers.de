@@ -138,7 +138,7 @@ session_start();
                         var post_id = sessionStorage.getItem('id');
 
                         $(document).ready(function () {
-                            $('.post_bearbeiten').click(function () {
+                            $('.download').click(function () {
 
                                 (async function getText() {
                                     const {value: text} = await swal({
