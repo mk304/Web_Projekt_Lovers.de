@@ -46,31 +46,31 @@ session_start();
                         $query->execute(array(":kuerzel" => "$kuerzel"));
                         while ($zeile = $query->fetchObject()) {
 
-                            if ($row->bild_id == NULL) {
+                            if ($row->bild_id == NULL){
                                 echo "<div class='inhalt'>";
+
                                 echo "<div class='text'>";
 
+                                echo "<a ><h3>" . ($zeile->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
+                                echo "</h4>";
 
-
-
-
-                                echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
-                                echo "<br><br>";
-
-
-                            }
-
+                            }}
+                            while ($zeile = $query->fetchObject()) {
 
                             if ($zeile->post == NULL) {
 
-                                $bildlink = $zeile->bild_id;
+
+                                $bildlink= $zeile-> bild_id;
 
 
                                 echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
                             }
 
-                            $file_pointer = '../profilbilder/profilbild' . ($zeile->kuerzel) . '.jpg';
-                            echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>";
+                            $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
+                            echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+
+
+
                             if (file_exists($file_pointer)) {
                                 echo "<img src=\"$file_pointer\">";
                             } else {
@@ -164,42 +164,8 @@ session_start();
                     <?php
                 }
 
-                //Bilder aus Channel ausgeben;
-
-                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-                $sql_4 = "SELECT * from postimg WHERE channel=:channel  ORDER BY postimg.date DESC";
-                $query_4 = $pdo->prepare($sql_4);
-                $query_4->execute(array(":channel" => "$channel"));
-
-                while ($zeile = $query_4->fetchObject()) {
-
-                    echo "<div class='inhalt'>";
-
-                    echo "<div class='text' >";
-                    $bildlink= $zeile-> bild_id;
 
 
-                    echo "</h4>";
-
-
-                    echo "<img class='bild'   src='../bildupload/$bildlink'>";
-
-
-
-                    if (($row->kuerzel) == $kuerzel) {
-                        echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
-                        echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
-
-                    }
-                    $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
-                    echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
-                    if (file_exists($file_pointer)) {
-                        echo "<img src=\"$file_pointer\">";
-                    } else {
-                        echo "<img src=\"../profilbilder/profilbild.jpg\">";
-                    }
-                    echo "</div></div>";
-                }
                 ?>
 
             </ul>
