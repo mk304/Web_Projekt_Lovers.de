@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
 
     if (in_array($fileActualExt, $allowed)){
         if($fileError === 0){
-            if($fileSize< 1000000){
+            if($fileSize< 5000000){
                     $fileNameNew = uniqid('', true).$kuerzel.".".$fileActualExt;
                     $fileDestination = "../bildupload/".$fileNameNew;
                     move_uploaded_file($fileTmpName,$fileDestination);
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
                 header("Location: ../webpage/home.php?channel=$channel");
             }else {
-                echo"Deine Datei ist zu groß! (Max Größe 1MB)";
+                echo"Deine Datei ist zu groß! (Max Größe 5MB)";
             }
         }else {
             echo"Leider gab es ein Problem! :(";

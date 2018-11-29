@@ -55,7 +55,7 @@ session_start();
                                 echo "</h4>";
 
                             }
-                           
+
 
                             if ($zeile->post == NULL) {
 
@@ -65,8 +65,7 @@ session_start();
 
 
                                 echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
-                                echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
-                                echo "<br><br>";
+                                echo ($zeile->post);
 
                             }
 

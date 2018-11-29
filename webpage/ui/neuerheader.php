@@ -71,20 +71,13 @@ $kuerzel = $_SESSION["kuerzel"];
     <!-- Sidebar Holder -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Web_Projekt_
-                Lovers.de</h3>
+            <h3>HdM-Connect</h3>
         </div>
 
         <ul class="list-unstyled components">
             <p>Channels</p>
             <li class="active">
-            <li class="nav-item ">
-                <a class="nav-link  " href="#">
-                    <i class="fa fa-envelope-o ">
-                        <span class="badge badge-danger ">11</span>
-                    </i>
-                    Messages
-                </a>
+
                 <form id="channel_id" method="get">
                     <?php
 
