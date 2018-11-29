@@ -56,8 +56,6 @@ session_start();
 
                                 echo ($zeile->post) . "<br>" . " schrieb <a href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                                 echo "<br><br>";
-
-
                             }
 
 
