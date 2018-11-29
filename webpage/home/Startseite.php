@@ -34,7 +34,7 @@ if ($_SESSION["log"] == "TRUE") {
 if ($_GET['seite'] == "warning") {
     $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Sie sind bereits registriert. Bitte loggen Sie sich mit Ihrem HdM-Kürzel ein.');</script>";
-   echo "<script type='text/javascript'>$(document).ready(function() {
+    echo "<script type='text/javascript'>$(document).ready(function() {
             $(\"#login-form\").style.display='block';
             $(\"#register-form\").style.display='none';
             $('#register-form-link').removeClass('active');
@@ -64,7 +64,7 @@ if ($_GET['seite'] == "warning") {
     <div class="box2">
 
         <div class="login">
-            <div class="row">
+            <div class="row " style="height: auto">
 
                 <?php if ($_GET["seite"] == "" or $_GET["seite"] == "warning") {
 
@@ -92,7 +92,7 @@ if ($_GET['seite'] == "warning") {
                             <!-- Formular Registreirung -->
                             <form action="../register/register.php" method="post">
                                 <div class="panel-body">
-                                    <div class="row">
+                                    <div class="row" >
 
                                         <form action="../register/do_input_bilder.php" method="post">
                                             <div class="col-lg-12" >
@@ -129,10 +129,10 @@ if ($_GET['seite'] == "warning") {
                                                         <div class="row">
                                                             <div class="col-sm-6 col-sm-offset-3">
                                                                 <input type="submit" name="register-submit"
-                                                                       id="register-submit"
+
                                                                        tabindex="4" class="form-control btn btn-login"
                                                                        value="Weiter"
-                                                                       href="#">
+
                                                             </div>
 
                                                         </div>
@@ -148,10 +148,10 @@ if ($_GET['seite'] == "warning") {
                         </div>
 
 
-                        <form id="login-form" class="dynamic-content"
-                              action="../register/login_check.php"
-                              method="post"
-                              role="form" style="display: none;">
+                        <form  id="login-form" class="dynamic-content"
+                               action="../register/login_check.php?login"
+                               method="post"
+                               role="form" style="display: none;">
                             <div class="form-group">
                                 <input type="text" name="kuerzel" placeholder="HdM Kürzel eingeben"
                                        required="required"
@@ -164,7 +164,7 @@ if ($_GET['seite'] == "warning") {
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6 col-sm-offset-3">
-                                        <input type="submit" name="login-submit" id="login-submit"
+                                        <input type="submit" name="login-submit"
                                                tabindex="4" class="form-control btn btn-login"
                                                value="Log In"
                                                onclick="sessionStorage.setItem('kuerzel');">
@@ -172,12 +172,10 @@ if ($_GET['seite'] == "warning") {
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="row " style=" height: 90vh;
-    overflow: scroll;">
+                                <div class="row ">
                                     <div class="col-lg-12">
                                         <div class="text-center">
-                                            <a href="https://phpoll.com/recover" tabindex="5"
-                                               class="forgot-password">Forgot Password?</a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -203,29 +201,29 @@ if ($_GET['seite'] == "warning") {
                     <form style="width: 100%;  height: 500px;
     overflow: scroll;" action="../register/do_skills_input.php"  method="post" ">
 
-                            <h4 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h4>
-                            <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
-                                echo "   <label class='container5' >
+                    <h4 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h4>
+                    <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
+                        echo "   <label class='container5' >
                                          <input class='input' type='checkbox' checked=\"checked\" name='" . $zeile['skill'] . "'value='" . $zeile['id'] . "'>" . "<h3>".
-                                    $zeile['skill'] . "</h3>"."<span class=\"checkmark\"></span>
+                            $zeile['skill'] . "</h3>"."<span class=\"checkmark\"></span>
                                          </label><br>";
-                            }
+                    }
 
-                            if (!$query){
-                                echo "Fehler.";
-                            }?>
-                            <div class="form-group">
-                                <input type="submit" name="register-submit"
-                                       id="register-submit2"
-                                       tabindex="4" class="input"
-                                       value="Weiter"
-                                       href="#">
-                            </div>
+                    if (!$query){
+                        echo "Fehler.";
+                    }?>
+                    <div class="form-group">
+                        <input type="submit" name="register-submit"
+
+                               tabindex="4" class="input"
+                               value="Weiter"
+                               href="#">
+                    </div>
                     </form>
 
 
 
-                <?php
+                    <?php
                 }
                 ?>
 

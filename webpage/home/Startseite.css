@@ -242,6 +242,16 @@ input#register-submit {
 a {
     padding: 5%;
 }
+ .form-group{
+     min-height: 35px;
+     height: 6.5vh;
+
+
+ }
+ .form-group input{
+     min-height: 25px;
+     height: 5.7vh;
+ }
 
 .panel-heading {
     margin-left: 5%;
