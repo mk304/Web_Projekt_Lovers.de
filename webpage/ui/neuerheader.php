@@ -306,59 +306,74 @@ $kuerzel = $_SESSION["kuerzel"];
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
+<!-- Button verstecken im General -->
+                        <?php if ($_GET["channel"] == "") {
 
-                        <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
-                        <script>
-                            var kuerzel = sessionStorage.getItem('kuerzel');
-                            var channel = sessionStorage.getItem('channel');
-                            var status = "unread";
+                        }
+                        else {
+                            ?>
 
-                            $(document).ready(function () {
-                                $('#new-btn').click(function () {
+                            <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
 
-                                    (async function getText() {
-                                        const {value: text} = await swal({
-                                            input: 'textarea',
-                                            inputPlaceholder: 'Schreibe deine Nachricht hier...',
-                                            showCancelButton: true
-                                        });
-                                        //text noch nach untersuchen <> XCC string search method!
-                                        if (text && text.search("<") == -1) {
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "../register/post_input.php",
-                                                data: {
-                                                    "post": text,
-                                                    "kuerzel": kuerzel,
-                                                    "channel": channel,
-                                                    "status": status
-                                                },
+                            <script>
+                                var kuerzel = sessionStorage.getItem('kuerzel');
+                                var channel = sessionStorage.getItem('channel');
+                                var status = "unread";
 
+                                $(document).ready(function () {
+                                    $('#new-btn').click(function () {
+
+                                        (async function getText() {
+                                            const {value: text} = await swal({
+                                                input: 'textarea',
+                                                inputPlaceholder: 'Schreibe deine Nachricht hier...',
+                                                showCancelButton: true
                                             });
-                                            swal(
-                                                "Super!",
-                                                "Dein Beitrag wurde erfolgreich gespeichert!",
-                                                "success"
-                                            )
-                                            window.location.reload();
-                                        } else swal({
-                                            type: 'error',
-                                            title: 'Oops...',
-                                            text: 'Ungültiger Text!',
+                                            //text noch nach untersuchen <> XCC string search method!
+                                            if (text && text.search("<") == -1) {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "../register/post_input.php",
+                                                    data: {
+                                                        "post": text,
+                                                        "kuerzel": kuerzel,
+                                                        "channel": channel,
+                                                        "status": status
+                                                    },
 
-                                        })
-                                    })()
-                                });
-                            })
+                                                });
+                                                swal(
+                                                    "Super!",
+                                                    "Dein Beitrag wurde erfolgreich gespeichert!",
+                                                    "success"
+                                                )
+                                                window.location.reload();
+                                            } else swal({
+                                                type: 'error',
+                                                title: 'Oops...',
+                                                text: 'Ungültiger Text!',
+
+                                            })
+                                        })()
+                                    });
+                                })
 
 
-                        </script>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        <li class="nav-item">
+                            </script>
+                            <?php
+                        }
 
-                             
-                        </li>
+
+                        if ($_GET["channel"] == "") {
+
+                        }
+                        else {
+
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"></a>
+                            <li class="nav-item">
+                            
                         <li class="nav-item">
 
                             <div class="avatar-upload">
@@ -382,6 +397,9 @@ $kuerzel = $_SESSION["kuerzel"];
 
 
                         </li>
+                        <?php
+                        }
+                        ?>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>

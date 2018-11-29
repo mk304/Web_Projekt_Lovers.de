@@ -49,7 +49,7 @@ $row = $statement->fetchObject();
 
 if (password_verify($pw, $row->pw)) {
     $_SESSION["log"] = "TRUE";
-    header("Location: ../webpage/home.php");
+    header("Location: ../webpage/home.php?channel=");
 
 
 } else {

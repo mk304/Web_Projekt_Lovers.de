@@ -20,7 +20,7 @@ while ($row = $query->fetchObject()) {
     }
 }
 
-header("Location: ../webpage/home.php");
+header("Location: ../webpage/home.php?channel=");
 
 
 ?>
