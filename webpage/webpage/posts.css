@@ -14,7 +14,7 @@
 
     min-width: 60vw;
     width: auto;
-    background-color: #6e81c9;
+    background-color: #DDDDDD;
     height: auto;
     border-radius: 20px;
 
@@ -35,10 +35,10 @@
     max-width: 100px;
     border-image: 30 round;
     border-radius: 10%;
-    border:2px solid #167ffb;
+    border:2px solid #F8F8F8;
     border-width:2px;
     border-style:solid;
-    border-color:#167ffb;
+    border-color:#F8F8F8;
 }
 .profil_bild_post{
     margin: auto;
@@ -73,13 +73,13 @@
     padding-top: 20px;
     padding-left: 20px;
     font-family: 'Montserrat', sans-serif;
-    color: whitesmoke;
+    color: #484848;
     font-size: 5vw;
 
 }
 .text h4{
     font-family: 'Montserrat', sans-serif;
-    color: #212529;
+    color: #6c757d;
     font-size: 14px;
     margin: auto;
     width: auto;
@@ -87,7 +87,7 @@
 .text button{
     float: right;
     background: #fff;
-    color: #7386D5;
+    color: #bdc3c7;
     text-align: center;
     font-size: 0.8em !important;
     display: block;
@@ -97,7 +97,7 @@
 .post_bearbeiten2 {
     float: right;
     background: #fff;
-    color: #7386D5;
+    color: #bdc3c7;
     text-align: center;
     font-size: 0.8em !important;
     display: block;
@@ -122,7 +122,7 @@
         grid-template-rows: 1fr ;
         min-height: 80px;
         width: 60vw;
-        background-color: #6e81c9;
+        background-color: rgb(221, 221, 221);
         height: auto;
         margin-top: 3%;
 
@@ -141,10 +141,10 @@
         max-width: 39px;
         border-image: 30 round;
         border-radius: 10%;
-        border:2px solid #167ffb;
+        border:2px solid #F8F8F8;
         border-width:2px;
         border-style:solid;
-        border-color:#167ffb;
+        border-color:#F8F8F8;
 
     }
 
@@ -162,10 +162,10 @@
         max-width: 100px;
         border-image: 30 round;
         border-radius: 10%;
-        border:2px solid #167ffb;
+        border:2px solid #f8f8f8;
         border-width:2px;
         border-style:solid;
-        border-color:#167ffb;
+        border-color:#F8F8F8;
     }
 
     .profil_bild_post{
@@ -203,14 +203,14 @@
         padding-top: 20px;
         padding-left: 20px;
         font-family: 'Montserrat', sans-serif;
-        color: whitesmoke;
+        color: rgba(60, 60, 60, 0.93);
         font-size: 4vw;
 
 
     }
     .text h4{
         font-family: 'Montserrat', sans-serif;
-        color: #212529;
+        color: #6c757d;
         padding-bottom: 10px;
         font-size: 14px;
         margin: auto;
@@ -221,7 +221,7 @@
     .text button{
         float: right;
         background: #fff;
-        color: #7386D5;
+        color: #95a5a6;
         text-align: center;
         font-size: 0.8em !important;
         display: block;
@@ -231,7 +231,7 @@
     .post_bearbeiten2 {
         float: right;
         background: #fff;
-        color: #7386D5;
+        color: #bdc3c7;
         text-align: center;
         font-size: 0.8em !important;
         display: block;
