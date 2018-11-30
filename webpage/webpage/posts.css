@@ -10,10 +10,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr ;
-
-
-    min-width: 60vw;
-
+    width: 90vw;
 
     height: auto;
     border-radius: 6px;

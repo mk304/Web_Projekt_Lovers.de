@@ -72,14 +72,14 @@ h1 small {
   width: 100%;
   height: 38vh;
   position: relative;
-    border-radius: 40px;
+    border-radius: 10px;
   border: 6px solid #F8F8F8;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 .avatar-upload .avatar-preview > div {
   width: 100%;
   height: 100%;
-    border-radius: 40px;
+    border-radius: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -111,8 +111,8 @@ h1 small {
 }
 .avatar-upload2 .avatar-edit2 input + label {
     display: inline-block;
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     margin-bottom: 0;
     border-radius: 100%;
     background: #FFFFFF;
@@ -157,12 +157,10 @@ h1 small {
 
 .wrapper1 {
     display: grid;
-
-
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr ;
     margin-top: 10%;
-    height: 70%;
+
     padding-top: 15%;
 
 }
@@ -170,13 +168,13 @@ h1 small {
 .one {
 
     border-color: snow;
-    border-radius: 10px;
+    border-radius: 5px;
     grid-column: 1 / 5;
     grid-row: 1 / 1;
 }
 .infobox{
     padding-top: 2%;
-    height: auto;
+
     border-bottom: 50px;
     background-color: #bdc3c7;
 
@@ -199,8 +197,8 @@ h1 small {
     background-color: #bdc3c7;
 
 }
-.skills h4{
 
+.skills h4{
     font-family: 'Noto Sans SC', sans-serif;
     text-align: center;
     font-size: 3vw;
@@ -210,7 +208,6 @@ h1 small {
 
 .column {
     float: left;
-
     margin: 0.3vw;
 }
 .row::after {
@@ -225,14 +222,11 @@ h1 small {
     font-style: initial;
     color: whitesmoke;
     font-size: 9vw;
-
 }
-
 
 .two {
     margin-top: 2%;
-
-    border-radius: 10px;
+    border-radius: 5px;
     grid-column: 1 / 5;
     grid-row: 2 / 5;
 }
@@ -253,8 +247,8 @@ h1 small {
     .one {
 
 
-        background-color: #DDDDDD;
-        border-radius: 10px;
+        background-color: #BDC3C7;
+
         grid-column: 1 /1;
         grid-row: 1 / 5;
 
@@ -263,13 +257,13 @@ h1 small {
         padding-top: 2%;
         height: auto;
         border-bottom: 50px;
-        background-color: #DDDDDD;
+        background-color: #BDC3C7;
 
     }
     .aboutme{
         padding-top: 6%;
         padding-bottom: 2%;
-        background-color: #DDDDDD;
+        background-color: #BDC3C7;
 
 
     }
@@ -282,7 +276,7 @@ h1 small {
 
     .row {
         padding: 9%;
-        background-color: #DDDDDD;
+        background-color: #BDC3C7;
 
     }
     .skills h4{
@@ -321,7 +315,7 @@ h1 small {
         margin-top: 0%;
         margin-left: 2%;
         border-color: snow;
-        border-radius: 10px;
+        border-radius: 5px;
         grid-column: 2 / 5;
         grid-row: 1 / 5;
     }}
@@ -341,7 +335,7 @@ h1 small {
         margin-top: 3%;
         padding-top: 7px;
         padding-bottom: 7px;
-        border-radius: 20px;
+        border-radius: 5px;
         border: 6px solid #F8F8F8;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     }
