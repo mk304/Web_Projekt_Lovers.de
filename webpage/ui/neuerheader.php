@@ -340,35 +340,6 @@ $kuerzel = $_SESSION["kuerzel"];
                                                     "status": status
                                                 },
 
-
-                            <button type="button" id="new-btn" class="btn btn-primary ">Beitrag Erstellen</button>
-
-                            <script>
-                                var kuerzel = sessionStorage.getItem('kuerzel');
-                                var channel = sessionStorage.getItem('channel');
-                                var status = "unread";
-
-                                $(document).ready(function () {
-                                    $('#new-btn').click(function () {
-
-                                        (async function getText() {
-                                            const {value: text} = await swal({
-                                                input: 'textarea',
-                                                inputPlaceholder: 'Schreibe deine Nachricht hier...',
-                                                showCancelButton: true
-                                            });
-                                            //text noch nach untersuchen <> XCC string search method!
-                                            if (text && text.search("<") == -1) {
-                                                $.ajax({
-                                                    type: "POST",
-                                                    url: "../register/post_input.php",
-                                                    data: {
-                                                        "post": text,
-                                                        "kuerzel": kuerzel,
-                                                        "channel": channel,
-                                                        "status": status
-                                                    },
-
                                                 });
                                                 swal(
                                                     "Super!",
