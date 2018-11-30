@@ -3,6 +3,7 @@ session_start();
 
 include_once '../../userdata.php';
 include_once '../ui/neuerheader.php';
+include_once '../register/upload.php';
 
 $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
@@ -41,7 +42,6 @@ $profilname = $_GET["profilname"];
 
     <div class="container2">
         <div class="avatar-upload2">
-            <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
                 <div class="avatar-edit2">
                     <input type='file' name="file" id="imageUpload2" accept=".jpg, .jpeg"/>
                     <label name="2" for="imageUpload2"></label>
@@ -60,13 +60,8 @@ $profilname = $_GET["profilname"];
                     ?>
 
                 </div>
-                <button type="submit" name="submit" id="imageUpload2btn" for="imageUpload2">Upload
-                </button>
-            </form>
         </div>
     </div>
-
-
 
 
     <div class="wrapper1">
