@@ -28,7 +28,11 @@ session_start();
 
 
 if ($_SESSION["log"] == "TRUE") {
-    //header("Location: ../webpage/home.php");
+    header("Location: ../webpage/home.php");
+}
+
+if ($_GET['seite'] == "login_fail"){
+    echo "<script type='text/javascript'>swal('Sie sind noch nicht eingeloggt. Bitte loggen Sie sich mit Ihrem HdM-Kürzel ein.');</script>";
 }
 
 if ($_GET['seite'] == "warning") {
@@ -67,7 +71,7 @@ if ($_GET['seite'] == "warning_login") {
         <div class="login">
             <div class="row " style="height: auto">
 
-                <?php if ($_GET["seite"] == "" or $_GET["seite"] == "warning" or $_GET['seite'] == "warning_login") {
+                <?php if ($_GET["seite"] == "" or $_GET["seite"] == "warning" or $_GET['seite'] == "warning_login" or $_GET['seite'] == "login_fail") {
 
                     ?>
 

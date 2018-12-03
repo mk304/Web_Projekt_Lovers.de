@@ -1,10 +1,8 @@
 <?php
 
 
-include_once '../register/login_test.php';
 include_once '../ui/neuerheader.php';
 include_once '../../userdata.php';
-
 session_start();
 
 

@@ -2,6 +2,7 @@
 
 
 include_once '../../userdata.php';
+include_once '../register/login_test.php';
 session_start();
 $kuerzel = $_SESSION["kuerzel"];
 
