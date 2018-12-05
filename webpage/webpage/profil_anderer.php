@@ -147,7 +147,7 @@ $name= $row->vorname." " .$row->nachname;
             if ($profilname == $row->folgt)
             {  // Button wird zu "Freunde" -> keine Weiterleitung hinterlegt
                 echo '<button id="entfolgen" onclick="location.href=\'profil_anderer_entfolgen.php\'" type="button" class="btn btn-outline-light">';
-                echo " du bist mit $name befreundet</button>";
+                echo " Freunde</button>";
             }
 
             else //Button wird zu "Folgen" und Weiterleitung zum Datenbankeintrag

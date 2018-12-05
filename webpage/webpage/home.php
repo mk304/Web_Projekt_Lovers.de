@@ -48,9 +48,8 @@ session_start();
 
                                 echo "<div class='text'>";
 
-                                echo "<a ><h3>" . ($zeile->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
+                                echo "<a ><h3>" . ($zeile->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$zeile->kuerzel'>" . ($zeile->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($zeile->date));
                                 echo "</h4>";
-
                             }
 
 
