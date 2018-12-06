@@ -4,10 +4,6 @@ body {
 }
 .container {
     min-width: 100%;
-
-
-
-
 }
 h1 {
   font-size: 20px;
@@ -20,16 +16,12 @@ h1 small {
   padding-top: 8px;
   color: gray;
 }
-
 .avatar-upload {
   position: relative;
-
-
 }
 .avatar-upload .avatar-edit {
   position: absolute;
   right: 12px;
-
   z-index: 1;
   top: 10px;
 }
@@ -39,7 +31,6 @@ h1 small {
 }
 .avatar-upload .avatar-edit input + label {
   display: inline-block;
-
   width: 34px;
   height: 34px;
   margin-bottom: 0;
@@ -60,7 +51,6 @@ h1 small {
   content: "\f040";
   font-family: 'FontAwesome';
   color: #757575;
-
   position: absolute;
   top: 10px;
   left: 0;
@@ -88,16 +78,11 @@ h1 small {
    max-width: 50px;
     padding-left: 5vw;
     margin-top: -140px;
-
 }
-
-
 .avatar-upload2 {
     position: relative;
     max-width: 205px;
     margin: 50px auto;
-
-
 }
 .avatar-upload2 .avatar-edit2 {
     position: absolute;
@@ -107,7 +92,6 @@ h1 small {
 }
 .avatar-upload2 .avatar-edit2 input {
     display: none;
-
 }
 .avatar-upload2 .avatar-edit2 input + label {
     display: inline-block;
@@ -125,7 +109,6 @@ h1 small {
 .avatar-upload2 .avatar-edit2 input + label:hover {
     background: #f1f1f1;
     border-color: #d6d6d6;
-
 }
 .avatar-upload2 .avatar-edit2 input + label:after {
     content: "\f040";
@@ -160,13 +143,9 @@ h1 small {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr ;
     margin-top: 10%;
-
     padding-top: 15%;
-
 }
-
 .one {
-
     border-color: snow;
     border-radius: 5px;
     grid-column: 1 / 5;
@@ -174,17 +153,13 @@ h1 small {
 }
 .infobox{
     padding-top: 2%;
-
     border-bottom: 50px;
     background-color: #bdc3c7;
-
 }
 .aboutme{
     padding-top: 6%;
     padding-bottom: 2%;
     background-color: #bdc3c7;
-
-
 }
 .email{
     font-family: 'Noto Sans SC', sans-serif;
@@ -215,7 +190,6 @@ h1 small {
     clear: both;
     display: table;
 }
-
 .name{
     text-align: center;
     font-family: 'Noto Sans SC', sans-serif;
@@ -223,7 +197,6 @@ h1 small {
     color: whitesmoke;
     font-size: 9vw;
 }
-
 .two {
     margin-top: 2%;
     border-radius: 5px;
@@ -233,39 +206,28 @@ h1 small {
 
 @media screen and (min-width:736px) {
     .wrapper1 {
-
         display: grid;
-
         margin-top: -230px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         height: 633px;
-
-
     }
 
     .one {
-
-
         background-color: #BDC3C7;
-
         grid-column: 1 /1;
         grid-row: 1 / 5;
-
     }
     .infobox{
         padding-top: 2%;
         height: auto;
         border-bottom: 50px;
         background-color: #BDC3C7;
-
     }
     .aboutme{
         padding-top: 6%;
         padding-bottom: 2%;
         background-color: #BDC3C7;
-
-
     }
   .email{
       font-family: 'Noto Sans SC', sans-serif;
@@ -273,21 +235,17 @@ h1 small {
       padding-left: 2.5%;
       color: #484848;
   }
-
     .row {
         padding: 9%;
         background-color: #BDC3C7;
-
     }
     .skills h4{
-
         font-family: 'Noto Sans SC', sans-serif;
         text-align: center;
         font-size: 2vw;
         padding-top: 2.5%;
         color: #484848;
     }
-
     .column {
         float: left;
 
@@ -298,20 +256,14 @@ h1 small {
         clear: both;
         display: table;
     }
-
     .name{
         text-align: center;
         font-family: 'Noto Sans SC', sans-serif;
         font-style: initial;
         color: #484848;
         font-size: 2.7vw;
-
     }
-
-
-
     .two {
-
         margin-top: 0%;
         margin-left: 2%;
         border-color: snow;
@@ -319,10 +271,6 @@ h1 small {
         grid-column: 2 / 5;
         grid-row: 1 / 5;
     }}
-
-
-
-
 @media screen and (min-width:736px) {
     .inhalt {
         display: grid;
@@ -339,16 +287,11 @@ h1 small {
         border: 6px solid #F8F8F8;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     }
-
     .profil_bild_post img{
         grid-column: 1 /5;
         grid-row: 1 / 1;
-
-
         display: block;
-
         object-fit: cover;
-
         min-height: 100px;
         min-width: 100px;
         max-height: 100px;
@@ -364,13 +307,8 @@ h1 small {
         margin: auto;
         width: auto;
         border-radius: 7px;
-
-
         padding-right: 40px;
         padding-left: 40px;
-
-
-
     }
     .text{
         grid-column: 2 / 6;
@@ -387,7 +325,6 @@ h1 small {
         font-family: 'Montserrat', sans-serif;
         color: whitesmoke;
         font-size: 4vw;
-
     }
     .text h4{
         font-family: 'Montserrat', sans-serif;
@@ -417,7 +354,6 @@ h1 small {
         margin-bottom: 5px;
         min-height: 35px;
         font-family: 'Montserrat', sans-serif;}
-
     .atag{
         grid-column: 3 / 4;
         grid-row: 1 / 1;
