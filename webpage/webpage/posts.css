@@ -167,9 +167,7 @@
         font-size-adjust: inherit;
         border-radius: 1px;
         border-left: 6px solid #F8F8F8;
-
-
-
+        position: relative;
     }
 
 .bild{
@@ -223,6 +221,14 @@
         margin-bottom: 5px;
         min-height: 35px;
         font-family: 'Montserrat', sans-serif;}
+
+    .edit{
+        width: 60px;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+
+    }
 
     .atag{
         grid-column: 3 / 4;
