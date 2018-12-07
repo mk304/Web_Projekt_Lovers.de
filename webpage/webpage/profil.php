@@ -138,7 +138,7 @@ $profilname = $_GET["profilname"];
                     echo "</h4>";
                     if (($row->kuerzel) == $kuerzel) {
                         echo "<div class='edit'>";
-                        echo "<a class='textpost_edit' href='javascript:onClick=sessionStorage.id='$row->posts_id > <i class=\"far fa-edit\"> </i> </a>";
+                        echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
                         echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
                         echo "</div>";
                     }
@@ -205,7 +205,6 @@ $profilname = $_GET["profilname"];
             });
     </script>
 
-// Sweetalert zum Ändern von Posts
     <script>
         var post_id = sessionStorage.getItem('id');
         $(document).ready(function () {

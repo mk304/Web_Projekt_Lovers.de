@@ -72,12 +72,11 @@ session_start();
                         if (($row->kuerzel) == $kuerzel) {
 
                             echo "<div class='edit'>";
-                            echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id='$row->posts_id > <i class=\"far fa-edit\"> </i> </a>";
+                            echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
                             echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
                             echo "</div>";
 
-                            echo "<a id='post_bearbeiten' href='javascript:onClick=sessionStorage.id=$row->posts_id;' > <i class=\"far fa-edit\"> </i> </a>";
-                            echo "<a href='../register/do_post_delete.php?id=$row->posts_id&channel=$channel'><i class='far fa-trash-alt' ></i></a>";
+
 
                         }
                     }
