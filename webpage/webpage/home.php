@@ -4,6 +4,8 @@ include_once '../../userdata.php';
 session_start();
 ?>
 <link rel="stylesheet" href="posts.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <div class="container" style=" min-width: 100%; max-height: 95vh; overflow: auto;">
     <div class="row">
@@ -67,8 +69,8 @@ session_start();
                         echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                         echo "</h4>";
                         if (($row->kuerzel) == $kuerzel) {
-                            echo "<button class='download'  onClick='sessionStorage.id=$row->posts_id'>Post bearbeiten</button>";
-                            echo "<a class='post_bearbeiten2'  href='../register/do_post_delete.php?id=$row->posts_id'>Post löschen</>";
+                            echo "<a id='post_bearbeiten' href='javascript:onClick=sessionStorage.id=$row->posts_id;' > <i class=\"far fa-edit\"> </i> </a>";
+                            echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
                         }
                     }
                     // Ausgabe der Bildposts
@@ -91,7 +93,7 @@ session_start();
                     <script>
                         var post_id = sessionStorage.getItem('id');
                         $(document).ready(function () {
-                            $('.download').click(function () {
+                            $('#post_bearbeiten').click(function () {
                                 (async function getText() {
                                     const {value: text} = await swal({
                                         input: 'textarea',
