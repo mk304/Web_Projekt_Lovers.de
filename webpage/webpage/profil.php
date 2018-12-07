@@ -206,7 +206,7 @@ $profilname = $_GET["profilname"];
     </script>
 
     <script>
-        var post_id = sessionStorage.getItem('id');
+        
         $(document).ready(function () {
             $('.textpost_edit').click(function () {
                 (async function getText() {
@@ -219,7 +219,7 @@ $profilname = $_GET["profilname"];
                         $.ajax({
                             type: "POST",
                             url: "../register/post_edit.php",
-                            data: {"post": text, "post_id": post_id}
+                            data: {"post": text, "post_id": sessionStorage.getItem('id')}
 
                         });
                         swal(

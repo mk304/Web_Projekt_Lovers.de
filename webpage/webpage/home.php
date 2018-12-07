@@ -99,7 +99,7 @@ session_start();
                     echo "</div></div>";
                     ?>
                     <script>
-                        var post_id = sessionStorage.getItem('id');
+
                         $(document).ready(function () {
                             $('.textpost_edit').click(function () {
                                 (async function getText() {
@@ -112,7 +112,7 @@ session_start();
                                         $.ajax({
                                             type: "POST",
                                             url: "../register/post_edit.php",
-                                            data: {"post": text, "post_id": post_id}
+                                            data: {"post": text, "post_id": sessionStorage.getItem('id')}
 
                                         });
                                         swal(
