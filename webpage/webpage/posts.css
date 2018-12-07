@@ -11,9 +11,12 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr ;
     width: 90vw;
-
+    background-color: white;
     height: auto;
-    border-radius: 6px;
+    border-radius: 5px;
+    border: 1px solid #c0c1c5;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+
 
 }
 
@@ -23,46 +26,34 @@
     grid-row: 1/ 1;
     position: relative;
     float: right;
-
     object-fit: cover;
-
     min-height: 100px;
     min-width: 100px;
     max-height: 100px;
     max-width: 100px;
     border-image: 30 round;
     border-radius: 10%;
-    border:2px solid #F8F8F8;
-    border-width:2px;
-    border-style:solid;
-    border-color:#F8F8F8;
+    border:2px solid #eaeaea;
+
 }
 .profil_bild_post{
     margin: auto;
     width: auto;
     border-radius: 20px;
-
-
     padding-right: 40px;
     padding-left: 40px;}
 .text{
     grid-column: 1 / 1;
     grid-row: 2 / 5;
     border-radius: 1px;
-
-
 }
 .bild{
     object-fit:cover;
     min-width: 100%;
     max-width: 200px;
     max-height: 200px;
-
-
     padding-top: -9px;
     padding-bottom: -9px;
-
-
 }
 .text h3{
     margin: auto;
@@ -84,7 +75,7 @@
 .text button{
     float: right;
     background: #fff;
-    color: #bdc3c7;
+    color: #ffffff;
     text-align: center;
     font-size: 0.8em !important;
     display: block;
@@ -94,7 +85,7 @@
 .post_bearbeiten2 {
     float: right;
     background: #fff;
-    color: #bdc3c7;
+    color: #ffffff;
     text-align: center;
     font-size: 0.8em !important;
     display: block;
@@ -115,7 +106,14 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
         grid-template-rows: 1fr ;
         width: 100%;
-
+        background-color: #ffffff;
+        height: auto;
+        margin-top: 3%;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-radius: 5px;
+        border: 1px solid #c0c1c5;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
     }
     .bild_post img{
         object-fit: cover;
@@ -126,30 +124,18 @@
         max-width: 50px;
         border-image: 30 round;
         border-radius: 10%;
-
         border-width:2px;
-
 
     }
 
     .profil_bild_post img{
-
-
-
         display: block;
-
         object-fit: cover;
-
         min-height: 100px;
         min-width: 100px;
         max-height: 100px;
         max-width: 100px;
-
-
-        border:2px solid #f8f8f8;
-        border-width:2px;
-        border-style:solid;
-        border-color:#F8F8F8;
+        border:2px solid #eaeaea;
     }
 
     .profil_bild_post{
@@ -203,7 +189,7 @@
     .text button{
         float: right;
         background: #fff;
-        color: #95a5a6;
+        color: #ffffff;
         text-align: center;
         font-size: 0.8em !important;
         display: block;
@@ -213,7 +199,7 @@
     .post_bearbeiten2 {
         float: right;
         background: #fff;
-        color: #bdc3c7;
+        color: #ffffff;
         text-align: center;
         font-size: 0.8em !important;
         display: block;

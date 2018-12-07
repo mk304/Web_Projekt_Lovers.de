@@ -20,6 +20,13 @@ if (!$stmt->execute(array( ':id'=>$id))) {
     echo "Query Fehler.";
 }
 
-header("Location: ../webpage/home.php?channel=$channel");
+
+if (isset($_GET['channel'])){
+
+    header("Location: ../webpage/home.php?channel=$channel");
+}
+else {
+    header("Location: ../webpage/profil.php");
+}
 
 ?>
