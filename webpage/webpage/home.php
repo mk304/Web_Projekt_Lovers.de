@@ -70,10 +70,17 @@ session_start();
                         echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                         echo "</h4>";
                         if (($row->kuerzel) == $kuerzel) {
-                            echo "<a id='post_bearbeiten' href='javascript:onClick=sessionStorage.id=$row->posts_id;' > <i class=\"far fa-edit\"> </i> </a>";
-                            echo "<a href='../register/do_post_delete.php?id=$row->posts_id&channel=$channel'><i class='far fa-trash-alt' ></i></a>";
+
+                            echo "<div class='edit'>";
+                            echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
+                            echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                            echo "</div>";
+
+
+
                         }
                     }
+
                     // Ausgabe der Bildposts
                     if ($row->post == NULL) {
                         echo "<div class='inhalt'>";
@@ -94,7 +101,7 @@ session_start();
                     <script>
                         var post_id = sessionStorage.getItem('id');
                         $(document).ready(function () {
-                            $('#post_bearbeiten').click(function () {
+                            $('.textpost_edit').click(function () {
                                 (async function getText() {
                                     const {value: text} = await swal({
                                         input: 'textarea',

@@ -137,8 +137,10 @@ $profilname = $_GET["profilname"];
                     echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
                     echo "</h4>";
                     if (($row->kuerzel) == $kuerzel) {
-                        echo "<a id='post_bearbeiten' href='javascript:onClick=sessionStorage.id=$row->posts_id;' > <i class=\"far fa-edit\"> </i> </a>";
+                        echo "<div class='edit'>";
+                        echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
                         echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                        echo "</div>";
                     }
                 }
 
@@ -153,7 +155,9 @@ $profilname = $_GET["profilname"];
 
                     echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
                     if (($row->kuerzel) == $kuerzel) {
-                        echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                        echo "<div class='edit'>";
+                        echo "<a  href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                        echo "</div>";
 
 
 
@@ -199,6 +203,35 @@ $profilname = $_GET["profilname"];
                     $('#imageUpload2btn').show();
                 });
             });
+    </script>
+
+    <script>
+        var post_id = sessionStorage.getItem('id');
+        $(document).ready(function () {
+            $('.textpost_edit').click(function () {
+                (async function getText() {
+                    const {value: text} = await swal({
+                        input: 'textarea',
+                        inputPlaceholder: 'Schreibe deinen neuen Text hier...',
+                        showCancelButton: true
+                    });
+                    if (text) {
+                        $.ajax({
+                            type: "POST",
+                            url: "../register/post_edit.php",
+                            data: {"post": text, "post_id": post_id}
+
+                        });
+                        swal(
+                            "Super!",
+                            "Dein Beitrag wurde erfolgreich gespeichert!",
+                            "success"
+                        )
+                        window.location.reload();
+                    }
+                })()
+            });
+        })
     </script>
 
 <?php
