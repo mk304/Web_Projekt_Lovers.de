@@ -8,6 +8,11 @@ $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
 
 
+// Alert wenn hochzuladendes Bild zu groß ist
+if ($_GET['seite'] == "warning_dateiformat") {
+    $message = "wrong answer";
+
+
     if ($_GET['seite'] == "warning_dateiformat") {
         $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Deine Datei ist zu groß! (Max Größe 1MB)');</script>";
@@ -29,6 +34,7 @@ $profilname = $_GET["profilname"];
                 <div class="avatar-preview">
 
                     <?php
+                    // Upload des Headerbilds
                     $file_pointer = '../headerbilder/header' . $kuerzel . '.jpg';
 
                     if (file_exists($file_pointer)) {
@@ -46,6 +52,7 @@ $profilname = $_GET["profilname"];
         </div>
     </div>
 
+<!--Upload des Profilbildes -->
     <div class="container2">
         <div class="avatar-upload2">
                 <div class="avatar-edit2">
@@ -110,7 +117,7 @@ $profilname = $_GET["profilname"];
 
 
 
-
+<!-- Ausgabe der Informationen zum User -->
     <div class="wrapper1">
         <div class="one" style="overflow: scroll"; >
             <div class="infobox">
@@ -134,7 +141,7 @@ $profilname = $_GET["profilname"];
                 <div class="row">
 
             <?php
-            // Ausgabe der Skills
+            // Ausgabe der Skills, die der jeweilige User besitzt
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
             $sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)";
             $query = $pdo->prepare($sql);
@@ -153,6 +160,9 @@ $profilname = $_GET["profilname"];
         </div>
 
 
+        <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+
+
 
 
 
@@ -168,7 +178,7 @@ $profilname = $_GET["profilname"];
             $query_3->execute(array(":kuerzel" => "$kuerzel"));
 
             while ($row = $query_3->fetchObject()) {
-
+                // Ausgabe der Textposts
                 if ($row->bild_id == NULL){
                     echo "<div class='inhalt'>";
 
@@ -184,28 +194,22 @@ $profilname = $_GET["profilname"];
                     }
                 }
 
-
+                // Ausgabe der Bildposts
                 if ($row->post == NULL) {
 
                     echo "<div class='inhalt'>";
-
                     echo "<div class='text' >";
                     $bildlink= $row-> bild_id;
-
 
                     echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
                     if (($row->kuerzel) == $kuerzel) {
                         echo "<div class='edit'>";
                         echo "<a  href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
                         echo "</div>";
-
-
-
-
                     }
-
                 }
 
+                // Ausgabe des Profilbildes beim Post
                 $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
                 echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
 
