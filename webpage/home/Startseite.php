@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +8,11 @@
     <title>Registrierung</title>
 
     <!-- Sweetalert 2 -->
-
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../ui/sweetalert/sweetalert2.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="../ui/sweetalert/sweetalert2.min.css">
-
-
 </head>
-
 <body>
 
 <?php
@@ -26,28 +20,27 @@ include_once '../ui/headerstartseite.php';
 include_once '../../userdata.php';
 session_start();
 
-
+// Wenn User bereits eingeloggt ist wird er direkt auf die Home-Seite weitergeleitet.
 if ($_SESSION["log"] == "TRUE") {
     header("Location: ../webpage/home.php");
 }
 
+// Wenn User die Home-Seite aufrufen möchte, aber noch nicht eingeloggt ist wird er zur Startseite geleitet und ihm wird ein Alert angezeigt.
 if ($_GET['seite'] == "login_fail"){
     echo "<script type='text/javascript'>swal('Sie sind noch nicht eingeloggt. Bitte loggen Sie sich mit Ihrem HdM-Kürzel ein.');</script>";
 }
 
+// Wenn User bereits registriert ist und versucht sich mit dem gleichen HdM-Kürzel erneut zu registrieren, bekommt er diesen Alert angezeigt.
 if ($_GET['seite'] == "warning") {
     $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Sie sind bereits registriert. Bitte loggen Sie sich mit Ihrem HdM-Kürzel ein.');</script>";
-
-
 }
 
+// Wenn User das falsche Passwort oder Kürzel eingegeben hat erhält er diesen Alert.
 if ($_GET['seite'] == "warning_login") {
     $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Ungültiger Benutzername oder Passwort.');</script>";
-
 }
-
 ?>
 
 <script src="src/jquery-3.3.1.min.js"></script>
@@ -61,18 +54,14 @@ if ($_GET['seite'] == "warning_login") {
 
 </section>
 <div class="grid-box">
-
     <div class="box1">
-
     </div>
 
     <div class="box2">
-
         <div class="login">
             <div class="row " style="height: auto">
-
+                <!-- Die erste Seite des Registrierungsformulars soll immer dann angezeigt werden, wenn dort noch nicht auf den Button "weiter" geklickt wurde. Es wurden als noch nicht die Skills abgefragt. -->
                 <?php if ($_GET["seite"] == "" or $_GET["seite"] == "warning" or $_GET['seite'] == "warning_login" or $_GET['seite'] == "login_fail") {
-
                     ?>
 
                     <div class="col-md-11 col-md-offset-8">
@@ -94,7 +83,7 @@ if ($_GET['seite'] == "warning_login") {
                                 <hr>
                             </div>
 
-                            <!-- Formular Registreirung -->
+                            <!-- Formular Registrierung -->
                             <form action="../register/register.php" method="post">
                                 <div class="panel-body">
                                     <div class="row" >
@@ -187,15 +176,11 @@ if ($_GET['seite'] == "warning_login") {
                         </form>
                     </div>
                     </form>
-                <?php }elseif ($_GET["seite"] == "skills") {
+                <?php }
+                // Wenn bei der ersten Registrierungsseite das Formular ausgefüllt wurde und auf "weiter" geklickt wurde, soll die zweite Formularseite mit den Checkboxen der Skills angezeigt werden.
+                elseif ($_GET["seite"] == "skills") {
 
-                    //zweite div für Checkboxen der Skills
-
-                    ?>
-
-                    <?php
-
-
+                    // Ausgabe der Skills aus der Datenbank
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
                     $sql = "SELECT skill, id from skills";
                     $query = $pdo->prepare($sql);
@@ -206,7 +191,9 @@ if ($_GET['seite'] == "warning_login") {
     overflow: scroll;" action="../register/do_skills_input.php"  method="post" ">
 
                     <h4 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h4>
-                    <?php while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
+                    <?php
+                        // Skills werden aus der Datenbank als Checkboxen ausgegeben.
+                        while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "   <label class='container5' >
                                          <input class='input' type='checkbox' checked=\"checked\" name='" . $zeile['skill'] . "'value='" . $zeile['id'] . "'>" . "<h3>".
                             $zeile['skill'] . "</h3>"."<span class=\"checkmark\"></span>
@@ -230,16 +217,10 @@ if ($_GET['seite'] == "warning_login") {
                     <?php
                 }
                 ?>
-
             </div>
-
-
         </div>
     </div>
-
-
 </div>
-
 
 <script>
 
@@ -253,7 +234,7 @@ if ($_GET['seite'] == "warning_login") {
 
     /*Login Formular*/
     $(function () {
-
+        // Bei Klick auf "Login" soll das Formular zur Registrierung ausgeblendet werden und das Login-Formular eingeblendet werden.
         $('#register-form-link').click(function () {
             $("#register-form").delay(100).fadeIn(100);
             $("#login-form").fadeOut(100);
@@ -261,24 +242,17 @@ if ($_GET['seite'] == "warning_login") {
             $(this).addClass('active');
 
         });
-        $(function show()
-        {
+        $(function show() {
+            // Wenn gerade das Login-Formular eingeblendet ist und der User auf "Registrierung" klickt, soll das Login-Formular ausgeblendet und das Registrierungs-Formular eingeblendet werden.
             $('#login-form-link').click(function () {
                 $("#login-form").delay(100).fadeIn(100);
                 $("#register-form").fadeOut(100);
                 $('#register-form-link').removeClass('active');
                 $(this).addClass('active');
-
             });
         });
-
     });
-
-
-
 </script>
-
-
 <?php
 include_once '../ui/footer.php';
 ?>

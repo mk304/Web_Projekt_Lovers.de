@@ -28,10 +28,6 @@ if(isset($_POST['submit'])){
                     $fileDestination = "../headerbilder/".$fileNameNew;
                     move_uploaded_file($fileTmpName,$fileDestination);
 
-
-
-
-
             }else {
                 header ('Location: ../webpage/profil.php?seite=warning_dateiformat');
             }
@@ -41,8 +37,4 @@ if(isset($_POST['submit'])){
     }else {
         echo"Dieses Dateiformat wird nicht unterstützt!";
     }
-
-
-
-
 }

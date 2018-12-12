@@ -1,13 +1,9 @@
 <meta http-equiv="refresh" content="1; url=https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">
-
-
-
 <?php
 
 include_once '../../userdata.php';
 session_start();
 $kuerzel = $_SESSION["kuerzel"];
-
 
 // Code Quelle: https://www.youtube.com/watch?v=y4GxrIa7MiE
 if(isset($_POST['submit'])){
@@ -19,12 +15,10 @@ if(isset($_POST['submit'])){
     $fileError = $_FILES['file']['error'];
     $fileType = $_FILES['file']['type'];
 
-
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
     $allowed = array('jpg', 'jpeg', 'png');
-
 
     if (in_array($fileActualExt, $allowed)){
         if($fileError === 0){
@@ -32,10 +26,6 @@ if(isset($_POST['submit'])){
                 $fileNameNew = "profilbild".$kuerzel.".".$fileActualExt;
                 $fileDestination = "../profilbilder/".$fileNameNew;
                 move_uploaded_file($fileTmpName,$fileDestination);
-
-
-
-
 
             }else {
                 header ('Location: ../webpage/profil.php?seite=warning_dateiformat');

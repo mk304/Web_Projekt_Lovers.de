@@ -10,13 +10,9 @@ session_start();
 <script src="src/fullclip.js"></script>
 <?php
 
-
 $profilname = $_GET["profilname"];
 $kuerzel = $_SESSION["kuerzel"];
 $_SESSION["profilname"] = $profilname;
-
-
-
 
 //Ausgabe der Skills
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
@@ -24,11 +20,6 @@ $sql_2 = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills
 $query_2 = $pdo->prepare($sql_2);
 
 ?>
-
-
-
-
-
 <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="posts.css">
 
 <div class="container">
@@ -41,13 +32,16 @@ $query_2 = $pdo->prepare($sql_2);
             <div class="avatar-preview">
 
                 <?php
+                // Ausgabe des Profilbildes
                 $file_pointer = '../headerbilder/header'.$profilname.'.jpg';
 
+                // Wenn der User ein eigenes Bild hochgeladen hat, wird dieses angezeigt.
                 if (file_exists($file_pointer))
                 {
                     echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header".$profilname.".jpg);\">
                     </div>";
                 }
+                // Wenn er kein Bild hochgeladen hat, wird unser Standardbild angezeigt.
                 else
                 {
                     echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header.jpg);\">

@@ -8,11 +8,7 @@ $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
 
 
-// Alert wenn hochzuladendes Bild zu groß ist
-if ($_GET['seite'] == "warning_dateiformat") {
-    $message = "wrong answer";
-
-
+    // Alert wenn hochzuladendes Bild zu groß ist
     if ($_GET['seite'] == "warning_dateiformat") {
         $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Deine Datei ist zu groß! (Max Größe 1MB)');</script>";
@@ -33,7 +29,7 @@ if ($_GET['seite'] == "warning_dateiformat") {
                 <div class="avatar-preview">
 
                     <?php
-                    // Upload des Headerbilds
+                    // Upload des Headerbildes
                     $file_pointer = '../headerbilder/header' . $kuerzel . '.jpg';
 
                     if (file_exists($file_pointer)) {
@@ -211,6 +207,7 @@ if ($_GET['seite'] == "warning_dateiformat") {
                     $('#imageUpload2btn').show();
                 });
             });
+        }
     </script>
 
     <script>

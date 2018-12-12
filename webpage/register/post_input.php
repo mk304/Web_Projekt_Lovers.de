@@ -2,19 +2,15 @@
 include_once '../../userdata.php';
 session_start();
 
-//Posts in Datenbank schreiben
 $post = $_POST["post"];
 $channel = $_POST["channel"];
 $kuerzel = $_SESSION["kuerzel"];
 
-
-
+//Posts in Datenbank schreiben
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "INSERT INTO posts (kuerzel, channel, post) VALUES (?, ?, ?)";
-
 $statement = $pdo->prepare($sql);
 $statement->execute(array("$kuerzel", "$channel", "$post"));
-
 
 // neue Posts in Tabelle notification übertragen
 $pdo2 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
@@ -31,7 +27,6 @@ if (!$stmt->execute()) {
 }
 
 // eigene Posts sollen als "gelesen" markiert werden, damit diese nicht als neue Nachrichten angezeigt werden
-
 $pdo3 = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql3 = "UPDATE notification SET $kuerzel ='read' WHERE post = (SELECT posts_id FROM posts WHERE post=:post)";
 
