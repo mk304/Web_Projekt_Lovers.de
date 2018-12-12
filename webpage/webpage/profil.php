@@ -8,8 +8,8 @@ $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
 
 
-if ($_GET['seite'] == "warning_dateiformat") {
-    $message = "wrong answer";
+    if ($_GET['seite'] == "warning_dateiformat") {
+        $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Deine Datei ist zu groß! (Max Größe 1MB)');</script>";
 }
 ?>

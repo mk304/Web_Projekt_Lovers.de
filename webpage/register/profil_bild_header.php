@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 
 
             }else {
-                echo"Deine Datei ist zu groß! (Max Größe 1MB)";
+                header ('Location: ../webpage/profil.php?seite=warning_dateiformat');
             }
         }else {
             echo"Leider gab es ein Probleim! :(";
