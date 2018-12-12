@@ -1,5 +1,8 @@
 <?php
 //upload.php
+session_start();
+$kuerzel = $_SESSION["kuerzel"];
+
 if($_FILES["file"]["name"] != '')
 {
     $test = explode('.', $_FILES["file"]["name"]);

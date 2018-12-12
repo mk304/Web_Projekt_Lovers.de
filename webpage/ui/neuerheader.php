@@ -344,11 +344,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                                 },
 
                                                 });
-                                                swal(
-                                                    "Super!",
-                                                    "Dein Beitrag wurde erfolgreich gespeichert!",
-                                                    "success"
-                                                )
+
                                                 window.location.reload();
                                             } else swal({
                                                 type: 'error',

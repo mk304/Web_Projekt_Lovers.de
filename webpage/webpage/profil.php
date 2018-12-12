@@ -19,6 +19,7 @@ $profilname = $_GET["profilname"];
 
     <script src="jquery-3.3.1.min.js"></script>
 
+
     <div class="container">
         <div class="avatar-upload">
             <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
@@ -50,10 +51,9 @@ $profilname = $_GET["profilname"];
 <!--Upload des Profilbildes -->
     <div class="container2">
         <div class="avatar-upload2">
-            <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
                 <div class="avatar-edit2">
                     <input type='file' name="file" id="imageUpload2" accept=".jpg, .jpeg"/>
-                    <label name="2" for="imageUpload2"></label>
+                    <label name="2" id="uploaded_image" for="imageUpload2"></label>
                 </div>
                 <div class="avatar-preview2">
                     <?php
@@ -67,11 +67,47 @@ $profilname = $_GET["profilname"];
                     </div>";
                     }
                     ?>
-
                 </div>
-                <button type="submit" name="submit" id="imageUpload2btn" for="imageUpload2">Upload
-                </button>
-            </form>
+            <script>
+                $(document).ready(function(){
+                    $(document).on('change', '#file', function(){
+                        var name = document.getElementById("file").files[0].name;
+                        var form_data = new FormData();
+                        var ext = name.split('.').pop().toLowerCase();
+                        if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1)
+                        {
+                            alert("Invalid Image File");
+                        }
+                        var oFReader = new FileReader();
+                        oFReader.readAsDataURL(document.getElementById("imageUpload2").files[0]);
+                        var f = document.getElementById("imageUpload2").files[0];
+                        var fsize = f.size||f.fileSize;
+                        if(fsize > 2000000)
+                        {
+                            alert("Image File Size is very big");
+                        }
+                        else
+                        {
+                            form_data.append("file", document.getElementById('imageUpload2').files[0]);
+                            $.ajax({
+                                url:"upload.php",
+                                method:"POST",
+                                data: form_data,
+                                contentType: false,
+                                cache: false,
+                                processData: false,
+                                beforeSend:function(){
+                                    $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
+                                },
+                                success:function(data)
+                                {
+                                    $('#uploaded_image').html(data);
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
         </div>
     </div>
 
