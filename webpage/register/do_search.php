@@ -7,16 +7,12 @@ include_once '../register/login_test.php';
 include_once '../ui/neuerheader.php';
 session_start();
 
-
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
-
-
 echo"<h2>Suchergebnisse</h2>";
 $suche = $_POST['search'];
 if (!isset ($suche)) {
     $suche = $_GET['search'];
 }
-
 
 // Suche von Personen nach Kürzel, Namen oder Skills
 $statement = $pdo->prepare("SELECT kuerzel, vorname, nachname FROM user WHERE kuerzel LIKE '%".$suche."%' OR vorname LIKE '%".$suche."%' OR nachname LIKE '%".$suche."%'

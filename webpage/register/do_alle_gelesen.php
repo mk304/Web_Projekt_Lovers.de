@@ -7,6 +7,8 @@ $channel = $_GET['channel'];
 
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+
+// Alle bisherigen Posts werden in der Datenbank bei dem neu angelegten User auf gelesen gesetzt.
 $sql = "UPDATE notification SET $kuerzel = 'read'";
 
 $stmt = $pdo->prepare($sql);
@@ -16,9 +18,7 @@ if (!$stmt) {
 
 if (!$stmt->execute()) {
     echo "Query Fehler";
-
 };
 
 header("location: ../webpage/home.php?channel=$channel");
-
 ?>
