@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
                 header("Location: ../webpage/home.php?channel=$channel");
             }else {
-                echo"Deine Datei ist zu groß! (Max Größe 5MB)";
+                header ('Location: ../ui/home.php?seite=warning_dateiformat2');
             }
         }else {
             echo"Leider gab es ein Problem! :(";
