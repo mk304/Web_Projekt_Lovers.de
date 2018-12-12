@@ -124,7 +124,7 @@ if ($_GET['seite'] == "warning_dateiformat") {
 
 
 
-        <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+        <div class="two" style="overflow: scroll; height: 100%; width: 100%;">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
             $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";

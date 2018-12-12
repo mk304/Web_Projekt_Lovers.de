@@ -12,7 +12,7 @@ session_start();
     <div class="row">
         <div class="col-md-8">
             <br>
-            <ul class="alleposts " style="min-width: 80vmax">
+            <ul class="alleposts " >
                 <?php
                 $channel = $_GET["channel"];
                 $kuerzel = $_SESSION["kuerzel"];
