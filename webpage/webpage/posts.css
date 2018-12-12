@@ -1,12 +1,13 @@
 
 .alleposts{
     padding: 0;
+
+    overflow: scroll;
+
 }
-
-
-
 .inhalt {
     margin-top: 15px;
+
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr ;
@@ -95,13 +96,20 @@
 
 @media screen and (min-width:736px) {
 
+    .alleposts{
+        padding: 0;
+        overflow: scroll;
+        min-width: 80vmax;
+
+    }
+
     .inhalt {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
         grid-template-rows: 1fr ;
         background-color: #ffffff;
         margin-right: 20px;
-        height: auto;
+
         margin-top: 3%;
         padding-top: 7px;
         padding-bottom: 7px;

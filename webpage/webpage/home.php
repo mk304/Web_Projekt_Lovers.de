@@ -2,6 +2,11 @@
 include_once '../ui/neuerheader.php';
 include_once '../../userdata.php';
 session_start();
+
+if ($_GET['channel'] == "warning_dateiformat2") {
+    $message = "wrong answer";
+    echo "<script type='text/javascript'>swal('Deine Datei ist zu groß! (Max Größe 5MB)');</script>";
+}
 ?>
 <link rel="stylesheet" href="posts.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -12,7 +17,7 @@ session_start();
     <div class="row">
         <div class="col-md-8">
             <br>
-            <ul class="alleposts " style="min-width: 80vmax">
+            <ul class="alleposts " >
                 <?php
                 $channel = $_GET["channel"];
                 $kuerzel = $_SESSION["kuerzel"];

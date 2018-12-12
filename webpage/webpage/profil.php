@@ -7,9 +7,14 @@ include_once '../ui/neuerheader.php';
 $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
 
+
 // Alert wenn hochzuladendes Bild zu groß ist
 if ($_GET['seite'] == "warning_dateiformat") {
     $message = "wrong answer";
+
+
+    if ($_GET['seite'] == "warning_dateiformat") {
+        $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Deine Datei ist zu groß! (Max Größe 1MB)');</script>";
 }
 ?>
@@ -118,7 +123,18 @@ if ($_GET['seite'] == "warning_dateiformat") {
             </div>
         </div>
 
+
         <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+
+
+
+
+
+
+
+
+
+        <div class="two" style="overflow: scroll; height: 100%; width: 100%;">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
             $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
