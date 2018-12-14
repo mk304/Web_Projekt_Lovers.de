@@ -46,7 +46,7 @@ if ($_GET['seite'] == "warning_dateiformat") {
                 }
                 ?>
             </div>
-            <button type="submit" name="submit" id="imageUploadbtn" for="imageUpload">Upload
+            <button class="btn btn-light" type="submit" name="submit" id="imageUploadbtn" for="imageUpload">Upload
             </button>
         </form>
     </div>
@@ -73,7 +73,7 @@ if ($_GET['seite'] == "warning_dateiformat") {
                 ?>
 
             </div>
-            <button type="submit" name="submit" id="imageUpload2btn" for="imageUpload2">Upload
+            <button class="btn btn-light" type="submit" name="submit" id="imageUpload2btn" for="imageUpload2">Upload
             </button>
         </form>
     </div>
