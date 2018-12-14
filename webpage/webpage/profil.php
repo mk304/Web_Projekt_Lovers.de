@@ -14,112 +14,77 @@ include_once '../ui/neuerheader.php';
 $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
 
-    // Alert wenn hochzuladendes Bild zu groß ist
-    if ($_GET['seite'] == "warning_dateiformat") {
-        $message = "wrong answer";
+
+if ($_GET['seite'] == "warning_dateiformat") {
+    $message = "wrong answer";
     echo "<script type='text/javascript'>swal('Deine Datei ist zu groß! (Max Größe 1MB)');</script>";
 }
 ?>
-    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="posts.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="posts.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-    <div class="container">
-        <div class="avatar-upload">
-            <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
-                <div class="avatar-edit">
-                    <input type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
-                    <label name="" for="imageUpload"></label>
-                </div>
-                <div class="avatar-preview">
+<script src="jquery-3.3.1.min.js"></script>
 
-                    <?php
-                    // Upload des Headerbildes
-                    $file_pointer = '../headerbilder/header' . $kuerzel . '.jpg';
+<div class="container">
+    <div class="avatar-upload">
+        <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
+            <div class="avatar-edit">
+                <input type='file' name="file" id="imageUpload" accept=".jpg, .jpeg"/>
+                <label name="" for="imageUpload"></label>
+            </div>
+            <div class="avatar-preview">
 
-                    if (file_exists($file_pointer)) {
-                        echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header" . $kuerzel . ".jpg);\">
+                <?php
+                $file_pointer = '../headerbilder/header' . $kuerzel . '.jpg';
+
+                if (file_exists($file_pointer)) {
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header" . $kuerzel . ".jpg);\">
                     </div>";
-                    } else {
-                        echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header.jpg);\">
+                } else {
+                    echo "<div id=\"imagePreview\" style=\"background-image: url(../headerbilder/header.jpg);\">
                     </div>";
-                    }
-                    ?>
-                </div>
-                <button type="submit" name="submit" id="imageUploadbtn" for="imageUpload">Upload
-                </button>
-            </form>
-        </div>
+                }
+                ?>
+            </div>
+            <button type="submit" name="submit" id="imageUploadbtn" for="imageUpload">Upload
+            </button>
+        </form>
     </div>
+</div>
 
-<!--Upload des Profilbildes -->
-    <div class="container2">
-        <div class="avatar-upload2">
-                <div class="avatar-edit2">
-                    <input type='file' name="file" id="imageUpload2" accept=".jpg, .jpeg"/>
-                    <label name="2" id="uploaded_image" for="imageUpload2"></label>
-                </div>
-                <div class="avatar-preview2">
-                    <?php
-                    $file_pointer = '../profilbilder/profilbild' . $kuerzel . '.jpg';
+<div class="container2">
+    <div class="avatar-upload2">
+        <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
+            <div class="avatar-edit2">
+                <input type='file' name="file" id="imageUpload2" accept=".jpg, .jpeg"/>
+                <label name="2" for="imageUpload2"></label>
+            </div>
+            <div class="avatar-preview2">
+                <?php
+                $file_pointer = '../profilbilder/profilbild' . $kuerzel . '.jpg';
 
-                    if (file_exists($file_pointer)) {
-                        echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild" . $kuerzel . ".jpg);\">
+                if (file_exists($file_pointer)) {
+                    echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild" . $kuerzel . ".jpg);\">
                     </div>";
-                    } else {
-                        echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild.jpg);\">
+                } else {
+                    echo "<div id=\"imagePreview2\" style=\"background-image: url(../profilbilder/profilbild.jpg);\">
                     </div>";
-                    }
-                    ?>
-                </div>
-            <script>
-                $(document).ready(function(){
-                    $(document).on('change', '#file', function(){
-                        var name = document.getElementById("file").files[0].name;
-                        var form_data = new FormData();
-                        var ext = name.split('.').pop().toLowerCase();
-                        if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1)
-                        {
-                            alert("Invalid Image File");
-                        }
-                        var oFReader = new FileReader();
-                        oFReader.readAsDataURL(document.getElementById("imageUpload2").files[0]);
-                        var f = document.getElementById("imageUpload2").files[0];
-                        var fsize = f.size||f.fileSize;
-                        if(fsize > 2000000)
-                        {
-                            alert("Image File Size is very big");
-                        }
-                        else
-                        {
-                            form_data.append("file", document.getElementById('imageUpload2').files[0]);
-                            $.ajax({
-                                url:"upload.php",
-                                method:"POST",
-                                data: form_data,
-                                contentType: false,
-                                cache: false,
-                                processData: false,
-                                beforeSend:function(){
-                                    $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
-                                },
-                                success:function(data)
-                                {
-                                    $('#uploaded_image').html(data);
-                                }
-                            });
-                        }
-                    });
-                });
-            </script>
-        </div>
+                }
+                ?>
+
+            </div>
+            <button type="submit" name="submit" id="imageUpload2btn" for="imageUpload2">Upload
+            </button>
+        </form>
     </div>
+</div>
 
 
 
-<!-- Ausgabe der Informationen zum User -->
-    <div class="wrapper1">
-        <div class="one" style="overflow: scroll"; >
-            <div class="infobox">
+
+<div class="wrapper1">
+    <div class="one" style="overflow: scroll"; >
+        <div class="infobox">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
             $sql_5 = "SELECT vorname, nachname, email, kuerzel from user WHERE kuerzel=:kuerzel ";
@@ -135,143 +100,154 @@ $profilname = $_GET["profilname"];
             }
             ?></div>
 
-            <div class="aboutme"></div>
-            <div class="skills"><h4> Meine Skills </h4>
-                <div class="row">
+        <div class="aboutme"></div>
+        <div class="skills"><h4> Meine Skills </h4>
+            <div class="row">
 
-            <?php
-            // Ausgabe der Skills, die der jeweilige User besitzt
-            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-            $sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)";
-            $query = $pdo->prepare($sql);
-            if (!$query->execute(array(":kuerzel" => "$kuerzel"))) ;
-            while ($row = $query->fetchObject()) {
-                $skill = $row->skill;
+                <?php
+                // Ausgabe der Skills
+                $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                $sql = "SELECT skill from skills WHERE id = ANY (SELECT skill FROM user_skills WHERE kuerzel=:kuerzel)";
+                $query = $pdo->prepare($sql);
+                if (!$query->execute(array(":kuerzel" => "$kuerzel"))) ;
+                while ($row = $query->fetchObject()) {
+                    $skill = $row->skill;
 
 
-                echo "<a href='../register/do_search.php?search=".$row->skill."' class=\"column\"><img href='../register/do_search.php?search=".$row->skill."' src=\"../skills/" . $skill . ".png\"> </a>";
-            }
-            if (!$query) {
-                echo "Prepare Fehler.";
-            }
-            ?></div>
-            </div>
+                    echo "<a href='../register/do_search.php?search=".$row->skill."' class=\"column\"><img href='../register/do_search.php?search=".$row->skill."' src=\"../skills/" . $skill . ".png\"> </a>";
+                }
+                if (!$query) {
+                    echo "Prepare Fehler.";
+                }
+                ?></div>
         </div>
-
-
-        <div class="two" style="overflow: scroll; height: 100%; width: 100%">
-
-        <div class="two" style="overflow: scroll; height: 100%; width: 100%;">
-            <?php
-            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-            $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
-            $query_3 = $pdo->prepare($sql_3);
-            $query_3->execute(array(":kuerzel" => "$kuerzel"));
-
-            while ($row = $query_3->fetchObject()) {
-                // Ausgabe der Textposts
-                if ($row->bild_id == NULL){
-                    echo "<div class='inhalt'>";
-
-                    echo "<div class='text'>";
-
-                    echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
-                    echo "</h4>";
-                    if (($row->kuerzel) == $kuerzel) {
-                        echo "<div class='edit'>";
-                        echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
-                        echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
-                        echo "</div>";
-                    }
-                }
-
-                // Ausgabe der Bildposts
-                if ($row->post == NULL) {
-
-                    echo "<div class='inhalt'>";
-                    echo "<div class='text' >";
-                    $bildlink= $row-> bild_id;
-
-                    echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
-                    if (($row->kuerzel) == $kuerzel) {
-                        echo "<div class='edit'>";
-                        echo "<a  href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
-                        echo "</div>";
-                    }
-                }
-
-                // Ausgabe des Profilbildes beim Post
-                $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
-                echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
-
-
-
-                if (file_exists($file_pointer)) {
-                    echo "<img src=\"$file_pointer\">";
-                } else {
-                    echo "<img src=\"../profilbilder/profilbild.jpg\">";
-                }
-                echo "</div></div>";
-            }
-            ?>
-        </div>
-
-
     </div>
 
-    <script src="index2.js"></script>
-    <script>
-        document.ready(function () {
-            $('#imageUpload').click(function () {
-                window.location.reload();
-                $('#imageUpload2').click(function () {
-                    window.location.reload();
-                });
 
-                document.ready(function () {
-                    $('#imageUploadbtn').hide();
-                    $('#imageUpload2btn').hide();
-                });
 
-                $('#profilBearbeiten').click(function () {
-                    $('#imageUploadbtn').show();
-                    $('#imageUpload2btn').show();
-                });
-            });
+
+
+
+
+
+
+    <div class="two" style="overflow: scroll; height: 100%; width: 100%">
+        <?php
+        $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+        $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE kuerzel=:kuerzel ORDER BY posts.date DESC";
+        $query_3 = $pdo->prepare($sql_3);
+        $query_3->execute(array(":kuerzel" => "$kuerzel"));
+
+        while ($row = $query_3->fetchObject()) {
+
+            if ($row->bild_id == NULL){
+                echo "<div class='inhalt'>";
+
+                echo "<div class='text'>";
+
+                echo "<a ><h3>" . ($row->post) . "</h3><br><h4>" . " schrieb <a   href='../webpage/profil_check.php?profilname=$row->kuerzel'>" . ($row->kuerzel) . "</a> um " . date('g:i a, F j, Y', strtotime($row->date));
+                echo "</h4>";
+                if (($row->kuerzel) == $kuerzel) {
+                    echo "<div class='edit'>";
+                    echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
+                    echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                    echo "</div>";
+                }
+            }
+
+
+            if ($row->post == NULL) {
+
+                echo "<div class='inhalt'>";
+
+                echo "<div class='text' >";
+                $bildlink= $row-> bild_id;
+
+
+                echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
+                if (($row->kuerzel) == $kuerzel) {
+                    echo "<div class='edit'>";
+                    echo "<a  href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                    echo "</div>";
+
+
+
+
+                }
+
+            }
+
+            $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
+            echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
+
+
+
+            if (file_exists($file_pointer)) {
+                echo "<img src=\"$file_pointer\">";
+            } else {
+                echo "<img src=\"../profilbilder/profilbild.jpg\">";
+            }
+            echo "</div></div>";
         }
-    </script>
+        ?>
+    </div>
 
-    <script>
-        
-        $(document).ready(function () {
-            $('.textpost_edit').click(function () {
-                (async function getText() {
-                    const {value: text} = await swal({
-                        input: 'textarea',
-                        inputPlaceholder: 'Schreibe deinen neuen Text hier...',
-                        showCancelButton: true
-                    });
-                    if (text) {
-                        $.ajax({
-                            type: "POST",
-                            url: "../register/post_edit.php",
-                            data: {"post": text, "post_id": sessionStorage.getItem('id')}
 
-                        });
-                        swal(
-                            "Super!",
-                            "Dein Beitrag wurde erfolgreich gespeichert!",
-                            "success"
-                        )
-                        window.location.reload();
-                    }
-                })()
+</div>
+
+<script src="index2.js"></script>
+<script>
+    document.ready(function () {
+        $('#imageUpload').click(function () {
+            window.location.reload();
+            $('#imageUpload2').click(function () {
+                window.location.reload();
             });
-        })
-    </script>
+
+            document.ready(function () {
+                $('#imageUploadbtn').hide();
+                $('#imageUpload2btn').hide();
+            });
+
+            $('#profilBearbeiten').click(function () {
+                $('#imageUploadbtn').show();
+                $('#imageUpload2btn').show();
+            });
+        });
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        $('.textpost_edit').click(function () {
+            (async function getText() {
+                const {value: text} = await swal({
+                    input: 'textarea',
+                    inputPlaceholder: 'Schreibe deinen neuen Text hier...',
+                    showCancelButton: true
+                });
+                if (text) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../register/post_edit.php",
+                        data: {"post": text, "post_id": sessionStorage.getItem('id')}
+
+                    });
+                    swal(
+                        "Super!",
+                        "Dein Beitrag wurde erfolgreich gespeichert!",
+                        "success"
+                    )
+                    window.location.reload();
+                }
+            })()
+        });
+    })
+</script>
 
 <?php
 include_once '../ui/footer.php';
 ?>
 </body>
 </html>
+
