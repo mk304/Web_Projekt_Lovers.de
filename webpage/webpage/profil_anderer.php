@@ -1,14 +1,17 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profil</title>
 
-
-include_once '../../userdata.php';
-include_once '../ui/neuerheader.php';
-session_start();
-?>
 <script src="src/jquery-3.3.1.min.js"></script>
 <script src="src/fullclip.min.js"></script>
 <script src="src/fullclip.js"></script>
+</head>
+<body>
 <?php
+include_once '../../userdata.php';
+include_once '../ui/neuerheader.php';
+session_start();
 
 $profilname = $_GET["profilname"];
 $kuerzel = $_SESSION["kuerzel"];
@@ -238,15 +241,9 @@ $name= $row->vorname." " .$row->nachname;
     });
 
 </script>
-
-
-
-
 <?php
-
-
-
-
 include_once '../ui/footer.php';
-
 ?>
+</body>
+</html>
+

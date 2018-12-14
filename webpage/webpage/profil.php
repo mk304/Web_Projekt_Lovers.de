@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
 <?php
 session_start();
 
@@ -7,7 +14,6 @@ include_once '../ui/neuerheader.php';
 $kuerzel = $_SESSION["kuerzel"];
 $profilname = $_GET["profilname"];
 
-
     // Alert wenn hochzuladendes Bild zu groß ist
     if ($_GET['seite'] == "warning_dateiformat") {
         $message = "wrong answer";
@@ -16,9 +22,6 @@ $profilname = $_GET["profilname"];
 ?>
     <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="posts.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-    <script src="jquery-3.3.1.min.js"></script>
-
 
     <div class="container">
         <div class="avatar-upload">
@@ -158,14 +161,6 @@ $profilname = $_GET["profilname"];
 
         <div class="two" style="overflow: scroll; height: 100%; width: 100%">
 
-
-
-
-
-
-
-
-
         <div class="two" style="overflow: scroll; height: 100%; width: 100%;">
             <?php
             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
@@ -278,3 +273,5 @@ $profilname = $_GET["profilname"];
 <?php
 include_once '../ui/footer.php';
 ?>
+</body>
+</html>

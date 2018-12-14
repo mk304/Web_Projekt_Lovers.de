@@ -1,14 +1,8 @@
-<?php
-
-
-include_once '../../userdata.php';
-
-?>
-
 <!DOCTYPE html>
 <html>
 
 <head>
+    <title>Profilbearbeiten</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,18 +29,12 @@ include_once '../../userdata.php';
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
-
-
-    <script>
-
-        $(document).ready(function () {
-        }
-
-    </script>
-
 </head>
 
 <body>
+<?php
+include_once '../../userdata.php';
+?>
 
 <div class="wrapper">
     <!-- Sidebar Holder -->
@@ -131,16 +119,8 @@ include_once '../../userdata.php';
             <img src="../bilder/titelbild.jpg" width="100%" height="100%" alt="">
 
         </div>
-
-
-
-
-
-
-
     </div>
 </div>
-
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -151,5 +131,4 @@ include_once '../../userdata.php';
     });
 </script>
 </body>
-
 </html>

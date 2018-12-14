@@ -1,18 +1,5 @@
-<?php
-
-
-include_once '../../userdata.php';
-include_once '../register/login_test.php';
-session_start();
-$kuerzel = $_SESSION["kuerzel"];
-
-
-
-?>
-
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +22,6 @@ $kuerzel = $_SESSION["kuerzel"];
     <!-- Unser CSS -->
     <link rel="stylesheet" href="../ui/neuerheader.css">
 
-
     <!-- Font Awesome JS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:900" rel="stylesheet">
@@ -55,18 +41,19 @@ $kuerzel = $_SESSION["kuerzel"];
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
     <meta http-equiv="Cache-Control" content="no-store"/>
 
-
     <script>
-
         $(document).ready(function () {
         }
-
     </script>
-
 </head>
+<?php
+include_once '../../userdata.php';
+include_once '../register/login_test.php';
+session_start();
+$kuerzel = $_SESSION["kuerzel"];
+?>
 
 <body>
 
@@ -76,15 +63,13 @@ $kuerzel = $_SESSION["kuerzel"];
         <div class="sidebar-header">
             <h3>HdM-Connect</h3>
         </div>
-
+        <!-- Unordered list zur Ausgabe der Navigation-->
         <ul class="list-unstyled components">
             <p>Channels</p>
             <li class="active">
 
                 <form id="channel_id" method="get">
                     <?php
-
-
                     //Channels für Navigation aus Datenbank ausgeben
                     $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
                     $sql = "SELECT name, channel_id from channels";
@@ -94,16 +79,14 @@ $kuerzel = $_SESSION["kuerzel"];
 
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='../webpage/home.php?channel=" . $zeile['channel_id'] . "'>" . $zeile["name"] . "</a>";
-
                         $_SESSION['channel'] = $_GET['channel'];
                     }
-
-
                     ?>
                 </form>
             </li>
         </ul>
 
+        <!-- Button "Channel hinzufügen und Logout -->
         <ul class="list-unstyled CTAs">
             <li>
                 <button style="width:100%;" type="button" id="new-btn2" class="btn btn-light">Neuen Channel anlegen</button>
@@ -194,8 +177,6 @@ $kuerzel = $_SESSION["kuerzel"];
                                 <?php
                                 // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
                                 if ($anzahl_notification > 0) {
-
-
                                     $sql = "SELECT post, date, kuerzel, channel, posts_id, bild_id from posts where posts_id = 
                                                 ANY (SELECT post FROM notification WHERE $kuerzel IS NULL) AND kuerzel = ANY (SELECT folgt FROM abonnenten WHERE kuerzel=:kuerzel) ORDER BY date DESC ";
                                     $query = $pdo->prepare($sql);
@@ -203,10 +184,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                     $rows = array();
                                     while ($row = $query->fetch(PDO::FETCH_ASSOC))
                                         $rows[] = $row;
-
                                     ?>
-
-
 
                                     <a class="dropdown-item"
                                            href="../register/do_alle_gelesen.php?channel=<?php echo $row['channel'] ?>">
@@ -215,14 +193,8 @@ $kuerzel = $_SESSION["kuerzel"];
                                     <br>
                                                 <div class="dropdown-divider"></div>
                                         </a>
-
                                     <?php
-                                    
                                     foreach ($rows as $row) {
-
-                                        ?>
-
-                                        <?php
 
                                         if ($row['bild_id'] == NULL) {
                                             ?>
@@ -234,15 +206,11 @@ $kuerzel = $_SESSION["kuerzel"];
                                                         ?>
                                                     </i></small>
                                                 <br/>
-
-
                                                 <div>
-
                                                     Ein neuer Beitrag von
                                                     <?php
                                                     echo $row['kuerzel']; ?>:
                                                     <br>
-
                                                     <?php
                                                     echo $row['post'] ?>
                                             </a>
@@ -260,10 +228,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                                         ?>
                                                     </i></small>
                                                 <br/>
-
-
                                                 <div>
-
                                                     <?php
                                                     echo $row['kuerzel']; ?>
                                                     <br>
@@ -273,9 +238,10 @@ $kuerzel = $_SESSION["kuerzel"];
                                             <?php
                                         }
                                 }
-                                }else {
-                                    echo 'Keine neuen Nachrichten.';
                                 }
+                                    else {
+                                        echo 'Keine neuen Nachrichten.';
+                                     }
                                 ?>
 
                             </div>
@@ -285,21 +251,19 @@ $kuerzel = $_SESSION["kuerzel"];
                             <a class="nav-link" href="#"></a>
                         </li>
 
-
+                        <!-- Suchleiste mit Button -->
                         <form class="form-inline my-2 my-lg-0" id="search-form" action="../register/do_search.php"
                               method="post">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
                                    name="search">
                             <button class="btn btn-danger" type="submit">Search</button>
                         </form>
+
+                        <!-- Platzhalter in der Navbar -->
                         <li class="nav-item">
-
                         </li>
-
                         <li class="nav-item">
-
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
@@ -309,19 +273,20 @@ $kuerzel = $_SESSION["kuerzel"];
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         </li>
-<!-- Button verstecken im General -->
+
+                        <!-- Button verstecken im General -->
                         <?php if ($_GET["channel"] == "") {
-
-         }
+                        }
+                        // Button Post verfassen und Bild hochladen
                         else {
                             ?>
-
                         <button type="button" id="new-btn" class="btn btn-danger ">Beitrag Erstellen</button>
                         <script>
                             var kuerzel = sessionStorage.getItem('kuerzel');
                             var channel = sessionStorage.getItem('channel');
                             var status = "unread";
 
+                            // Sweetalert: bei Klick auf Button "Beitrag erstellen" öffnet sich Alert um Post zu verfassen.
                             $(document).ready(function () {
                                 $('#new-btn').click(function () {
 
@@ -355,18 +320,16 @@ $kuerzel = $_SESSION["kuerzel"];
                                         })()
                                     });
                                 })
-
-
                             </script>
                             <?php
                         }
 
-
+                        // Auf Seite "General" Bildupload ausblenden.
                         if ($_GET["channel"] == "") {
-
                         }
-                        else {
 
+                        // Button "Bild auswählen" und "Bild hochladen"
+                        else {
                         ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"></a>
@@ -387,23 +350,20 @@ $kuerzel = $_SESSION["kuerzel"];
                                         <button id="ajax" type="submit" class="btn btn-danger" name="submit"
                                                 for="imageUpload3" style="height: 30px; margin-top: -5px;">Hochladen
                                         </button>
-
                                     </div>
-
-
                                 </form>
-
 
                         </li>
                         <?php
                         }
                         ?>
 
+                        <!-- Platzhalter in der Navbar -->
                         <li class="nav-item">
                             <a class="nav-link" href="#"></a>
                         <li class="nav-item">
 
-
+                        <!-- Anzeigen des Profilbildes im Header -->
                         <li class="nav-item">
                             <div class="headerprofilbild">
                                 <a href="https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/webpage/profil.php">
@@ -423,3 +383,6 @@ $kuerzel = $_SESSION["kuerzel"];
                 </div>
             </div>
         </nav>
+
+</body>
+</html>
