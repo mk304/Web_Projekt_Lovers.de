@@ -59,7 +59,6 @@ if ($statement_check->execute(array(":kuerzel" => "$kuerzel"))) {
 
         $statement = $pdo->prepare($sql);
         if ($statement->execute(array("$kuerzel", "$vorname", "$nachname", "$email", "$hash"))) {
-            $_SESSION["log"] = "TRUE";
             header("Location: ../home/Startseite.php?seite=skills");
         };
 

@@ -21,7 +21,7 @@ if ($query->execute()) {
         }
     }
 };
-
+$_SESSION["log"] = "TRUE";
 header("Location: ../webpage/home.php?channel=");
 ?>
 
