@@ -35,6 +35,6 @@ if(isset($_POST['submit'])){
             echo"Leider gab es ein Probleim! :(";
         }
     }else {
-        echo"Dieses Dateiformat wird nicht unterstützt!";
+        header ('Location: ../webpage/profil.php?seite=warning_dateiformat_false');
     }
 }

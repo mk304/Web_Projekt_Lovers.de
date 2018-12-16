@@ -187,8 +187,7 @@ if ($_GET['seite'] == "warning_login") {
                     $query->execute();
                     ?>
                     <link rel="stylesheet" href="skills.css">
-                    <form style="width: 100%;  height: 500px;
-    overflow: scroll;" action="../register/do_skills_input.php"  method="post" ">
+                    <form style="width: 100%;  height: 500px; overflow: scroll;" action="../register/do_skills_input.php"  method="post" ">
 
                     <h4 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h4>
                     <?php

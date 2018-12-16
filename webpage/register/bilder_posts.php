@@ -36,13 +36,15 @@ if(isset($_POST['submit'])){
                 $statement->execute(array("$kuerzel","$channel", "$bild_id"));
                 header("Location: ../webpage/home.php?channel=$channel");
             }else {
-                header ('Location: ../ui/home.php?seite=warning_dateiformat2');
+                header ('Location: ../webpage/home.php?seite=warning_dateiformat2');
             }
         }else {
             echo"Leider gab es ein Problem! :(";
+
         }
     }else {
-        echo"Dieses Dateiformat wird nicht unterstützt!";
+        header ('Location: ../webpage/home.php?seite=warning_dateiformat2_false');
+
     }
 }
 
