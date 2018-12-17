@@ -69,7 +69,7 @@ if ($_GET['seite'] == "warning_dateiformat2_false") {
                 //Posts aus Channel ausgeben
 
                 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
-                $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id from posts WHERE channel=:channel ORDER BY posts.date DESC";
+                $sql_3 = "SELECT post, kuerzel, date, posts_id, bild_id, channel from posts WHERE channel=:channel ORDER BY posts.date DESC";
                 $query_3 = $pdo->prepare($sql_3);
                 $query_3->execute(array(":channel" => "$channel"));
 
@@ -84,7 +84,7 @@ if ($_GET['seite'] == "warning_dateiformat2_false") {
 
                             echo "<div class='edit'>";
                             echo "<a  class='textpost_edit' href='javascript:onClick=sessionStorage.id=".$row->posts_id."'> <i class=\"far fa-edit\"> </i> </a>";
-                            echo "<a href='../register/do_post_delete.php?id=$row->posts_id'><i class='far fa-trash-alt' ></i></a>";
+                            echo "<a href='../register/do_post_delete.php?channel=$row->channel'><i class='far fa-trash-alt' ></i></a>";
                             echo "</div>";
 
 
