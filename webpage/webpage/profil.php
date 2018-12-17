@@ -130,12 +130,6 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
 
 
 
-
-
-
-
-
-
     <div class="two" style="overflow: scroll; height: 100%; width: 100%">
         <?php
         $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
