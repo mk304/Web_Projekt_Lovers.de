@@ -79,7 +79,6 @@ $kuerzel = $_SESSION["kuerzel"];
 
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='../webpage/home.php?channel=" . $zeile['channel_id'] . "'>" . $zeile["name"] . "</a>";
-                        $_SESSION['channel'] = $_GET['channel'];
                     }
                     ?>
                 </form>
@@ -287,7 +286,7 @@ $kuerzel = $_SESSION["kuerzel"];
                         <script>
                             var kuerzel = sessionStorage.getItem('kuerzel');
                             var channel = sessionStorage.getItem('channel');
-                            var status = "unread";
+
 
                             // Sweetalert: bei Klick auf Button "Beitrag erstellen" öffnet sich Alert um Post zu verfassen.
                             $(document).ready(function () {
@@ -307,8 +306,8 @@ $kuerzel = $_SESSION["kuerzel"];
                                                 data: {
                                                     "post": text,
                                                     "kuerzel": kuerzel,
-                                                    "channel": channel,
-                                                    "status": status
+                                                    "channel": channel
+
                                                 },
 
                                                 });
