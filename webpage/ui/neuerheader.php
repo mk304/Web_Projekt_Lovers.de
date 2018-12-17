@@ -79,6 +79,7 @@ $kuerzel = $_SESSION["kuerzel"];
 
                     while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
                         echo "<a class='channel' onClick='sessionStorage.channel=" . $zeile['channel_id'] . ";sessionStorage.name=" . $zeile['name'] . "' name='channel' href='../webpage/home.php?channel=" . $zeile['channel_id'] . "'>" . $zeile["name"] . "</a>";
+                        $_SESSION['channel'] = $_GET['channel'];
                     }
                     ?>
                 </form>
