@@ -296,7 +296,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                             inputPlaceholder: 'Schreibe deine Nachricht hier...',
                                             showCancelButton: true
                                         });
-                                        //text noch nach untersuchen <> XCC string search method!
+                                        //text noch nach untersuchen < XCC string search method!
                                         if (text && text.search("<") == -1) {
                                             $.ajax({
                                                 type: "POST",

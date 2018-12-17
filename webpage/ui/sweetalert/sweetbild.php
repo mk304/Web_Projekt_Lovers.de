@@ -19,38 +19,12 @@
         $('#new-btn').click(function () {
 
             (async function getImage () {
-                const {value: file} = await swal({
-                    title: 'Select image',
-                    input: 'file',
-                    inputAttributes: {
-                        'accept': 'image/*',
-                        'aria-label': 'Upload your profile picture'
-                    }
+                Swal({
+                    title: 'Das hochgeladene Bild',
+                    imageUrl: "https://mars.iuk.hdm-stuttgart.de/~mk304/Web_Projekt/webpage/bildupload/5c111d3c5cc928.29637897mk304.jpg",
+                    imageAlt: 'The uploaded picture'
                 })
 
-                if (file) {
-                    if (!file) throw null;
-                    swal.showLoading();
-                    const reader = new FileReader;
-                    reader.onload = (e) => {
-                        const fd = new FormData;
-                        fd.append('file', e.target.result);
-                        if (window.XMLHttpRequest) {
-                            // code for modern browsers
-                            var xmlhttp = new XMLHttpRequest();
-                        } else {
-                            // code for old IE browsers
-                            var xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                        }
-                        xmlhttp.onreadystatechange = function () {
-                            // ... do something ...
-                        };
-
-                        xmlhttp.open("POST", "../../register/bilder_posts.php", true);
-                        xmlhttp.send(fd);
-                    };
-                    reader.readAsDataURL(file)
-                }
             })()
         });
     })
