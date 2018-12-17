@@ -18,7 +18,9 @@ session_start();
 
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 echo"<h2>Suchergebnisse</h2>";
+//wenn man über die Search Eingabe sucht, dann wird Suchbegriff über Post übergeben
 $suche = $_POST['search'];
+// wenn man auf der Profilseite auf einen Skill klickt, dann wird dieser als GET Parameter übergeben
 if (!isset ($suche)) {
     $suche = $_GET['search'];
 }
