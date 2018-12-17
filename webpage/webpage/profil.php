@@ -30,6 +30,7 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
 
 <script src="jquery-3.3.1.min.js"></script>
 
+<!-- Titelbild -->
 <div class="container">
     <div class="avatar-upload">
         <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
@@ -57,6 +58,7 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
     </div>
 </div>
 
+<!-- Profilbild -->
 <div class="container2">
     <div class="avatar-upload2">
         <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
@@ -84,9 +86,7 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
     </div>
 </div>
 
-
-
-
+<!-- Informationsausgabe über User -->
 <div class="wrapper1">
     <div class="one" style="overflow: scroll"; >
         <div class="infobox">
@@ -104,6 +104,7 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
 
             }
             ?></div>
+
 
         <div class="aboutme"></div>
         <div class="skills"><h4> Meine Skills </h4>
@@ -128,7 +129,7 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
         </div>
     </div>
 
-
+    <!-- Ausgabe eigner Beiträge -->
 
     <div class="two" style="overflow: scroll; height: 100%; width: 100%">
         <?php
@@ -194,6 +195,8 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
 
 </div>
 
+<!-- Automatisches Einsetzen des Profilbildes bevor man auf Upload gedrückt hat -->
+
 <script src="index2.js"></script>
 <script>
     document.ready(function () {
@@ -214,6 +217,8 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
             });
         });
 </script>
+
+<!-- Textposts bearbeiten -->
 
 <script>
 
