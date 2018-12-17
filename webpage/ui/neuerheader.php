@@ -186,6 +186,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                         $rows[] = $row;
                                     ?>
 
+                                    <!-- A-Tag: Weiterleitung auf do_alle_gelesen -> alle neuen Nachrichten werden dort auf "read" gesetzt. -->
                                     <a class="dropdown-item"
                                            href="../register/do_alle_gelesen.php?channel=<?php echo $row['channel'] ?>">
                                             <div>
@@ -193,9 +194,11 @@ $kuerzel = $_SESSION["kuerzel"];
                                     <br>
                                                 <div class="dropdown-divider"></div>
                                         </a>
+
                                     <?php
                                     foreach ($rows as $row) {
 
+                                        // Wenn keine Bild_ID vorhanden ist, muss es sich um einen Textpost handeln. Dann wird die Ausgabeform des Textposts angezeigt.
                                         if ($row['bild_id'] == NULL) {
                                             ?>
                                             <a class="dropdown-item"
