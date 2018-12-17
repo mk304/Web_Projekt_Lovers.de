@@ -300,7 +300,7 @@ $kuerzel = $_SESSION["kuerzel"];
                                             showCancelButton: true
                                         });
                                         //text noch nach untersuchen < XCC string search method!
-                                        if (text && text.search("<") == -1) {
+                                        if (text && text.search("<")) {
                                             $.ajax({
                                                 type: "POST",
                                                 url: "../register/post_input.php",
