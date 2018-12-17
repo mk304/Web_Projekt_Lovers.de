@@ -20,7 +20,7 @@ if (!$stmt->execute(array( ':id'=>$id))) {
 }
 // Weiterleitung zu vorher ausgewählten Channel
 if (isset($_GET['channel'])){
-    header("Location: ../webpage/home.php?id=$channel");
+    header("Location: ../webpage/home.php?channel=$channel");
 }
 // Weiterleitung auf Profilseite, wenn User vorher keinen Channel ausgewählt hatte.
 else {
