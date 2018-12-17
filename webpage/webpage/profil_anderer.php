@@ -25,6 +25,7 @@ $query_2 = $pdo->prepare($sql_2);
 ?>
 <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="posts.css">
 
+<!-- Ausgabe des Titelbildes -->
 <div class="container">
     <div class="avatar-upload">
         <form action="../register/profil_bild_header.php" method="post" enctype="multipart/form-data">
@@ -35,7 +36,6 @@ $query_2 = $pdo->prepare($sql_2);
             <div class="avatar-preview">
 
                 <?php
-                // Ausgabe des Profilbildes
                 $file_pointer = '../headerbilder/header'.$profilname.'.jpg';
 
                 // Wenn der User ein eigenes Bild hochgeladen hat, wird dieses angezeigt.
@@ -57,6 +57,7 @@ $query_2 = $pdo->prepare($sql_2);
     </div>
 </div>
 
+<!-- Ausgabe des Profilbildes -->
 <div class="container2">
     <div class="avatar-upload2">
         <form action="../register/profil_bild.php" method="post" enctype="multipart/form-data">
@@ -99,16 +100,7 @@ $query_2 = $pdo->prepare($sql_2);
             });
 </script>
 
-
-
-
-
-
-
-
-
-
-
+<!-- Informationen über die Person, auf dessen Profil man sich befindet -->
 <div class="wrapper1">
     <div class="one" style="overflow: scroll"; >
         <div class="infobox">
@@ -155,6 +147,7 @@ $name= $row->vorname." " .$row->nachname;
 ?>
             </div>
 
+        <!-- Button Send Mail -->
         <div class="aboutme">
             <?php
             $query_5 = $pdo->prepare($sql_5);
@@ -166,6 +159,7 @@ $name= $row->vorname." " .$row->nachname;
 
             }?>
 
+        <!-- Ausgabe der Skills der Person, auf dessen profil man sich befindet -->
         </div><div class="skills"> <h4> Meine Skills: </h4>
             <div class="row">
         <?php
@@ -181,6 +175,8 @@ $name= $row->vorname." " .$row->nachname;
         }
         ?></div></div>
        </div>
+
+    <!-- Ausgabe der Beiträge der Person, dessen Profil man sich befindet -->
     <div class="two" style="overflow: scroll; height: 100%; width: 100%">
         <?php
         $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
