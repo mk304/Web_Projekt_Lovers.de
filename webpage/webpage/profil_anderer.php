@@ -87,19 +87,6 @@ $query_2 = $pdo->prepare($sql_2);
     </div>
 </div>
 
-
-
-<script src="index.js"></script>
-<script src="index2.js"></script>
-<script>
-    document.ready(function(){
-        $('#imageUpload').click(function () {
-            window.location.reload();
-            $('#imageUpload2').click(function () {
-                window.location.reload();
-            });
-</script>
-
 <!-- Informationen über die Person, auf dessen Profil man sich befindet -->
 <div class="wrapper1">
     <div class="one" style="overflow: scroll"; >
