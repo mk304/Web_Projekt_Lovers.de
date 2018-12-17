@@ -4,7 +4,8 @@ include_once '../../userdata.php';
 
 session_start();
 
-$profilname = $_SESSION["profilname"];
+$profilname = $_GET["profilname"];
+   // $_SESSION["profilname"];
 $kuerzel = $_SESSION["kuerzel"];
 
 // In Tabelle Abonnenten wird das "Follower-Verhältnis" vermerkt.
