@@ -138,10 +138,7 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
 
                     <!-- Modal content-->
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"></h4>
-                        </div>
+                        
                         <div class="modal-body">
                             <?php
                             $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
