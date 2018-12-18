@@ -27,7 +27,9 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
 ?>
 <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="posts.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+<!-- Das neueste kompilierte und minimierte CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="jquery-3.3.1.min.js"></script>
 
 <!-- Titelbild -->
@@ -126,6 +128,55 @@ if ($_GET['seite'] == "warning_dateiformat_false") {
                     echo "Prepare Fehler.";
                 }
                 ?></div>
+
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Skills bearbeiten</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog"  data-backdrop="false">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        
+                        <div class="modal-body">
+                            <?php
+                            $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset' => 'utf8'));
+                            $sql = "SELECT skill, id from skills";
+                            $query = $pdo->prepare($sql);
+                            $query->execute();
+                            ?>
+                            <link rel="stylesheet" href="skills.css">
+                            <form style="width: 100%;  height: 500px; overflow: scroll;" action="../register/do_skills_update.php"  method="post" ">
+
+                            <h4 class="headline_skills" style="color: #ff253e!important;">Gib deine Skills an</h4>
+                            <?php
+                            // Skills werden aus der Datenbank als Checkboxen ausgegeben.
+                            while ($zeile = $query->fetch(PDO::FETCH_ASSOC)) {
+                                echo "   <label class='container5' >
+                                         <input class='input' type='checkbox' checked=\"checked\" name='" . $zeile['skill'] . "'value='" . $zeile['id'] . "'>" . "<h3>".
+                                    $zeile['skill'] . "</h3>"."<span class=\"checkmark\"></span>
+                                         </label><br>";
+                            }
+
+                            if (!$query){
+                                echo "Fehler.";
+                            }
+                            ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                            <input type="submit" name="register-submit" class="btn btn-default"
+
+                                   tabindex="4" class="input"
+                                   value="Weiter"
+                            >
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
 
