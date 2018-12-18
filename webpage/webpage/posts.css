@@ -179,6 +179,13 @@
 
     }
 
+    .far fa-trash-alt {
+        background: white;
+        border-radius: 50%;
+        height: 1em;
+        width: 1em;
+    }
+
     .text h3 {
         margin: auto;
         width: auto;
