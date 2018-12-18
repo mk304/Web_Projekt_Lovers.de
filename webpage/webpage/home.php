@@ -98,6 +98,13 @@ if ($_GET['seite'] == "warning_dateiformat2_false") {
                         echo "<div class='text' >";
                         $bildlink = $row->bild_id;
                         echo "<a href='../bildupload/$bildlink'><img class='bild' src='../bildupload/$bildlink'>";
+                        // Bilder löschen
+                        if (($row->kuerzel) == $kuerzel) {
+                            echo "<div class='edit'>";
+                            echo "<a  href='../register/do_post_delete.php?id=$row->posts_id&channel=$row->channel'><i class='far fa-trash-alt' ></i></a>";
+                            echo "</div>";
+                        };
+
                     }
                     $file_pointer = '../profilbilder/profilbild' . ($row->kuerzel) . '.jpg';
                     echo "</div><div class='profil_bild_post' ><a class='atag' href='../webpage/profil_check.php?profilname=$row->kuerzel'>";
